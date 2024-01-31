@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  backend:
+    container_name: backend-container
+    build: ./backend/    # Build from the root of the project
+    environment:
+      CHOKIDAR_USEPOLLING: true
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/src:/backend/src/
+    networks:
+      - jkpgcity_network
+
+  frontend:
+    container_name: frontend-container
+    build: ./frontend/
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/frontend/src/
+    networks:
+      - jkpgcity_network
+
+networks:
+  jkpgcity_network:
+    driver: bridge
