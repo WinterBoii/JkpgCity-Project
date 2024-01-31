@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon /backend/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "winter",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.3"
+  }
 }
