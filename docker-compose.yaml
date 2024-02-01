@@ -1,13 +1,13 @@
 version: '3.9'
-services:
+services:  #Describes the containers that make up the application
   backend:
     container_name: backend-container
     build: ./backend/    # Build from the root of the project
-    environment:
+    environment:         #Defines environment variables for the container
       CHOKIDAR_USEPOLLING: true
     ports:
       - "3001:3001"
-    volumes:
+    volumes:  #Mounts the local "./backend/src/" directory into the "/backend/src/" directory in the container
       - ./backend/src:/backend/src/
     networks:
       - jkpgcity_network
