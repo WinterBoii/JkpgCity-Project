@@ -18,7 +18,7 @@ app.get('/setup', async (req, res) => {
   }
 })
 
-app.get('/', async (req, res) => {
+app.get('/stores', async (req, res) => {
   try {
     const stores = await db.getAllStores();
     res.status(200).send(stores);
