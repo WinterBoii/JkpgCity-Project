@@ -1,477 +1,391 @@
 [
   {
-    "title": "es salong",
-    "link": "affessalong.se/",
-    "rating": 3
+    "name": "es salong",
+    "url": "affessalong.se/"
   },
   {
-    "title": "All:tid Salong",
-    "link": "salongalltid.se",
-    "rating": 4
+    "name": "All:tid Salong",
+    "url": "salongalltid.se"
   },
   {
-    "title": "Antoinette's house of beauty",
-    "link": "facebook.com/profile.php?id=100063622382804&eav=Afa96FCxwtkxvo_kvrFAx1N0Vif3vRr5MHB3hYutWT80SolIkHBiV7JIs4Ixg1T7Qjo&paipv=0&_rdr",
-    "rating": 5
+    "name": "Antoinette's house of beauty",
+    "url": "facebook.com/profile.php?id=100063622382804&eav=Afa96FCxwtkxvo_kvrFAx1N0Vif3vRr5MHB3hYutWT80SolIkHBiV7JIs4Ixg1T7Qjo&paipv=0&_rdr"
   },
   {
-    "title": "Barberaria 96",
-    "link": "barberaria96.se/",
-    "rating": 2
+    "name": "Barberaria 96",
+    "url": "barberaria96.se/"
   },
   {
-    "title": "Barber for Gentlemen Jönköping",
-    "link": "facebook.com/barber75149/",
-    "rating": 5
+    "name": "Barber for Gentlemen Jönköping",
+    "url": "facebook.com/barber75149/"
   },
   {
-    "title": "Bonita's Clinic",
-    "link": "facebook.com/bonitasclinic/",
-    "rating": 4
+    "name": "Bonita's Clinic",
+    "url": "facebook.com/bonitasclinic/"
   },
   {
-    "title": "Carl M Lundh Salong",
-    "link": "carlmlundh.se/salonger/jonkoping/",
-    "rating": 3
+    "name": "Carl M Lundh Salong",
+    "url": "carlmlundh.se/salonger/jonkoping/"
   },
   {
-    "title": "Davma Brands",
-    "link": "",
-    "rating": 1
+    "name": "Davma Brands",
+    "url": ""
   },
   {
-    "title": "Diione Hudvård och make up",
-    "link": "dione.nu/",
-    "rating": 5
+    "name": "Diione Hudvård och make up",
+    "url": "dione.nu/"
   },
   {
-    "title": "Estetic Walk-in Jönköping",
-    "link": "estetic.se/jonkoping/",
-    "rating": 4
+    "name": "Estetic Walk-in Jönköping",
+    "url": "estetic.se/jonkoping/"
   },
   {
-    "title": "Esthetica Hudvårdssalong AB",
-    "link": "",
-    "rating": 2
+    "name": "Esthetica Hudvårdssalong AB",
+    "url": ""
   },
   {
-    "title": "Evolution Laser Clinic",
-    "link": "evolutionlaser.se/locations/evolution-laser-clinic-jonkoping/",
-    "rating": 5
+    "name": "Evolution Laser Clinic",
+    "url": "evolutionlaser.se/locations/evolution-laser-clinic-jonkoping/"
   },
   {
-    "title": "Fitness24Seven Jönköping centrum",
-    "link": "fitness24seven.com/vara-gym/se-vara-gym/jonkoping-centrum",
-    "rating": 4
+    "name": "Fitness24Seven Jönköping centrum",
+    "url": "fitness24seven.com/vara-gym/se-vara-gym/jonkoping-centrum"
   },
   {
-    "title": "Fitness24Seven Väster",
-    "link": "fitness24seven.com/vara-gym/se-vara-gym/jonkoping-vaster/",
-    "rating": 3
+    "name": "Fitness24Seven Väster",
+    "url": "fitness24seven.com/vara-gym/se-vara-gym/jonkoping-vaster/"
   },
   {
-    "title": "Fitness and friends",
-    "link": "fitnessandfriends.se/",
-    "rating": 5
+    "name": "Fitness and friends",
+    "url": "fitnessandfriends.se/"
   },
   {
-    "title": "Flow Yoga",
-    "link": "flowyoga.se/",
-    "rating": 4
+    "name": "Flow Yoga",
+    "url": "flowyoga.se/"
   },
   {
-    "title": "Foten",
-    "link": "foten.se/om-foten/vara-butiker/",
-    "rating": 3
+    "name": "Foten",
+    "url": "foten.se/om-foten/vara-butiker/"
   },
   {
-    "title": "Fot & Kropp",
-    "link": "",
-    "rating": 1
+    "name": "Fot & Kropp",
+    "url": ""
   },
   {
-    "title": "Fot och Hälsohuset",
-    "link": "fotochhalsohuset.se",
-    "rating": 5
+    "name": "Fot och Hälsohuset",
+    "url": "fotochhalsohuset.se"
   },
   {
-    "title": "Freja & Frasse",
-    "link": "frejaochfrasse.se/",
-    "rating": 4
+    "name": "Freja & Frasse",
+    "url": "frejaochfrasse.se/"
   },
   {
-    "title": "Friskis&Svettis",
-    "link": "friskissvettis.se/jonkoping",
-    "rating": 5
+    "name": "Friskis&Svettis",
+    "url": "friskissvettis.se/jonkoping"
   },
   {
-    "title": "Frisör fåfäng"
+    "name": "Frisör fåfäng"
   },
   {
-    "title": "Genuin Massage"
+    "name": "Genuin Massage"
   },
   {
-    "title": "Hairfree Jönköping",
-    "link": "hairfree.se/hitta-klinik/hairfree-jonkoping/",
-    "rating": 4
+    "name": "Hairfree Jönköping",
+    "url": "hairfree.se/hitta-klinik/hairfree-jonkoping/"
   },
   {
-    "title": "Hairmony",
-    "link": "salonghairmony.se/",
-    "rating": 3
+    "name": "Hairmony",
+    "url": "salonghairmony.se/"
   },
   {
-    "title": "Hairtime",
-    "link": "hairtime.nu/",
-    "rating": 5
+    "name": "Hairtime",
+    "url": "hairtime.nu/"
   },
   {
-    "title": "Hair World",
-    "link": "hair-world.se",
-    "rating": 4
+    "name": "Hair World",
+    "url": "hair-world.se"
   },
   {
-    "title": "Hälsobyrån",
-    "link": "halsobyran.se",
-    "rating": 5
+    "name": "Hälsobyrån",
+    "url": "halsobyran.se"
   },
   {
-    "title": "Hår 2000",
-    "link": "har2000.se",
-    "rating": 3
+    "name": "Hår 2000",
+    "url": "har2000.se"
   },
   {
-    "title": "Hår & Co",
-    "link": "harochco.se/",
-    "rating": 4
+    "name": "Hår & Co",
+    "url": "harochco.se/"
   },
   {
-    "title": "Hårdesign by Anna",
-    "link": "hardesignbyanna.se/",
-    "rating": 5
+    "name": "Hårdesign by Anna",
+    "url": "hardesignbyanna.se/"
   },
   {
-    "title": "Hårfin",
-    "link": "harfin.com",
-    "rating": 4
+    "name": "Hårfin",
+    "url": "harfin.com"
   },
   {
-    "title": "Hårfixarna",
-    "link": "harfixarna.com",
-    "rating": 3
+    "name": "Hårfixarna",
+    "url": "harfixarna.com"
   },
   {
-    "title": "Hårgränd",
-    "link": "hargrand.se",
-    "rating": 5
+    "name": "Hårgränd",
+    "url": "hargrand.se"
   },
   {
-    "title": "Hårsalong Påpée",
-    "link": "harsalongenpapee.se",
-    "rating": 4
+    "name": "Hårsalong Påpée",
+    "url": "harsalongenpapee.se"
   },
   {
-    "title": "Herrhår",
-    "link": "herrhar.se/",
-    "rating": 3
+    "name": "Herrhår",
+    "url": "herrhar.se/"
   },
   {
-    "title": "Hud och Hälsa AB",
-    "link": "hudohalsa.com/",
-    "rating": 5
+    "name": "Hud och Hälsa AB",
+    "url": "hudohalsa.com/"
   },
   {
-    "title": "Hudoteket",
-    "link": "hudoteket.se/",
-    "rating": 4
+    "name": "Hudoteket",
+    "url": "hudoteket.se/"
   },
   {
-    "title": "Hudsalongen",
-    "link": "hudsalongen.se/",
-    "rating": 3
+    "name": "Hudsalongen",
+    "url": "hudsalongen.se/"
   },
   {
-    "title": "Intermezzo",
-    "link": "intermezzofrisor.se",
-    "rating": 5
+    "name": "Intermezzo",
+    "url": "intermezzofrisor.se"
   },
   {
-    "title": "Jönköpings Afroshop",
-    "link": "afroshopjonkoping.com/",
-    "rating": 4
+    "name": "Jönköpings Afroshop",
+    "url": "afroshopjonkoping.com/"
   },
   {
-    "title": "Kalufsmakarn",
-    "link": "kalufsmakarn.se/",
-    "rating": 3
+    "name": "Kalufsmakarn",
+    "url": "kalufsmakarn.se/"
   },
   {
-    "title": "Karisma Hair Academy"
+    "name": "Karisma Hair Academy"
   },
   {
-    "title": "Klinik Forma",
-    "link": "klinikforma.se/",
-    "rating": 5
+    "name": "Klinik Forma",
+    "url": "klinikforma.se/"
   },
   {
-    "title": "Klippcenter",
-    "link": "klippcenter-jkpg.se",
-    "rating": 4
+    "name": "Klippcenter",
+    "url": "klippcenter-jkpg.se"
   },
   {
-    "title": "Klippit",
-    "link": "klipp-it.se/",
-    "rating": 3
+    "name": "Klippit",
+    "url": "klipp-it.se/"
   },
   {
-    "title": "Kristinas fotvård",
-    "link": "facebook.com/kristinafotvard/",
-    "rating": 5
+    "name": "Kristinas fotvård",
+    "url": "facebook.com/kristinafotvard/"
   },
   {
-    "title": "Kroppsligt i Jönköping",
-    "link": "facebook.com/Kroppsligt/",
-    "rating": 4
+    "name": "Kroppsligt i Jönköping",
+    "url": "facebook.com/Kroppsligt/"
   },
   {
-    "title": "La Barbiere",
-    "link": "facebook.com/labarbiere1/",
-    "rating": 3
+    "name": "La Barbiere",
+    "url": "facebook.com/labarbiere1/"
   },
   {
-    "title": "Lashliftby Dimen",
-    "link": "facebook.com/people/Lashliftbydimen/100063630263066/",
-    "rating": 5
+    "name": "Lashliftby Dimen",
+    "url": "facebook.com/people/Lashliftbydimen/100063630263066/"
   },
   {
-    "title": "Lewis salong"
+    "name": "Lewis salong"
   },
   {
-    "title": "Liliana salongen",
-    "link": "facebook.com/people/Liliana-salongen/100068813411254/",
-    "rating": 4
+    "name": "Liliana salongen",
+    "url": "facebook.com/people/Liliana-salongen/100068813411254/"
   },
   {
-    "title": "Louise Nails",
-    "link": "instagram.com/louise.nails/",
-    "rating": 5
+    "name": "Louise Nails",
+    "url": "instagram.com/louise.nails/"
   },
   {
-    "title": "Made by Jessica",
-    "link": "instagram.com/madebyjessica_/",
-    "rating": 4
+    "name": "Made by Jessica",
+    "url": "instagram.com/madebyjessica_/"
   },
   {
-    "title": "Massage Corner"
+    "name": "Massage Corner"
   },
   {
-    "title": "Memira",
-    "link": "memira.se/klinik/jonkoping/?gclid=Cj0KCQjwteOaBhDuARIsADBqRegQQ2B9PnOj1E_Zeo5yKxGJYmAh4Hllw4S3phZ_XOX7QFvDflATXtMaAjWxEALw_wcB",
-    "rating": 3
+    "name": "Memira",
+    "url": "memira.se/klinik/jonkoping/?gclid=Cj0KCQjwteOaBhDuARIsADBqRegQQ2B9PnOj1E_Zeo5yKxGJYmAh4Hllw4S3phZ_XOX7QFvDflATXtMaAjWxEALw_wcB"
   },
   {
-    "title": "Modern Nails Öster",
-    "link": "modernnails.se/",
-    "rating": 4
+    "name": "Modern Nails Öster",
+    "url": "modernnails.se/"
   },
   {
-    "title": "Modern Nails Väster",
-    "link": "modernnails.se/",
-    "rating": 5
+    "name": "Modern Nails Väster",
+    "url": "modernnails.se/"
   },
   {
-    "title": "Mr Barbershop",
-    "link": "mrbarbershop.se/",
-    "rating": 3
+    "name": "Mr Barbershop",
+    "url": "mrbarbershop.se/"
   },
   {
-    "title": "Myras Skönhet hos city frisör"
+    "name": "Myras Skönhet hos city frisör"
   },
   {
-    "title": "NAXIA Salong"
+    "name": "NAXIA Salong"
   },
   {
-    "title": "Neoskin",
-    "link": "https://neoskin.se/",
-    "rating": 4
+    "name": "Neoskin",
+    "url": "https://neoskin.se/"
   },
   {
-    "title": "Niviana Aromaterapi",
-    "link": "facebook.com/people/Niviana-Aromaterapi/100063509873183/",
-    "rating": 5
+    "name": "Niviana Aromaterapi",
+    "url": "facebook.com/people/Niviana-Aromaterapi/100063509873183/"
   },
   {
-    "title": "Nordic Wellness Atlantis Spa",
-    "link": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-atlantis/",
-    "rating": 4
+    "name": "Nordic Wellness Atlantis Spa",
+    "url": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-atlantis/"
   },
   {
-    "title": "Nordic Wellness City",
-    "link": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-city/",
-    "rating": 5
+    "name": "Nordic Wellness City",
+    "url": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-city/"
   },
   {
-    "title": "Nordic Wellness Jönköping Campus",
-    "link": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-campus/",
-    "rating": 3
+    "name": "Nordic Wellness Jönköping Campus",
+    "url": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-campus/"
   },
   {
-    "title": "Norma Hairfashion i Jönköping AB",
-    "link": "hairfashionsalong.se",
-    "rating": 4
+    "name": "Norma Hairfashion i Jönköping AB",
+    "url": "hairfashionsalong.se"
   },
   {
-    "title": "Nyans Hårstudio",
-    "link": "nyansharstudio.se",
-    "rating": 5
+    "name": "Nyans Hårstudio",
+    "url": "nyansharstudio.se"
   },
   {
-    "title": "Paloma Pinto Massage"
+    "name": "Paloma Pinto Massage"
   },
   {
-    "title": "Pärla Salong",
-    "link": "facebook.com/profile.php?id=10063528493887",
-    "rating": 4
+    "name": "Pärla Salong",
+    "url": "facebook.com/profile.php?id=10063528493887"
   },
   {
-    "title": "PiBrows by Gabriella",
-    "link": "instagram.com/ibrowsbygabriella/",
-    "rating": 5
+    "name": "PiBrows by Gabriella",
+    "url": "instagram.com/ibrowsbygabriella/"
   },
   {
-    "title": "Pi thai art tattoo",
-    "link": "pithaiarttattoo.business.site/",
-    "rating": 3
+    "name": "Pi thai art tattoo",
+    "url": "pithaiarttattoo.business.site/"
   },
   {
-    "title": "Porcelain by Zara"
+    "name": "Porcelain by Zara"
   },
   {
-    "title": "Pretty Nails",
-    "link": "facebook.com/people/Pretty-Nails-J%C3%B6nk%C3%B6ping/100047390246361/",
-    "rating": 4
+    "name": "Pretty Nails",
+    "url": "facebook.com/people/Pretty-Nails-J%C3%B6nk%C3%B6ping/100047390246361/"
   },
   {
-    "title": "Proffshänder massage",
-    "link": "facebook.com/profile.php?id=100063579673745",
-    "rating": 5
+    "name": "Proffshänder massage",
+    "url": "facebook.com/profile.php?id=100063579673745"
   },
   {
-    "title": "PT Studion",
-    "link": "https://www.ptstudionjkpg.se/",
-    "rating": 4
+    "name": "PT Studion",
+    "url": "https://www.ptstudionjkpg.se/"
   },
   {
-    "title": "Rebecca Ekström",
-    "link": "rebeccaekstrom.se/",
-    "rating": 5
+    "name": "Rebecca Ekström",
+    "url": "rebeccaekstrom.se/"
   },
   {
-    "title": "Rickards salong"
+    "name": "Rickards salong"
   },
   {
-    "title": "Salong 5 sinnen",
-    "link": "5sinnen.se/",
-    "rating": 4
+    "name": "Salong 5 sinnen",
+    "url": "5sinnen.se/"
   },
   {
-    "title": "Salong Cheveux",
-    "link": "salongcheveux.com/",
-    "rating": 5
+    "name": "Salong Cheveux",
+    "url": "salongcheveux.com/"
   },
   {
-    "title": "Salong Claes",
-    "link": "facebook.com/profile.php?id=100057485295087",
-    "rating": 3
+    "name": "Salong Claes",
+    "url": "facebook.com/profile.php?id=100057485295087"
   },
   {
-    "title": "Salong DU & JAG"
+    "name": "Salong DU & JAG"
   },
   {
-    "title": "Salongen",
-    "link": "facebook.com/salongenjkpg/",
-    "rating": 4
+    "name": "Salongen",
+    "url": "facebook.com/salongenjkpg/"
   },
   {
-    "title": "Salong Klipp Dej"
+    "name": "Salong Klipp Dej"
   },
   {
-    "title": "Salong På Håret",
-    "link": "facebook.com/SalongPaHaret.2/",
-    "rating": 5
+    "name": "Salong På Håret",
+    "url": "facebook.com/SalongPaHaret.2/"
   },
   {
-    "title": "Sax in the city",
-    "link": "saxinthecityjkpg.se/",
-    "rating": 3
+    "name": "Sax in the city",
+    "url": "saxinthecityjkpg.se/"
   },
   {
-    "title": "Skinfix Clinic",
-    "link": "https://skinfixclinic.se/",
-    "rating": 4
+    "name": "Skinfix Clinic",
+    "url": "https://skinfixclinic.se/"
   },
   {
-    "title": "Sköna Fötter",
-    "link": "skona-fotter.se",
-    "rating": 5
+    "name": "Sköna Fötter",
+    "url": "skona-fotter.se"
   },
   {
-    "title": "Sköna Jag",
-    "link": "skonajag.nu/",
-    "rating": 4
+    "name": "Sköna Jag",
+    "url": "skonajag.nu/"
   },
   {
-    "title": "Skönheten och Lejonet",
-    "link": "linnealeijon.se",
-    "rating": 5
+    "name": "Skönheten och Lejonet",
+    "url": "linnealeijon.se"
   },
   {
-    "title": "Smile Thai Massage & Spa"
+    "name": "Smile Thai Massage & Spa"
   },
   {
-    "title": "Sofia Salongen"
+    "name": "Sofia Salongen"
   },
   {
-    "title": "STC gym",
-    "link": "stc.se/klubbar/jonkoping-city/",
-    "rating": 4
+    "name": "STC gym",
+    "url": "stc.se/klubbar/jonkoping-city/"
   },
   {
-    "title": "Studio Balans",
-    "link": "https://studiobalansjkpg.se/",
-    "rating": 5
+    "name": "Studio Balans",
+    "url": "https://studiobalansjkpg.se/"
   },
   {
-    "title": "Studio kreativ",
-    "link": "studio-kreativ.se",
-    "rating": 4
+    "name": "Studio kreativ",
+    "url": "studio-kreativ.se"
   },
   {
-    "title": "Studio L"
+    "name": "Studio L"
   },
   {
-    "title": "Svensson & Heijel",
-    "link": "facebook.com/people/Svensson-Heijel/100057603903316/",
-    "rating": 3
+    "name": "Svensson & Heijel",
+    "url": "facebook.com/people/Svensson-Heijel/100057603903316/"
   },
   {
-    "title": "Tatuering Wester",
-    "link": "facebook.com/tatueringwester/",
-    "rating": 4
+    "name": "Tatuering Wester",
+    "url": "facebook.com/tatueringwester/"
   },
   {
-    "title": "TCM mottagning (massage)",
-    "link": "kinamedicin.se/",
-    "rating": 5
+    "name": "TCM mottagning (massage)",
+    "url": "kinamedicin.se/"
   },
   {
-    "title": "Thawan Svimongkhon Fredriksson Massage",
-    "link": "thawanthaimassage.se/",
-    "rating": 4
+    "name": "Thawan Svimongkhon Fredriksson Massage",
+    "url": "thawanthaimassage.se/"
   },
   {
-    "title": "Yogiteket",
-    "link": "yogiteket.se/",
-    "rating": 5
+    "name": "Yogiteket",
+    "url": "yogiteket.se/"
   }
 ]
