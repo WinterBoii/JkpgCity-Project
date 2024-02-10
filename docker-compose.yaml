@@ -11,30 +11,7 @@ services:  #Describes the containers that make up the application
       - ./backend/src:/backend/src/
     networks:
       - jkpgcity_network
-    depends_on:
-      - db
-  db:
-    container_name: db-container
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_DB: jkpgcity_db
-    ports:
-      - "5432:5432"
-      
-  pgadmin:
-    container_name: pgadmin-container
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: 12345
-    ports:
-      - "8080:80"
-    networks:
-      - jkpgcity_network
+    
 
   frontend:
     container_name: frontend-container
