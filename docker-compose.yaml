@@ -1,17 +1,16 @@
-version: '3.9'
-services:  #Describes the containers that make up the application
+version: "3.9"
+services:
   backend:
     container_name: backend-container
-    build: ./backend/    # Build from the root of the project
-    environment:         #Defines environment variables for the container
+    build: ./backend/
+    environment:
       CHOKIDAR_USEPOLLING: true
     ports:
       - "3001:3001"
-    volumes:  #Mounts the local "./backend/src/" directory into the "/backend/src/" directory in the container
+    volumes:
       - ./backend/src:/backend/src/
     networks:
       - jkpgcity_network
-    
 
   frontend:
     container_name: frontend-container
@@ -20,6 +19,32 @@ services:  #Describes the containers that make up the application
       - "3000:3000"
     volumes:
       - ./frontend/src:/frontend/src/
+    networks:
+      - jkpgcity_network
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: akidaa@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 8080:80
+    networks:
+      - jkpgcity_network
+    depends_on:
+    - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
     networks:
       - jkpgcity_network
 
