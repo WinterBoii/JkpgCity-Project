@@ -1,10 +1,11 @@
 // index.js
 require('dotenv').config()
 const express = require('express');
-const storeJson = require('./stores.json');
+const storeJson = require('./public/stores.json');
+const wellnessJson = require('./public/wellness.json');
 const app = express();
 const db = require('./db');
-const port = 4002;
+const port = 3001;
 
 // Parse JSON bodies
 app.use(express.json());

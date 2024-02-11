@@ -3,12 +3,12 @@ const { Client } = require('pg');
 const db = new Client({
   // PostgreSQL Client configuration
     user: process.env.DB_USER || 'postgres',
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || '172.20.0.2',
     database: process.env.DB_NAME || 'postgres',
-    password: process.env.DB_PASSWORD || '12345',
+    password: process.env.DB_PASSWORD || 'admin',
     port: process.env.DB_PORT || 5432,
 })
-//db.connect();
+
 const init = async () => {
   await db.connect();
 }
@@ -40,7 +40,7 @@ const storeSetup = async (storeJson) => { // Create stores table if it doesn't e
         LIMIT 1
       `, [store.name]);
 
-      //console.log(checkForStore.rows);
+      console.log(checkForStore.rows);
     // If the store doesn't exist, insert it into the 'stores' table
       if (checkForStore.rows.length === 0) {
         await db.query(`
@@ -63,7 +63,7 @@ const wellnessSetup = async (wellnessJson) => { // Create stores table if it doe
         id SERIAL NOT NULL,
         name text,
         url text,
-        district text,
+        rating int,
         CONSTRAINT wellness_pkey PRIMARY KEY (id)
     );
   `);
@@ -82,13 +82,13 @@ const wellnessSetup = async (wellnessJson) => { // Create stores table if it doe
       LIMIT 1
     `, [item.name]);
 
-    //console.log(checkForService.rows);
+    console.log(checkForService.rows);
   // If the store doesn't exist, insert it into the 'stores' table
     if (checkForService.rows.length === 0) {
       await db.query(`
-        INSERT INTO public.wellness (name, url, district)
+        INSERT INTO public.wellness (name, url, rating)
         VALUES ($1, $2, $3)
-      `, [item.name, item.url, item.district]);
+      `, [item.name, item.url, item.rating]);
     }
   }
 }
