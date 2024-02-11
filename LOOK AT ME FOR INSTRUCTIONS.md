@@ -12,7 +12,17 @@ You will get a IP address, copy it and paste it into `DB_HOST` in `.env`. The pr
    - Username: `akidaa@admin.com`
    - Password: `admin`
 
-5. Setup a new db connection //TODO
+5. Setup a new db connection:
+   - Under `Quick Links` take `Add New server`
+   - Name: enter a server name of your choice
+At the top go `Connection`
+   - Host name/adress: paste your IP address from step `3`
+   - Username: `postgres`
+   - Password: `admin`
+Save and you done! If error contact your collegeagues!
+if not error:
+   - `sever` -> `Database` -> `postgres` -> `Schemas` -> `public` -> `Tables` 
+Run the backend and go back to pgadmin and refresh your `Tables`.
 
 6. Go to `localhost:3001/setup` to insert data into the database.
 

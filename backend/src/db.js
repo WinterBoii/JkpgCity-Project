@@ -3,7 +3,7 @@ const { Client } = require('pg');
 const db = new Client({
   // PostgreSQL Client configuration
     user: process.env.DB_USER || 'postgres',
-    host: process.env.DB_HOST || '172.20.0.2',
+    host: process.env.DB_HOST || '172.17.0.1',
     database: process.env.DB_NAME || 'postgres',
     password: process.env.DB_PASSWORD || 'admin',
     port: process.env.DB_PORT || 5432,
