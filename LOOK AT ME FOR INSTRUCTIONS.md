@@ -16,14 +16,16 @@ You will get a IP address, copy it and paste it into `DB_HOST` in `.env`. The pr
    - Under `Quick Links` take `Add New server`
    - Name: enter a server name of your choice
 At the top go `Connection`
-   - Host name/adress: paste your IP address from step `3`
+   - Host name/adress: paste your IP address from step `3.`
    - Username: `postgres`
    - Password: `admin`
-Save and you done! If error contact your collegeagues!
+Save and you done! If error contact your colleagues!
 if not error:
    - `sever` -> `Database` -> `postgres` -> `Schemas` -> `public` -> `Tables` 
-Run the backend and go back to pgadmin and refresh your `Tables`.
+Atm you have no tables.
 
 6. Go to `localhost:3001/setup` to insert data into the database.
 
-7. Your good to roll, go back to your room and start coding.
+7. Go back to pgadmin and refresh your `Tables`.
+
+8. Your good to roll, go back to your room and start coding.
