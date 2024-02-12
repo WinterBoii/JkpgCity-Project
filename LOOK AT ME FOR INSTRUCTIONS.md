@@ -21,8 +21,10 @@ You will get a IP address, copy it and paste it into `DB_HOST` in `.env`. The pr
    - Password: `admin`
    - Save and you done! If error contact your colleagues!
    - if not error:
-   - `sever` -> `Database` -> `postgres` -> `Schemas` -> `public` -> `Tables` to see.
+   - `sever` -> `Database` -> `postgres` -> `Schemas` -> `public` -> `Tables`
 
 6. Go to `localhost:3001/setup` to insert data into the database.
 
-7. Your good to roll, go back to your room and start coding.
+7. Go back to pgadmin and refresh your `Tables`
+
+8. Your good to roll, go back to your room and start coding.
