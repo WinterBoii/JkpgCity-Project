@@ -16,7 +16,7 @@ function Copyright(props) {
   return (
     <Typography
       variant="body2"
-      color="text.secondary"
+      color="white"
       align="center"
       {...props}
     >
@@ -31,6 +31,12 @@ function Copyright(props) {
 }
 
 export default function SignInSide() {
+  const [checked, setChecked] = React.useState(false);
+
+  const handleCheck = (event) => {
+    setChecked(event.target.checked);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -67,6 +73,9 @@ export default function SignInSide() {
         component={Paper}
         elevation={6}
         square
+        container
+        justifyContent={"center"}
+        alignItems={"center"}
         sx={{
           backgroundColor: "#d5bda2",
         }}
@@ -80,7 +89,7 @@ export default function SignInSide() {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h3">
+          <Typography component="h1" variant="h3" color={"white"}>
             Jönköping City
           </Typography>
 
@@ -99,7 +108,6 @@ export default function SignInSide() {
               id="email"
               label="Email"
               name="email"
-              autoFocus="email"
               sx={{
                 "& .MuiInputBase-input": {
                   color: "#d5bda2",
@@ -121,7 +129,7 @@ export default function SignInSide() {
               id="password"
               sx={{
                 "& .MuiInputBase-input": {
-                  color: "#d5bda2",
+                  color: "#d5bca2",
                   backgroundColor: "white",
                 },
                 "&:not(.Mui-focused)": {
@@ -129,19 +137,35 @@ export default function SignInSide() {
                 },
               }}
             />
+            <Grid container justifyContent={"space-between"}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value="remember"
+                    checked={checked}
+                    onChange={handleCheck}
+                    color="secondary"
+                    sx={{ color: "white" }}
+                  />
+                }
+                label="Remember me"
+                style={{ color: "white" }}
+              />
 
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                sx={{
+                  mt: 2,
+                  mb: 2,
+                  alignSelf: "flex-end",
+                }}
+              >
+                Sign In
+              </Button>
+            </Grid>
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
