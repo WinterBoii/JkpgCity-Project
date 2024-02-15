@@ -10,13 +10,8 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import BackgroundImg from "../assets/background.jpg";
-
-const styles = {
-  background: {
-    backgroundImage: `url(${BackgroundImg})`,
-  },
-};
+import { Divider } from "@mui/material";
+import bgImg from "../assets/background.jpg"
 
 function Copyright(props) {
   return (
@@ -46,7 +41,6 @@ export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-      //TODO handleLogin
     console.log({
       email: data.get("email"),
       password: data.get("password"),
@@ -62,17 +56,16 @@ export default function SignInSide() {
         sm={4}
         md={7}
         sx={{
-          //backgroundImage: "url(https://source.unsplash.com/random?wallpapers)",
+          backgroundImage: `url(${bgImg})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
-          backgroundSize: "auto",
+            t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
+          backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className={styles.background}
-      />
+      ></Grid>
+
+
       <Grid
         item
         xs={12}
@@ -101,7 +94,7 @@ export default function SignInSide() {
             Jönköping City
           </Typography>
 
-          <Box borderBottom={2}></Box>
+          <Divider variant="inset" />
 
           <Box
             component="form"
@@ -116,19 +109,15 @@ export default function SignInSide() {
               id="email"
               label="Email"
               name="email"
-              inputProps={{
-                style: {
-                  color: "#d5bca2",
+              sx={{
+                "& .MuiInputBase-input": {
+                  color: "#d5bda2",
                   backgroundColor: "white",
                 },
-                autoComplete: "email",
-              }}
-              InputLabelProps={{
-                style: {
-                  color: "#242424",
+                "&:not(.Mui-focused)": {
+                  color: "white",
                 },
               }}
-              sx={{ borderRadius: "40px" }}
             />
 
             <TextField
@@ -139,16 +128,13 @@ export default function SignInSide() {
               label="Password"
               type="password"
               id="password"
-              inputProps={{
-                style: {
+              sx={{
+                "& .MuiInputBase-input": {
                   color: "#d5bca2",
                   backgroundColor: "white",
                 },
-                autoComplete: "email",
-              }}
-              InputLabelProps={{
-                style: {
-                  color: "#242424",
+                "&:not(.Mui-focused)": {
+                  color: "white",
                 },
               }}
             />
@@ -160,7 +146,7 @@ export default function SignInSide() {
                     checked={checked}
                     onChange={handleCheck}
                     color="secondary"
-                    sx={{ color: "white" }}
+                    sx={{ color: "white"}}
                   />
                 }
                 label="Remember me"
@@ -169,12 +155,11 @@ export default function SignInSide() {
 
               <Button
                 type="submit"
-                variant="contained"
+                variant="contained" 
                 color="secondary"
                 sx={{
                   mt: 2,
                   mb: 2,
-                  alignSelf: "flex-end",
                 }}
               >
                 Sign In
