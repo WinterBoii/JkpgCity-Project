@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItem, useMediaQuery, useTheme } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import { theme } from "../../lib/utils/Theme";
+import { theme } from "../lib/utils/Theme";
 
 /**
  * NavBar component that renders a responsive navigation bar.
@@ -34,12 +34,17 @@ function NavBar() {
   ];
 
   return (
-    <AppBar elevation={7}>
+    <AppBar color="secondary" elevation={7}>
       <Toolbar>
         {isMobile ? (
           <>
+            <Typography
+              flexGrow={1}
+              variant="h6">
+              Jönköping City
+            </Typography>
             <IconButton
-              sx={{ flexGrow: 1, justifyContent: "flex-start" }}
+              sx={{ flexGrow: 0, justifyContent: "flex-end" }}
               edge="start"
               color="inherit"
               aria-label="menu"
@@ -48,22 +53,21 @@ function NavBar() {
               <MenuIcon />
             </IconButton>
             <Drawer
-              anchor="left"
+              anchor="right"
               open={drawerOpen}
               onClose={() => setDrawerOpen(false)}
             >
-              <List>
-                {menuItems.map((item, index) => (
-                  <ListItem
-                    key={index}
-                    component={NavLink}
-                    to={item.link}
-                    exact
-                  >
-                    <Typography>{item.text}</Typography>
-                  </ListItem>
+              {menuItems.map((item, index) => (
+              <Button
+                key={index}
+                component={NavLink}
+                to={item.link}
+                selected={item.link === location.pathname}
+                exact
+                >
+                  <Typography>{item.text}</Typography>
+              </Button>
                 ))}
-              </List>
             </Drawer>
           </>
         ) : (
@@ -75,16 +79,15 @@ function NavBar() {
               <Button
                 color="inherit"
                 key={index}
-                component={NavLink}
+                component={Link}
                 to={item.link}
+                selected={item.link === location.pathname}
                 exact
-              >
-                <Typography>{item.text}</Typography>
+                >
+                  <Typography>{item.text}</Typography>
               </Button>
-            ))}
-          </>
-        )}
-        {isLoggedIn ? (
+                ))}
+            {isLoggedIn ? (
           <Button variant="contained" onClick={handleLogout}>
             Logout
           </Button>
@@ -95,14 +98,19 @@ function NavBar() {
             size="large"
             sx={{
               marginLeft: "1rem",
-              backgroundColor: "white",
+              backgroundColor: theme.palette.third.main,
               color: theme.palette.primary.main,
               borderRadius: "24px",
               paddingX: "3rem",
+              "&:hover": {
+                color: theme.palette.third.main,
+              },
             }}
           >
             Login
           </Button>
+        )}
+          </>
         )}
       </Toolbar>
     </AppBar>

@@ -20,5 +20,9 @@ export const theme = createTheme({
       dark: alpha(secondaryBase, 0.9),
       contrastText: getContrastRatio(secondaryMain, '#fff') > 2.5 ? '#fff' : '#242424',
     },
+    third: {
+      main: "#fff",
+      alt: "#242424",
+    }
   }
 })

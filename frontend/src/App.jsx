@@ -3,7 +3,7 @@ import './App.css';
 import LoginPage from "./pages/LoginPage";
 import NavBar from "./components/NavBar";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "../lib/utils/Theme";
+import { theme } from "./lib/utils/Theme";
 
 /**
  * App component renders different routes based on react router.
