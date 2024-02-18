@@ -1,0 +1,49 @@
+//stores.js
+const express = require('express')
+const router = express.Router()
+const db = require('../db')
+
+router.get('/', async (req, res) => {
+    try {
+        const stores = await db.getAllStores();
+        res.status(200).send(stores);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+})
+
+router.post('/create', async (req, res) => {
+    //const {name, url, district} = req.body;
+    const name = "Test Store";
+    const url = "http://example.com/test";
+    const district = "Test District";
+
+    const result = await db.addStore(name, url, district)
+    
+    if(result.success) {
+        // Store was successfully added
+        return res.status(200).send(result.message);
+    } else{
+        // An error occurred
+        return res.status(500).send(err);
+    }
+});
+
+router.put('/:id/update', async (req, res) => {
+    //const {name, url, district} = req.body;
+    const name = "Testttt Store";
+    const url = "http://example.com/test";
+    const district = "Test District";
+
+    const result = await db.updateStore(req.params.id, name, url, district)
+    
+    if (result.success) {
+        // Store was successfully updated
+        return res.status(200).send(result.message);
+    } else {
+        // An error occurred
+        return res.status(500).send(result.message); // or result.error if available
+    }
+});
+
+module.exports = router;
