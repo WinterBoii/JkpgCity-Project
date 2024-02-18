@@ -1,6 +1,8 @@
+import { Container } from "@mui/material";
+
 function HomePage() {
   return (
-    <div><h1>TODO Home</h1></div>
+    <Container maxWidth='xl'><h1>TODO Home</h1></Container>
   )
 }
 

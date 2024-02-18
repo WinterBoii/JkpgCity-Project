@@ -1,24 +1,14 @@
 import { useState } from "react";
-import { NavLink, useNavigate, Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItem, useMediaQuery, useTheme } from "@mui/material";
+import { NavLink, useNavigate, useLocation, Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, useMediaQuery, useTheme, Container } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { theme } from "../lib/utils/Theme";
 
-/**
- * NavBar component that renders a responsive navigation bar.
- * Uses Material UI components and React hooks.
- *
- * Renders different UI for mobile vs desktop:
- * - Mobile: Hamburger icon to open drawer with menu items
- * - Desktop: Menu items displayed horizontally
- *
- * Shows Login button if not logged in, Logout if logged in.
- * Handles login state and navigation.
- */
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const itheme = useTheme();
   const isMobile = useMediaQuery(itheme.breakpoints.down("sm"));
 
@@ -35,7 +25,8 @@ function NavBar() {
 
   return (
     <AppBar color="secondary" elevation={7}>
-      <Toolbar>
+      <Container maxWidth="xl">
+        <Toolbar>
         {isMobile ? (
           <>
             <Typography
@@ -59,32 +50,55 @@ function NavBar() {
             >
               {menuItems.map((item, index) => (
               <Button
+                color="inherit"
                 key={index}
                 component={NavLink}
                 to={item.link}
-                selected={item.link === location.pathname}
                 exact
-                >
-                  <Typography>{item.text}</Typography>
+                sx={{
+                  bgcolor: location.pathname === item.link ? theme.palette.secondary.main : "transparent",
+                  textDecorationLine: "none",
+                  borderRadius: "3px",
+                }}
+              >
+                {item.text}
               </Button>
                 ))}
+                <Button
+                variant='text'
+                color="inherit"
+                component={NavLink}
+                to={'/login'}
+                exact
+              >
+                Login
+              </Button>
             </Drawer>
           </>
         ) : (
           <>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
               Jönköping City
             </Typography>
             {menuItems.map((item, index) => (
               <Button
                 color="inherit"
                 key={index}
-                component={Link}
+                component={NavLink}
                 to={item.link}
-                selected={item.link === location.pathname}
                 exact
-                >
-                  <Typography>{item.text}</Typography>
+                variant='text'
+                sx={{
+                  bgcolor: location.pathname === item.link ? theme.palette.secondary.main : "transparent",
+                  textDecoration: "none",
+                  borderRadius: "3px",
+                  marginX: "0.2rem",
+                  '& .MuiTypography-root': {
+                    textDecoration: 'none', // Remove underline
+                  },
+                }}
+              >
+                <Typography>{item.text}</Typography>
               </Button>
                 ))}
             {isLoggedIn ? (
@@ -112,7 +126,8 @@ function NavBar() {
         )}
           </>
         )}
-      </Toolbar>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 }

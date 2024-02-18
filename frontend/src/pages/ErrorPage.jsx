@@ -1,6 +1,7 @@
+import { Container } from "@mui/material";
 
 export default function ErrorPage() {
   return (
-    <div><h1>Error 404</h1></div>
+    <Container maxWidth='xl'><h1>Error 404</h1></Container>
   )
 }

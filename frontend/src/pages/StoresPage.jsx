@@ -1,5 +1,7 @@
+import { Container } from "@mui/material";
+
 export default function StoresPage() {
   return (
-    <div><h1>TODO Stores</h1></div>
+    <Container maxWidth='xl'><h1>TODO Stores</h1></Container>
   )
 }

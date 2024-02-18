@@ -1,7 +1,12 @@
-.no-underline {
+.nav-link {
     text-decoration: none;
 }
 
-.no-underline:hover {
+.nav-link:hover {
     text-decoration: none;
+}
+
+.active-link {
+    font-weight: bold;
+    border-bottom: 2px solid #333;
 }

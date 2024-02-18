@@ -1,5 +1,7 @@
+import { Container } from "@mui/material";
+
 export default function WellnessPage() {
   return (
-    <div><h1>TODO Wellness</h1></div>
+    <Container maxWidth='xl'><h1>TODO Wellness</h1></Container>
   )
 }
