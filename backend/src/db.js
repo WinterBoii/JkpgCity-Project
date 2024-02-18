@@ -64,11 +64,11 @@ const addStore = async(name, url, district) => {
     `, [name, url, district]);
     return {success: true, message: 'Store added successfully'}
   } catch(error) {
-    return {success: false, message: console.error.message}
+    return {success: false, message: error.message}
   }
 }
 
-const updateStore = async(id, name, url, district) => {
+const updateStoreById = async(id, name, url, district) => {
   try {
     await db.query(`
       UPDATE public.stores
@@ -77,7 +77,19 @@ const updateStore = async(id, name, url, district) => {
     `, [name, url, district, id]);
     return {success: true, message: 'Store updated successfully'}
   } catch(error) {
-    return {success: false, message: console.error.message}
+    return {success: false, message: error.message}
+  }
+}
+
+const delteStoreById = async (id) => {
+  try {
+    await db.query(`
+    DELETE FROM public.stores
+    WHERE id = $1
+    `, [id]);
+    return {success: true, message: "Store was successfully deleted"}
+  } catch (error){
+    return {success: false, message: error.message}
   }
 }
 
@@ -131,11 +143,11 @@ const addWellness = async(name, url, rating) => {
     `, [name, url, rating]);
     return {success: true, message: 'Wellness added successfully'}
   } catch(error) {
-    return {success: false, message: console.error.message}
+    return {success: false, message: error.message}
   }
 }
 
-const updateWellness = async (id,name,url,rating) =>{
+const updateWellnessById = async (id,name,url,rating) =>{
   try {
     await db.query(`
       UPDATE public.wellness
@@ -144,9 +156,21 @@ const updateWellness = async (id,name,url,rating) =>{
     `, [name, url, rating, id]);
     return {success: true, message: 'Wellness updated successfully'}
   } catch(error) {
-    return {success: false, message: console.error.message}
+    return {success: false, message: error.message}
   }
 
+}
+
+const deleteWellnessById = async (id) => {
+  try {
+    await db.query(`
+    DELETE FROM public.wellness
+    WHERE id = $1
+    `, [id]);
+    return {success: true, message: "Wellness deleted successfuly"}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
 }
 
 module.exports = {
@@ -154,9 +178,11 @@ module.exports = {
   storeSetup,
   getAllStores,
   addStore,
-  updateStore,
+  updateStoreById,
+  delteStoreById,
   wellnessSetup,
   getAllWellness,
   addWellness,
-  updateWellness
+  updateWellnessById,
+  deleteWellnessById
 }

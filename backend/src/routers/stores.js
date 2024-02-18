@@ -13,10 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/create', async (req, res) => {
-    //const {name, url, district} = req.body;
-    const name = "Test Store";
-    const url = "http://example.com/test";
-    const district = "Test District";
+    const {name, url, district} = req.body;
 
     const result = await db.addStore(name, url, district)
     
@@ -29,13 +26,10 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.put('/:id/update', async (req, res) => {
-    //const {name, url, district} = req.body;
-    const name = "Testttt Store";
-    const url = "http://example.com/test";
-    const district = "Test District";
+router.post('/:id/update', async (req, res) => {
+    const {name, url, district} = req.body;
 
-    const result = await db.updateStore(req.params.id, name, url, district)
+    const result = await db.updateStoreById(req.params.id, name, url, district)
     
     if (result.success) {
         // Store was successfully updated
@@ -45,5 +39,18 @@ router.put('/:id/update', async (req, res) => {
         return res.status(500).send(result.message); // or result.error if available
     }
 });
+
+router.post('/:id/delete', async (req, res) => {
+    const id = req.params.id
+    const result = await db.delteStoreById(id)
+
+    if(result.success){
+        // Store was successfully deleted
+        return res.status(200).send(result.message);
+    } else {
+        // An error occurred
+        return res.status(500).send(result.message);
+    }
+})
 
 module.exports = router;

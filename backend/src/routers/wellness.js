@@ -13,10 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/create', async (req, res) => {
-    //const {name, url, rating} = req.body;
-    const name = "Test Store";
-    const url = "http://example.com/test";
-    const rating = 6;
+    const {name, url, rating} = req.body;
     const result = await db.addWellness(name, url, rating)
     
     if(result.success) {
@@ -29,11 +26,8 @@ router.post('/create', async (req, res) => {
 });
 
 router.post('/:id/update', async (req, res) => {
-    //const {name, url, rating} = req.body;
-    const name = "Testtt Store";
-    const url = "http://example.com/test";
-    const rating = 7;
-    const result = await db.updateWellness(req.params.id, name, url, rating)
+    const {name, url, rating} = req.body;
+    const result = await db.updateWellnessById(req.params.id, name, url, rating)
     
     if (result.success) {
         // Wellness was successfully updated
@@ -43,5 +37,17 @@ router.post('/:id/update', async (req, res) => {
         return res.status(500).send(result.message); 
     }
 });
+
+router.post('/:id/delete', async (req, res) => {
+    const id = req.params.id;
+    const result = await db.deleteWellnessById(id)
+    if(result.success){
+        // Wellness was successfully deleted
+        return res.status(200).send(result.message);
+    } else {
+        // An error occurred
+        return res.status(500).send(result.message);
+    }
+})
 
 module.exports = router;
