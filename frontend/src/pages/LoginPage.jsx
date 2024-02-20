@@ -60,12 +60,13 @@ export default function SignInSide() {
           backgroundImage: `url(${bgImg})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
-            t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
+            t.palette.mode === "light"
+              ? t.palette.grey[50]
+              : t.palette.grey[900],
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       ></Grid>
-
 
       <Grid
         item
@@ -79,7 +80,7 @@ export default function SignInSide() {
         justifyContent={"center"}
         alignItems={"center"}
         sx={{
-          backgroundColor: "secondary.main"
+          backgroundColor: "secondary.main",
         }}
       >
         <Box
@@ -91,7 +92,7 @@ export default function SignInSide() {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h3" color={"white"}>
+          <Typography component="h1" variant="h3" color={"third"}>
             Jönköping City
           </Typography>
 
@@ -114,7 +115,7 @@ export default function SignInSide() {
                 "& .MuiInputBase-input": {
                   color: theme.palette.secondary.main,
                   backgroundColor: theme.palette.third.main,
-                }
+                },
               }}
             />
 
@@ -130,7 +131,7 @@ export default function SignInSide() {
                 "& .MuiInputBase-input": {
                   color: theme.palette.secondary.main,
                   backgroundColor: theme.palette.third.main,
-                }
+                },
               }}
             />
             <Grid container justifyContent={"space-between"}>
@@ -154,18 +155,14 @@ export default function SignInSide() {
                 sx={{
                   mt: 2,
                   mb: 2,
+                  "&: hover": {
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.third.main,
+                  },
                 }}
               >
                 Sign In
               </Button>
-            </Grid>
-
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
             </Grid>
             <Copyright sx={{ mt: 5 }} />
           </Box>

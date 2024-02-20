@@ -17,22 +17,18 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-        <div className="App">
         {!hideOnRoutes.includes(location.pathname) && <NavBar />}
         {!hideOnRoutes.includes(location.pathname) && (
-          <div style={{ height: "48px" }} />
-        )}{""}
+          <div style={{ height: "70px" }} />
+        )}
+        {""}
         {/* Adjust height as needed */}
 
           <Routes>
             {routes.map((route, index) => (
-              <Route key={index}
-                path={route.path}
-                element={route.element}
-              />
+              <Route key={index} path={route.path} element={route.element} />
             ))}
           </Routes>
-        </div>
     </ThemeProvider>
   );
 }
