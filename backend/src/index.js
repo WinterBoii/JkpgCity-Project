@@ -10,6 +10,13 @@ const port = 3001;
 // Parse JSON bodies
 app.use(express.json());
 
+// Importing routers for different parts of the application
+const storesRouter = require('./routers/stores');
+const wellnessRouter = require('./routers/wellness');
+
+app.use('/stores',storesRouter)
+app.use('/wellness',wellnessRouter)
+
 app.get('/setup', async (req, res) => {
   try {
     await db.storeSetup(storeJson);
@@ -21,24 +28,6 @@ app.get('/setup', async (req, res) => {
   }
 })
 
-app.get('/stores', async (req, res) => {
-  try {
-    const stores = await db.getAllStores();
-    res.status(200).send(stores);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-})
-
-app.get('/wellness', async (req, res) => {
-  try {
-    //const wellness = await db.getAllWellness();
-    res.status(200).send(wellness);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-})
-
 const server = async () => {
 db.init()
   app.listen(port, () => {
@@ -46,8 +35,5 @@ db.init()
   });
 }
 
-setInterval(() => {
-  //console.log("Hello: k8");
-}, 1000)
 
 server()

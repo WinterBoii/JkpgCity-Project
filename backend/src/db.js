@@ -56,6 +56,43 @@ const storeSetup = async (storeJson) => { // Create stores table if it doesn't e
   return res.rows;
 }
 
+const addStore = async(name, url, district) => {
+  try {
+    await db.query(`
+      INSERT INTO public.stores (name, url, district)
+      VALUES ($1, $2, $3)
+    `, [name, url, district]);
+    return {success: true, message: 'Store added successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
+const updateStoreById = async(id, name, url, district) => {
+  try {
+    await db.query(`
+      UPDATE public.stores
+      SET name = $1, url = $2, district = $3
+      WHERE id = $4
+    `, [name, url, district, id]);
+    return {success: true, message: 'Store updated successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
+const delteStoreById = async (id) => {
+  try {
+    await db.query(`
+    DELETE FROM public.stores
+    WHERE id = $1
+    `, [id]);
+    return {success: true, message: "Store was successfully deleted"}
+  } catch (error){
+    return {success: false, message: error.message}
+  }
+}
+
 const wellnessSetup = async (wellnessJson) => { // Create stores table if it doesn't exist
   await db.query(`
     CREATE TABLE IF NOT EXISTS public.wellness
@@ -97,10 +134,55 @@ const getAllWellness = async() => {
   const res = await db.query('SELECT * FROM public.wellness');
   return res.rows;
 }
+
+const addWellness = async(name, url, rating) => {
+  try {
+    await db.query(`
+      INSERT INTO public.wellness (name, url, rating)
+      VALUES ($1, $2, $3)
+    `, [name, url, rating]);
+    return {success: true, message: 'Wellness added successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
+const updateWellnessById = async (id,name,url,rating) =>{
+  try {
+    await db.query(`
+      UPDATE public.wellness
+      SET name = $1, url = $2, rating = $3
+      WHERE id = $4
+    `, [name, url, rating, id]);
+    return {success: true, message: 'Wellness updated successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+
+}
+
+const deleteWellnessById = async (id) => {
+  try {
+    await db.query(`
+    DELETE FROM public.wellness
+    WHERE id = $1
+    `, [id]);
+    return {success: true, message: "Wellness deleted successfuly"}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
 module.exports = {
-  storeSetup,
   init,
+  storeSetup,
   getAllStores,
+  addStore,
+  updateStoreById,
+  delteStoreById,
+  wellnessSetup,
   getAllWellness,
-  wellnessSetup
+  addWellness,
+  updateWellnessById,
+  deleteWellnessById
 }
