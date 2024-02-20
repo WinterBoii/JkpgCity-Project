@@ -1,9 +1,10 @@
 const { Client } = require('pg');
+const bcrypt = require('bcryptjs');
 
 const db = new Client({
   // PostgreSQL Client configuration
     user: process.env.DB_USER || 'postgres',
-    host: process.env.DB_HOST || '172.17.0.1',
+    host: process.env.DB_HOST || '172.20.0.2',
     database: process.env.DB_NAME || 'postgres',
     password: process.env.DB_PASSWORD || 'admin',
     port: process.env.DB_PORT || 5432,
@@ -13,6 +14,54 @@ const init = async () => {
   await db.connect();
 }
 
+// users
+const userSetup = async (adminJson) => {
+  await db.query(`
+  CREATE TABLE IF NOT EXISTS public.users
+    (
+      id SERIAL NOT NULL,
+      email text,
+      password text,
+      CONSTRAINT users_pkey PRIMARY KEY (id)
+    );
+    `);
+
+  // Set the owner of the table to 'postgres'
+  await db.query(`
+  ALTER TABLE IF EXISTS public.stores OWNER to postgres;
+`);
+
+  // Insert data from adminJson if it's not already present
+  for (const admin of adminJson) {
+    // Check if the admin with the same gmail already exists
+  const checkForUser = await db.query(`
+    SELECT * FROM public.users
+    WHERE
+    email = $1
+    LIMIT 1
+  `, [admin.email]);
+
+  console.log(checkForUser.rows);
+  // If the admin doesn't exist, insert it into the 'users' table
+    if (checkForUser.rows.length === 0) {
+      const salt = await bcrypt.genSalt();
+      admin.password = await bcrypt.hash(admin.password, salt)
+      await db.query(`
+        INSERT INTO public.users (email, password)
+        VALUES ($1, $2)
+      `, [admin.email, admin.password]);
+    }
+}
+
+}
+
+const getAllUsers = async() => {
+  const res = await db.query('SELECT * FROM public.users');
+  return res.rows;
+}
+
+
+//stores
 const storeSetup = async (storeJson) => { // Create stores table if it doesn't exist
   //console.log('storeSetup')  
   await db.query(`
@@ -175,6 +224,8 @@ const deleteWellnessById = async (id) => {
 
 module.exports = {
   init,
+  userSetup,
+  getAllUsers,
   storeSetup,
   getAllStores,
   addStore,
