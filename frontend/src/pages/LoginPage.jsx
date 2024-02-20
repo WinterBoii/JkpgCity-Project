@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
 import bgImg from "../assets/background.jpg"
+import { theme } from "../lib/utils/Theme";
 
 function Copyright(props) {
   return (
@@ -78,7 +79,7 @@ export default function SignInSide() {
         justifyContent={"center"}
         alignItems={"center"}
         sx={{
-          backgroundColor: "#d5bda2",
+          backgroundColor: "secondary.main"
         }}
       >
         <Box
@@ -111,12 +112,9 @@ export default function SignInSide() {
               name="email"
               sx={{
                 "& .MuiInputBase-input": {
-                  color: "#d5bda2",
-                  backgroundColor: "white",
-                },
-                "&:not(.Mui-focused)": {
-                  color: "white",
-                },
+                  color: theme.palette.secondary.main,
+                  backgroundColor: theme.palette.third.main,
+                }
               }}
             />
 
@@ -130,12 +128,9 @@ export default function SignInSide() {
               id="password"
               sx={{
                 "& .MuiInputBase-input": {
-                  color: "#d5bca2",
-                  backgroundColor: "white",
-                },
-                "&:not(.Mui-focused)": {
-                  color: "white",
-                },
+                  color: theme.palette.secondary.main,
+                  backgroundColor: theme.palette.third.main,
+                }
               }}
             />
             <Grid container justifyContent={"space-between"}>
@@ -145,17 +140,16 @@ export default function SignInSide() {
                     value="remember"
                     checked={checked}
                     onChange={handleCheck}
-                    color="secondary"
-                    sx={{ color: "white"}}
+                    color="third"
                   />
                 }
                 label="Remember me"
-                style={{ color: "white" }}
+                style={{ color: theme.palette.secondary.contrastText }}
               />
 
               <Button
                 type="submit"
-                variant="contained" 
+                variant="contained"
                 color="secondary"
                 sx={{
                   mt: 2,
