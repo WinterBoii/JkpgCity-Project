@@ -23,6 +23,10 @@ export const theme = createTheme({
     third: {
       main: "#fff",
       alt: "#242424",
-    }
+    },
+      alternative: {
+        main: '#8FB0B2',
+      }
   }
 })
+
