@@ -24,7 +24,7 @@ function NavBar() {
   ];
 
   return (
-    <AppBar color="secondary" elevation={7}>
+    <AppBar color="primary" elevation={7}>
       <Container maxWidth="xl" sx={{ marginY: 2 }}>
         <Toolbar>
           {isMobile ? (

@@ -1,10 +1,10 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
-import NavBar from "./components/NavBar";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./lib/utils/Theme";
-import routes from "./lib/routes";
-import Footer from "./components/Footer";
+import NavBar from './components/NavBar';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { theme } from './lib/utils/Theme';
+import routes from './lib/routes';
+import Footer from './components/Footer';
 
 /**
  * App component renders different routes based on react router.
@@ -24,19 +24,19 @@ function App() {
 			)}
 			{''}
 			{/* Adjust height as needed */}
-
-          <Routes>
-            {routes.map((route, index) => (
-              <Route key={index}
-                path={route.path}
-                element={route.element}
-              />
-            ))}
-          </Routes>
-          {!hideOnRoutes.includes(location.pathname) && <Footer />}
-        </div>
-    </ThemeProvider>
-  );
+      <CssBaseline />
+			<Routes>
+				{routes.map((route, index) => (
+					<Route
+						key={index}
+						path={route.path}
+						element={route.element}
+					/>
+				))}
+			</Routes>
+			{!hideOnRoutes.includes(location.pathname) && <Footer />}
+		</ThemeProvider>
+	);
 }
 
 export default App;
