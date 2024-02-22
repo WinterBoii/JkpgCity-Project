@@ -102,7 +102,7 @@ export default function SignInSide() {
 					<Typography
 						component='h1'
 						variant='h3'
-						color={'third'}
+						color={'third.main'}
 					>
 						Jönköping City
 					</Typography>

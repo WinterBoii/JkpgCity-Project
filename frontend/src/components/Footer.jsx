@@ -13,54 +13,54 @@ export default function Footer() {
 			}}
 		>
 			<Grid
-				justifyContent='space-around'
 				container
 				component='footer'
 				padding={9}
+				justifyContent={{ xs: 'center', md: 'space-around' }}
+				flexDirection={{ xs: 'column', md: 'row' }}
+				alignItems={{ xs: 'center', md: 'flex-start' }}
+				textAlign={{ xs: 'center', md: 'left' }}
 			>
 				<Grid item>
 					<Typography variant='h3'>Jönköping City</Typography>
 				</Grid>
 				<Grid item>
-					<box>
-						<Typography
-							mb={3}
-							variant='h5'
-							fontWeight='bold'
-						>
-							Location
-						</Typography>
-						<Typography variant='h6'>
-							Jönköping City AB <br />
-							c/o Jönköping kommun <br />
-							Rådhusparken 1 <br />
-							551 89 Jönköping <br />
-						</Typography>
-					</box>
+					<Typography
+						mt={{ xs: 3, md: 0 }}
+						mb={{ xs: 1, md: 3 }}
+						variant='h5'
+						fontWeight='bold'
+					>
+						Location
+					</Typography>
+					<Typography variant='h6'>
+						Jönköping City AB <br />
+						c/o Jönköping kommun <br />
+						Rådhusparken 1 <br />
+						551 89 Jönköping <br />
+					</Typography>
 				</Grid>
 				<Grid item>
-					<box>
-						<Typography
-							mb={3}
-							variant='h5'
-							fontWeight='bold'
-						>
-							Email
-						</Typography>
-						<Typography variant='h6'>info@jkpgcity.se</Typography>
-					</box>
+					<Typography
+						mt={{ xs: 3, md: 0 }}
+						mb={{ xs: 1, md: 3 }}
+						variant='h5'
+						fontWeight='bold'
+					>
+						Email
+					</Typography>
+					<Typography variant='h6'>info@jkpgcity.se</Typography>
 				</Grid>
 				<Grid item>
-					<box>
-						<Typography
-							mb={3}
-							variant='h5'
-							fontWeight='bold'
-						>
-							Phone
-						</Typography>
-						<Typography variant='h6'>036-16-40 74</Typography>
-					</box>
+					<Typography
+						mt={{ xs: 3, md: 0 }}
+						mb={{ xs: 1, md: 3 }}
+						variant='h5'
+						fontWeight='bold'
+					>
+						Phone
+					</Typography>
+					<Typography variant='h6'>036-16-40 74</Typography>
 				</Grid>
 				<Grid item>
 					<IconButton
