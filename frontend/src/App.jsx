@@ -20,7 +20,7 @@ function App() {
 		<ThemeProvider theme={theme}>
 			{!hideOnRoutes.includes(location.pathname) && <NavBar />}
 			{!hideOnRoutes.includes(location.pathname) && (
-				<div style={{ height: '70px' }} />
+				<div style={{ height: '100px' }} />
 			)}
 			{''}
 			{/* Adjust height as needed */}
