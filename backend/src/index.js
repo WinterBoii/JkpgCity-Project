@@ -5,39 +5,31 @@ const adminJson = require('./public/admins.json');
 const storeJson = require('./public/stores.json');
 const wellnessJson = require('./public/wellness.json');
 const app = express();
-const db = require('./db');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose')
+const authenticationRoutes = require('./routes/authentication')
 const port = 3001;
 
 // Parse JSON bodies
 app.use(express.json());
+app.use(cookieParser());
+app.use(authenticationRoutes)
 
-// Importing routers for different parts of the application
-const adminsRouter = require('./routers/admins');
-const storesRouter = require('./routers/stores');
-const wellnessRouter = require('./routers/wellness');
 
-app.use('/admins',adminsRouter)
-app.use('/stores',storesRouter)
-app.use('/wellness',wellnessRouter)
-
-app.get('/setup', async (req, res) => {
-  try {
-    await db.userSetup(adminJson);
-    await db.storeSetup(storeJson);
-    await db.wellnessSetup(wellnessJson);
-    res.status(200).send('Setup complete');
-  } catch (err) {
-    res.status(500).send(err);
-    console.log("err",err);
-  }
-})
-
-const server = async () => {
-db.init()
+// database connection
+const dbURI = 'mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/db';
+mongoose.connect(dbURI)
+//listen on request only after successfull db connection
+.then((result) => {
+  console.log('Connected to MongoDB');
   app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+    console.log(`Server is listening on port ${port}`);
   });
-}
+})  
+.catch((error) => console.error(error));
 
-
-server()
+// Define your route after establishing the database connection
+app.get('/', (req, res) => {
+  // Your route logic here
+  res.send('Hello, world!');
+});

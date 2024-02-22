@@ -36,15 +36,15 @@ services:
     depends_on:
     - postgres
 
-  postgres:
-    container_name: postgres
-    image: postgres
+  mongo-express:
+    container_name: db-container
+    image: mongo-express
     restart: always
     ports:
-      - 5432:5432
+      - 8080:8080
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
+      ME_CONFIG_MONGODB_ADMINUSERNAME: wajd
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin2024
     networks:
       - jkpgcity_network
 
