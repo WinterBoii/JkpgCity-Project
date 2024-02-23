@@ -59,7 +59,7 @@ function NavBar() {
                           ? theme.palette.secondary.main
                           : "transparent",
                       textDecorationLine: "none",
-                      borderRadius: "3px",
+                      borderRadius: '0px',
                     }}
                   >
                     <Typography>{item.text}</Typography>
@@ -95,7 +95,8 @@ function NavBar() {
                         ? theme.palette.secondary.main
                         : "transparent",
                     textDecoration: "none",
-                    borderRadius: "3px",
+                    borderRadius: "24px",
+                    px: 3,
                     marginX: "0.3rem",
                     "& .MuiTypography-root": {
                       textDecoration: "none", // Remove underline
