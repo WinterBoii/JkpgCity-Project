@@ -1,9 +1,10 @@
 const { Client } = require('pg');
+const bcrypt = require('bcryptjs');
 
 const db = new Client({
   // PostgreSQL Client configuration
     user: process.env.DB_USER || 'postgres',
-    host: process.env.DB_HOST || '172.17.0.1',
+    host: process.env.DB_HOST || '172.20.0.2',
     database: process.env.DB_NAME || 'postgres',
     password: process.env.DB_PASSWORD || 'admin',
     port: process.env.DB_PORT || 5432,
@@ -13,6 +14,54 @@ const init = async () => {
   await db.connect();
 }
 
+// users
+const userSetup = async (adminJson) => {
+  await db.query(`
+  CREATE TABLE IF NOT EXISTS public.users
+    (
+      id SERIAL NOT NULL,
+      email text,
+      password text,
+      CONSTRAINT users_pkey PRIMARY KEY (id)
+    );
+    `);
+
+  // Set the owner of the table to 'postgres'
+  await db.query(`
+  ALTER TABLE IF EXISTS public.stores OWNER to postgres;
+`);
+
+  // Insert data from adminJson if it's not already present
+  for (const admin of adminJson) {
+    // Check if the admin with the same gmail already exists
+  const checkForUser = await db.query(`
+    SELECT * FROM public.users
+    WHERE
+    email = $1
+    LIMIT 1
+  `, [admin.email]);
+
+  console.log(checkForUser.rows);
+  // If the admin doesn't exist, insert it into the 'users' table
+    if (checkForUser.rows.length === 0) {
+      const salt = await bcrypt.genSalt();
+      admin.password = await bcrypt.hash(admin.password, salt)
+      await db.query(`
+        INSERT INTO public.users (email, password)
+        VALUES ($1, $2)
+      `, [admin.email, admin.password]);
+    }
+}
+
+}
+
+const getAllUsers = async() => {
+  const res = await db.query('SELECT * FROM public.users');
+  return res.rows;
+}
+
+
+//stores
 const storeSetup = async (storeJson) => { // Create stores table if it doesn't exist
   //console.log('storeSetup')  
   await db.query(`
@@ -56,6 +105,43 @@ const storeSetup = async (storeJson) => { // Create stores table if it doesn't e
   return res.rows;
 }
 
+const addStore = async(name, url, district) => {
+  try {
+    await db.query(`
+      INSERT INTO public.stores (name, url, district)
+      VALUES ($1, $2, $3)
+    `, [name, url, district]);
+    return {success: true, message: 'Store added successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
+const updateStoreById = async(id, name, url, district) => {
+  try {
+    await db.query(`
+      UPDATE public.stores
+      SET name = $1, url = $2, district = $3
+      WHERE id = $4
+    `, [name, url, district, id]);
+    return {success: true, message: 'Store updated successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
+const delteStoreById = async (id) => {
+  try {
+    await db.query(`
+    DELETE FROM public.stores
+    WHERE id = $1
+    `, [id]);
+    return {success: true, message: "Store was successfully deleted"}
+  } catch (error){
+    return {success: false, message: error.message}
+  }
+}
+
 const wellnessSetup = async (wellnessJson) => { // Create stores table if it doesn't exist
   await db.query(`
     CREATE TABLE IF NOT EXISTS public.wellness
@@ -97,10 +183,57 @@ const getAllWellness = async() => {
   const res = await db.query('SELECT * FROM public.wellness');
   return res.rows;
 }
+
+const addWellness = async(name, url, rating) => {
+  try {
+    await db.query(`
+      INSERT INTO public.wellness (name, url, rating)
+      VALUES ($1, $2, $3)
+    `, [name, url, rating]);
+    return {success: true, message: 'Wellness added successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
+const updateWellnessById = async (id,name,url,rating) =>{
+  try {
+    await db.query(`
+      UPDATE public.wellness
+      SET name = $1, url = $2, rating = $3
+      WHERE id = $4
+    `, [name, url, rating, id]);
+    return {success: true, message: 'Wellness updated successfully'}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+
+}
+
+const deleteWellnessById = async (id) => {
+  try {
+    await db.query(`
+    DELETE FROM public.wellness
+    WHERE id = $1
+    `, [id]);
+    return {success: true, message: "Wellness deleted successfuly"}
+  } catch(error) {
+    return {success: false, message: error.message}
+  }
+}
+
 module.exports = {
-  storeSetup,
   init,
+  userSetup,
+  getAllUsers,
+  storeSetup,
   getAllStores,
+  addStore,
+  updateStoreById,
+  delteStoreById,
+  wellnessSetup,
   getAllWellness,
-  wellnessSetup
+  addWellness,
+  updateWellnessById,
+  deleteWellnessById
 }
