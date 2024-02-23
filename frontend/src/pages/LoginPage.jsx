@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import * as React from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,10 +10,15 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { Divider } from '@mui/material';
+import { IconButton, InputAdornment, InputBase } from '@mui/material';
 import bgImg from '../assets/background.jpg';
 import { theme } from '../lib/utils/Theme';
-import axios from 'axios'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
+const baseUrl = 'http://localhost:3001';
 
 function Copyright(props) {
 	return (
@@ -37,43 +42,37 @@ function Copyright(props) {
 }
 
 export default function SignInSide() {
-	const [checked, setChecked] = React.useState(false);
-	const [email, setEmail] = React.useState('');
-	const [password, setPassword] = React.useState('');
+	/* 	const errRef = useRef();
+	const userRef = useRef(); */
+	const [checked, setChecked] = useState(false);
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [errMsg, setErrMsg] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
+	const navigate = useNavigate();
 
 	const handleCheck = (event) => {
 		setChecked(event.target.checked);
 	};
-	const login = async (email, password) => {
-		try {
-			const response = await axios.post('api/login', {
-				email,
-				password,
-			});
-			//const { token } = response.data;
-			//localStorage.setItem('token', token);
-			console.log(response.data);
-			return true;
-		} catch (error) {
-			return false;
-		}
-	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
 
 		try {
-			const response = await axios.post('api/login', {
-				email: data.get('email'),
-				password: data.get('password'),
+			const response = await axios.post(baseUrl + '/login', {
+				email,
+				password,
 			});
-			console.log(response);
-			if (!response.data.success) throw new Error('Failed to sign in');
-			window.location.reload();
-			// handle response
+			if (response.status) {
+				setErrMsg(null);
+				console.log(email, password);
+				// Redirect to homepage using useNavigate hook
+				navigate('/'); // Redirect to homepage path
+			}
 		} catch (error) {
-			// handle error
+			// Handle errors during login request
+			//console.error('Login error:', error);
+			setErrMsg('Invalid email or password');
 		}
 	};
 
@@ -100,7 +99,6 @@ export default function SignInSide() {
 					backgroundPosition: 'center',
 				}}
 			></Grid>
-
 			<Grid
 				item
 				xs={12}
@@ -129,11 +127,13 @@ export default function SignInSide() {
 						component='h1'
 						variant='h3'
 						color={'third.main'}
+						sx={{
+							pb: '1rem',
+							borderBottom: '1px solid white',
+						}}
 					>
 						Jönköping City
 					</Typography>
-
-					<Divider variant='inset' />
 
 					<Box
 						component='form'
@@ -141,7 +141,10 @@ export default function SignInSide() {
 						onSubmit={handleSubmit}
 						sx={{ mt: 1 }}
 					>
+						{errMsg && <Typography>{errMsg + '*'}</Typography>}
+
 						<TextField
+							variant='filled'
 							margin='normal'
 							required
 							fullWidth
@@ -159,15 +162,28 @@ export default function SignInSide() {
 						/>
 
 						<TextField
+							variant='filled'
 							margin='normal'
 							required
 							fullWidth
 							name='password'
 							label='Password'
-							type='password'
+							type={showPassword ? 'text' : 'password'}
 							id='password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
+							endAdornment={
+								<InputAdornment position='end'>
+									<IconButton
+										aria-label='toggle password visibility'
+										onClick={() => setShowPassword(!showPassword)}
+										edge='end'
+										color='secondary.main'
+									>
+										{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+									</IconButton>
+								</InputAdornment>
+							}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.secondary.main,
@@ -175,6 +191,7 @@ export default function SignInSide() {
 								},
 							}}
 						/>
+
 						<Grid
 							container
 							justifyContent={'space-between'}
@@ -193,20 +210,21 @@ export default function SignInSide() {
 							/>
 
 							<Button
-								onClick={() => login(email, password)}
 								type='submit'
 								variant='contained'
 								color='secondary'
 								sx={{
 									mt: 2,
 									mb: 2,
+									px: 3,
+									borderRadius: 24,
 									'&: hover': {
 										backgroundColor: theme.palette.primary.main,
 										color: theme.palette.third.main,
 									},
 								}}
 							>
-								Sign In
+								Login
 							</Button>
 						</Grid>
 						<Copyright sx={{ mt: 5 }} />
