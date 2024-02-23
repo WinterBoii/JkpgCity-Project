@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import { Divider } from '@mui/material';
 import bgImg from '../assets/background.jpg';
 import { theme } from '../lib/utils/Theme';
+import axios from 'axios'
 
 function Copyright(props) {
 	return (
@@ -37,18 +38,43 @@ function Copyright(props) {
 
 export default function SignInSide() {
 	const [checked, setChecked] = React.useState(false);
+	const [email, setEmail] = React.useState('');
+	const [password, setPassword] = React.useState('');
 
 	const handleCheck = (event) => {
 		setChecked(event.target.checked);
 	};
+	const login = async (email, password) => {
+		try {
+			const response = await axios.post('api/login', {
+				email,
+				password,
+			});
+			//const { token } = response.data;
+			//localStorage.setItem('token', token);
+			console.log(response.data);
+			return true;
+		} catch (error) {
+			return false;
+		}
+	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get('email'),
-			password: data.get('password'),
-		});
+
+		try {
+			const response = await axios.post('api/login', {
+				email: data.get('email'),
+				password: data.get('password'),
+			});
+			console.log(response);
+			if (!response.data.success) throw new Error('Failed to sign in');
+			window.location.reload();
+			// handle response
+		} catch (error) {
+			// handle error
+		}
 	};
 
 	return (
@@ -122,6 +148,8 @@ export default function SignInSide() {
 							id='email'
 							label='Email'
 							name='email'
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.secondary.main,
@@ -138,6 +166,8 @@ export default function SignInSide() {
 							label='Password'
 							type='password'
 							id='password'
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.secondary.main,
@@ -163,6 +193,7 @@ export default function SignInSide() {
 							/>
 
 							<Button
+								onClick={() => login(email, password)}
 								type='submit'
 								variant='contained'
 								color='secondary'

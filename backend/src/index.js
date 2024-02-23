@@ -8,9 +8,11 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
 const authenticationRoutes = require('./routes/authentication')
+const cors = require('cors');
 const port = 3001;
 
 // Parse JSON bodies
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(authenticationRoutes)
