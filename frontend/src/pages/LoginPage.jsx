@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { IconButton, InputAdornment, InputBase } from '@mui/material';
+import { IconButton, InputAdornment } from '@mui/material';
 import bgImg from '../assets/background.jpg';
 import { theme } from '../lib/utils/Theme';
 import axios from 'axios';
