@@ -24,7 +24,7 @@ function App() {
 			)}
 			{''}
 			{/* Adjust height as needed */}
-      <CssBaseline />
+			<CssBaseline />
 			<Routes>
 				{routes.map((route, index) => (
 					<Route
