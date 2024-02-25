@@ -1,133 +1,175 @@
-import { useState } from "react";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, useMediaQuery, useTheme, Container } from "@mui/material";
+import { useContext, useEffect, useState } from 'react';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import {
+	AppBar,
+	Toolbar,
+	Typography,
+	Button,
+	IconButton,
+	Drawer,
+	useMediaQuery,
+	useTheme,
+	Container,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { theme } from "../lib/utils/Theme";
+import { theme } from '../lib/utils/Theme';
+import AuthContext from '../lib/AuthProvider';
 
 function NavBar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const itheme = useTheme();
-  const isMobile = useMediaQuery(itheme.breakpoints.down("sm"));
+	const { auth, logout } = useContext(AuthContext);
+	const [drawerOpen, setDrawerOpen] = useState(false);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const itheme = useTheme();
+	const isMobile = useMediaQuery(itheme.breakpoints.down('sm'));
 
-  const handleLogout = () => {
-    // Add your logout logic here
-    setIsLoggedIn(false);
-  };
+	useEffect(() => {
+		// Check if the user is logged in
+		if (auth.loggedIn) {
+			const isTokenExpired = auth.tokenExpiration < Date.now();
 
-  const menuItems = [
-    { link: "/", text: "Home" },
-    { link: "/stores", text: "Stores" },
-    { link: "/wellness", text: "Wellness" },
-  ];
+			if (isTokenExpired) {
+				// Redirect to the login page
+				logout();
+				navigate('/login');
+			} else {
+				// User is logged in and the token is not expired
+				// You can perform additional actions if needed
+			}
+		} else {
+			// User is not logged in, handle accordingly
+		}
+	}, [auth.loggedIn, auth.tokenExpiration, logout, navigate]);
+	const menuItems = [
+		{ link: '/', text: 'Hem' },
+		{ link: '/stores', text: 'Shoppa' },
+		{ link: '/wellness', text: 'Må bra' },
+	];
 
-  return (
-    <AppBar color="primary" elevation={7}>
-      <Container maxWidth="xl" sx={{ marginY: 2 }}>
-        <Toolbar>
-          {isMobile ? (
-            <>
-              <Typography flexGrow={1} variant="h6">
-                Jönköping City
-              </Typography>
-              <IconButton
-                sx={{ flexGrow: 0, justifyContent: "flex-end" }}
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={() => setDrawerOpen(true)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Drawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-              >
-                {menuItems.map((item, index) => (
-                  <Button
-                    color="inherit"
-                    key={index}
-                    component={NavLink}
-                    to={item.link}
-                    exact
-                    sx={{
-                      bgcolor:
-                        location.pathname === item.link
-                          ? theme.palette.secondary.main
-                          : "transparent",
-                      textDecorationLine: "none",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    <Typography>{item.text}</Typography>
-                  </Button>
-                ))}
-                <Button
-                  variant="text"
-                  color="inherit"
-                  component={NavLink}
-                  to={"/login"}
-                  exact
-                >
-                  Login
-                </Button>
-              </Drawer>
-            </>
-          ) : (
-            <>
-              <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-                Jönköping City
-              </Typography>
-              {menuItems.map((item, index) => (
-                <Button
-                  color="inherit"
-                  key={index}
-                  component={NavLink}
-                  to={item.link}
-                  exact
-                  variant="text"
-                  sx={{
-                    bgcolor:
-                      location.pathname === item.link
-                        ? theme.palette.secondary.main
-                        : "transparent",
-                    textDecoration: "none",
-                    borderRadius: "3px",
-                    marginX: "0.3rem",
-                    "& .MuiTypography-root": {
-                      textDecoration: "none", // Remove underline
-                    },
-                  }}
-                >
-                  <Typography variant="h6">{item.text}</Typography>
-                </Button>
-              ))}
-                <Button
-                  variant="contained"
-                  onClick={ isLoggedIn ? handleLogout : () => navigate("/login")}
-                  size="large"
-                  sx={{
-                    marginLeft: "1rem",
-                    bgcolor: theme.palette.third.main,
-                    color: theme.palette.primary.main,
-                    borderRadius: "24px",
-                    paddingX: "2rem",
-                    "&:hover": {
-                      color: theme.palette.third.main,
-                    },
-                  }}
-                >
-                  <Typography variant="h6">{isLoggedIn  ? "Logout" : "Login"}</Typography>
-                </Button>
-            </>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+	return (
+		<AppBar
+			color='primary'
+			elevation={7}
+		>
+			<Container
+				maxWidth='xl'
+				sx={{ marginY: 2 }}
+			>
+				<Toolbar>
+					{isMobile ? (
+						<>
+							<Typography
+								flexGrow={1}
+								variant='h6'
+							>
+								Jönköping City
+							</Typography>
+							<IconButton
+								sx={{ flexGrow: 0, justifyContent: 'flex-end' }}
+								edge='start'
+								color='inherit'
+								aria-label='menu'
+								onClick={() => setDrawerOpen(true)}
+							>
+								<MenuIcon />
+							</IconButton>
+							<Drawer
+								anchor='right'
+								open={drawerOpen}
+								onClose={() => setDrawerOpen(false)}
+							>
+								{menuItems.map((item, index) => (
+									<Button
+										color='inherit'
+										key={index}
+										component={NavLink}
+										to={item.link}
+										exact
+										sx={{
+											bgcolor:
+												location.pathname === item.link
+													? theme.palette.secondary.main
+													: 'transparent',
+											textDecorationLine: 'none',
+											borderRadius: '0px',
+											textTransform: 'none',
+										}}
+									>
+										<Typography>{item.text}</Typography>
+									</Button>
+								))}
+								<Button
+									variant='text'
+									color='inherit'
+									component={NavLink}
+									to={auth.loggedIn && '/login'}
+									exact
+								>
+									{auth.loggedIn ? 'Logga ut' : 'Logga in'}
+								</Button>
+							</Drawer>
+						</>
+					) : (
+						<>
+							<Typography
+								variant='h3'
+								component='div'
+								sx={{ flexGrow: 1 }}
+							>
+								Jönköping City
+							</Typography>
+							{menuItems.map((item, index) => (
+								<Button
+									color='inherit'
+									key={index}
+									component={NavLink}
+									to={item.link}
+									exact
+									variant='text'
+									sx={{
+										bgcolor:
+											location.pathname === item.link
+												? theme.palette.secondary.main
+												: 'transparent',
+										borderRadius: '24px',
+										px: 3,
+										textDecoration: 'none',
+										marginX: '0.3rem',
+										textTransform: 'none',
+										'& .MuiTypography-root': {
+											textDecoration: 'none', // Remove underline
+										},
+									}}
+								>
+									<Typography variant='h5'>{item.text}</Typography>
+								</Button>
+							))}
+							<Button
+								variant='contained'
+								onClick={auth.loggedIn ? logout : () => navigate('/login')}
+								size='large'
+								sx={{
+									marginLeft: '1rem',
+									bgcolor: theme.palette.third.main,
+									color: theme.palette.primary.main,
+									borderRadius: '24px',
+									paddingX: '2rem',
+									textTransform: 'none',
+									'&:hover': {
+										color: theme.palette.third.main,
+									},
+								}}
+							>
+								<Typography variant='h6'>
+									{auth.loggedIn ? 'Logga ut' : 'Logga in'}
+								</Typography>
+							</Button>
+						</>
+					)}
+				</Toolbar>
+			</Container>
+		</AppBar>
+	);
 }
 
 export default NavBar;
