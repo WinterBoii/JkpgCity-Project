@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -17,6 +17,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import AuthContext from '../lib/AuthProvider';
 
 const baseUrl = 'http://localhost:3001';
 
@@ -44,11 +45,14 @@ function Copyright(props) {
 export default function SignInSide() {
 	/* 	const errRef = useRef();
 	const userRef = useRef(); */
+	axios.defaults.withCredentials = true;
+	const { login } = useContext(AuthContext);
 	const [checked, setChecked] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errMsg, setErrMsg] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
+
 	const navigate = useNavigate();
 
 	const handleCheck = (event) => {
@@ -63,15 +67,20 @@ export default function SignInSide() {
 				email,
 				password,
 			});
-			if (response.status) {
-				setErrMsg(null);
-				console.log(email, password);
+
+			if (response.status === 200) {
+				const { user, tokenExpiration } = response.data;
+				login(user, tokenExpiration);
+
 				// Redirect to homepage using useNavigate hook
-				navigate('/'); // Redirect to homepage path
+				navigate('/');
+			} else {
+				// Handle other response statuses if needed
+				setErrMsg('Invalid email or password');
 			}
 		} catch (error) {
 			// Handle errors during login request
-			//console.error('Login error:', error);
+			console.error('Login error:', error);
 			setErrMsg('Invalid email or password');
 		}
 	};
