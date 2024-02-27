@@ -11,8 +11,14 @@ const authenticationRoutes = require('./routes/authentication')
 const cors = require('cors');
 const port = 3001;
 
+// Allow requests from frontend domain
+const corsOptions = {
+  origin: 'http://localhost:3000', // Change this to your frontend URL
+  credentials: true,
+};
+
 // Parse JSON bodies
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use(authenticationRoutes)

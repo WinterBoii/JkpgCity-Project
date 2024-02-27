@@ -1,5 +1,5 @@
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
-import shop1 from '../assets/shop1.jpg'
+import shop1 from '../assets/shop1.jpg';
 import { NavLink } from 'react-router-dom';
 
 function HomePage() {
@@ -8,7 +8,7 @@ function HomePage() {
 			<Container maxWidth='xl'>
 				<Grid
 					container
-					sx={{ marginTop: '5rem' }}
+					sx={{ marginTop: '5rem', textTransform: 'none' }}
 				>
 					<Grid sx={{ width: '100%' }}>
 						<Typography
@@ -58,7 +58,7 @@ function HomePage() {
 								backgroundSize: 'contain',
 								backgroundPosition: 'center',
 								borderRadius: 7,
-								mx: 5
+								mx: 5,
 							}}
 						/>
 						<Container sx={{ mx: 5 }}>
