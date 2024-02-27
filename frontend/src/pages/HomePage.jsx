@@ -32,8 +32,7 @@ function HomePage() {
 					</Grid>
 				</Grid>
 			</Container>
-			<Grid
-				container
+			<Box
 				bgcolor={'third.bg'}
 				my={10}
 				py={2}
@@ -102,7 +101,7 @@ function HomePage() {
 						</Container>
 					</Box>
 				</Container>
-			</Grid>
+			</Box>
 		</Box>
 	);
 }
