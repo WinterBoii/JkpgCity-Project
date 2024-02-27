@@ -6,7 +6,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 export default function Footer() {
 	return (
 		<Box
-			width={'100vw'}
 			sx={{
 				bgcolor: theme.palette.primary.main,
 				color: theme.palette.secondary.contrastText,
@@ -88,7 +87,6 @@ export default function Footer() {
 				alignItems='center'
 				container
 				component='footer'
-				width={'100vw'}
 				padding={4}
 				sx={{ bgcolor: theme.palette.alternative.main }}
 			>

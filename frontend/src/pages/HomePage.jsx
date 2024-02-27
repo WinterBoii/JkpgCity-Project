@@ -1,6 +1,7 @@
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
-import shop1 from '../assets/shop1.jpg';
 import { NavLink } from 'react-router-dom';
+import shop1 from '../assets/shop1.jpg';
+import shop2 from '../assets/shop2.jpg';
 
 function HomePage() {
 	return (
@@ -32,46 +33,48 @@ function HomePage() {
 					</Grid>
 				</Grid>
 			</Container>
-			<Grid
-				container
+			<Box
 				bgcolor={'third.bg'}
 				my={10}
 				py={2}
-				sx={{ borderRadius: '10px' }}
 			>
-				<Container
-					maxWidth='lg'
-					justifyContent={{ xs: 'center', md: 'space-around' }}
-					flexDirection={{ xs: 'column', md: 'row' }}
-				>
+				<Container maxWidth='lg'>
 					<Box
-						p={5}
-						display='flex'
+						height='404px'
+						my={5}
+						display={{ xs: 'block', md: 'flex' }}
 						flexDirection={{ xs: 'column', md: 'row' }}
 						justifyContent={{ xs: 'center', md: 'space-around' }}
 					>
 						<Container
 							sx={{
-								width: '1200px',
-								backgroundImage: `url(${shop1})`,
-								backgroundRepeat: 'no-repeat',
-								backgroundSize: 'contain',
-								backgroundPosition: 'center',
-								borderRadius: 7,
-								mx: 5,
+								mx: 4,
+								my: 5,
 							}}
-						/>
-						<Container sx={{ mx: 5 }}>
+						>
+							<img
+								src={shop1}
+								style={{
+									width: '100%',
+									borderRadius: 12,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: 'cover',
+									backgroundPosition: 'center',
+								}}
+							/>
+						</Container>
+
+						<Box sx={{ mx: 3 }}>
 							<Typography
-								mt={2}
-								mb={3}
+								mt={7}
+								mb={4}
 								variant='h3'
 								fontWeight={500}
 							>
 								Shoppa
 							</Typography>
 							<Typography
-								mb={3}
+								mb={4}
 								variant='h5'
 								component={'h5'}
 								fontWeight={300}
@@ -99,10 +102,22 @@ function HomePage() {
 									Shoppa
 								</Typography>
 							</Button>
-						</Container>
+						</Box>
 					</Box>
 				</Container>
-			</Grid>
+				<Container maxWidth='md'>
+					<img
+						src={shop2}
+						style={{
+							width: '100%',
+							borderRadius: 12,
+							backgroundRepeat: 'no-repeat',
+							backgroundSize: 'cover',
+							backgroundPosition: 'center',
+						}}
+					/>
+				</Container>
+			</Box>
 		</Box>
 	);
 }
