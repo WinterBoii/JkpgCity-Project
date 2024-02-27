@@ -48,18 +48,26 @@ function HomePage() {
 					>
 						<Container
 							sx={{
-								backgroundImage: `url(${shop1})`,
-								backgroundRepeat: 'no-repeat',
-								backgroundSize: 'cover',
-								backgroundPosition: 'center',
-								borderRadius: 7,
 								mx: 4,
+								my: 5,
 							}}
-						/>
+						>
+							<img
+								src={shop1}
+								style={{
+									width: '100%',
+									borderRadius: 12,
+									backgroundRepeat: 'no-repeat',
+									backgroundSize: 'cover',
+									backgroundPosition: 'center',
+								}}
+							/>
+						</Container>
+
 						<Box sx={{ mx: 3 }}>
 							<Typography
 								mt={7}
-								mb={7}
+								mb={4}
 								variant='h3'
 								fontWeight={500}
 							>
@@ -97,16 +105,18 @@ function HomePage() {
 						</Box>
 					</Box>
 				</Container>
-				<Container
-					sx={{
-						width: '20%',
-						backgroundImage: `url(${shop2})`,
-						backgroundRepeat: 'no-repeat',
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-						borderRadius: 7,
-					}}
-				/>
+				<Container maxWidth='md'>
+					<img
+						src={shop2}
+						style={{
+							width: '100%',
+							borderRadius: 12,
+							backgroundRepeat: 'no-repeat',
+							backgroundSize: 'cover',
+							backgroundPosition: 'center',
+						}}
+					/>
+				</Container>
 			</Box>
 		</Box>
 	);
