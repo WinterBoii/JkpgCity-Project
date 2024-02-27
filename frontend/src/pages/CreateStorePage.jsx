@@ -127,7 +127,14 @@ export default function CreateStorePage() {
                 variant="contained"
                 color="primary"
                 type="submit"
-                sx={{ width: '200px', height: '50px' }}
+                sx={{
+                    width: '200px', 
+                    height: '50px',
+                    marginLeft: '1rem',
+					borderRadius: '24px',
+					paddingX: '2rem',
+					textTransform: 'none',
+                }}
               >
                 Submit
               </Button>
