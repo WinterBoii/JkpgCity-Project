@@ -88,9 +88,10 @@ export default function SignUpPage() {
             <Box textAlign="center">
               <Button
                 variant="contained"
+                
                 color="primary"
                 type="submit"
-                sx={{ width: '200px', height: '50px' }}
+                sx={{ width: '200px', height: '50px', borderRadius: '50px' }}
               >
                 Sign Up
               </Button>
