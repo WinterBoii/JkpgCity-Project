@@ -1,38 +1,21 @@
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import shop1 from '../assets/shop1.jpg';
 import shop2 from '../assets/shop2.jpg';
+import TitleDescription from '../components/TitleDescription';
 
 function HomePage() {
 	return (
-		<Box color={'third.text'}>
-			<Container maxWidth='xl'>
-				<Grid
-					container
-					sx={{ marginTop: '5rem', textTransform: 'none' }}
-				>
-					<Grid sx={{ width: '100%' }}>
-						<Typography
-							variant='h2'
-							component={'h1'}
-							fontWeight={500}
-							mb={10}
-						>
-							Välkommen Till Ditt Jönköping
-						</Typography>
-						<Typography
-							variant='h4'
-							component={'h4'}
-							fontWeight={400}
-						>
-							Jönköping City är fyllt av butiker, kulter, upplevelser, caféer
-							och <br />
-							restauranger som ramas in av fantastiska grönområden och vackra
-							sjöar.
-						</Typography>
-					</Grid>
-				</Grid>
-			</Container>
+		<Box
+			color={'third.text'}
+			mt='5rem'
+			textTransform='none' 
+		>
+			<TitleDescription
+				title='Välkommen Till Ditt Jönköping'
+				description='Jönköping City är fyllt av butiker, kulter, upplevelser, caféer
+					och restauranger som ramas in av fantastiska grönområden och vackra sjöar.'
+			/>
 			<Box
 				bgcolor={'third.bg'}
 				my={10}
