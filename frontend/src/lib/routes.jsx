@@ -4,6 +4,7 @@ import StoresPage from "../pages/StoresPage";
 import WellnessPage from "../pages/WellnessPage";
 import ErrorPage from "../pages/ErrorPage";
 import CreateStorePage from "../pages/CreateStorePage";
+import CreateWellnessPage from "../pages/CreateWellnessPage";
 
 /**
  * Defines the routes for the application.
@@ -17,7 +18,12 @@ const routes = [
 	{
 		path: '/stores/create',
 		element: <CreateStorePage />,
-		exact: true,
+		exact: false,
+	},
+	{
+		path: '/wellness/create',
+		element: <CreateWellnessPage />,
+		exact: false,
 	},
 	{
 		path: '/stores',
