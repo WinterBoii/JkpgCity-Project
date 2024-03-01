@@ -1,9 +1,14 @@
 const Wellness = require('../models/Wellness')
 
 const createWellness = async (req, res) => {
-    const { name, url, rating, categories } = req.body;
+    const data = {
+        name: req.body.name,
+        url: req.body.url,
+        rating: req.body.rating,
+        categories: req.body.categories
+    }    
     try {
-        const wellness = await Wellness.create({ name, url, rating, categories });
+        const wellness = await Wellness.create(data);
         res.status(200).json({ wellness: wellness._id });
     } catch (err) {
         res.status(400).send("Error creating wellness");
@@ -22,10 +27,15 @@ const wellnesss_get = async (req, res) => {
 
 // method to update wellness by id 
 const updatewellnessById = async (req, res) =>{
-    const {id} = req.params.id;
-    const { name, url, rating, categories } = req.body;
+    const id = {id: req.params.id} 
+    const data = {
+        name: req.body.name,
+        url: req.body.url,
+        rating: req.body.rating,
+        categories: req.body.categories
+    }
     try { 
-        const wellness = await Wellness.findByIdAndUpdate(id, {name, url, rating, categories})
+        const wellness = await Wellness.findByIdAndUpdate(id, data)
         res.status(200).json(wellness);
         console.log(wellness) 
         } catch (err) {
@@ -35,7 +45,7 @@ const updatewellnessById = async (req, res) =>{
 
 // method to delete a wellness by id 
 const deletewellnessById = async (req, res) =>{
-    const {id} = req.params.id;
+    const id = {id: req.params.id} 
     try { 
         const wellness = await Wellness.findByIdAndDelete(id)
         res.status(200).json("wellness deleted seccessfully");
@@ -46,11 +56,13 @@ const deletewellnessById = async (req, res) =>{
 }
 
 // method to get wellnesss by categori from the database
-const getwellnesssByCategory = async (req, res) =>{
-    const {category} = req.body
-
+const getwellnesssByCategory = async (req, res) => {
+    const categories = {
+        categories: req.body.categories
+    }
+    
     try { 
-        const wellnesss = await Wellness.find(category)
+        const wellnesss = await Wellness.find(categories)
         res.status(200).json(wellnesss);
         console.log(wellnesss) 
         } catch (err) {

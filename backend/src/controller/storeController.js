@@ -1,9 +1,14 @@
 const Store = require('../models/Store')
 
 const store_post = async (req, res) => {
-    const { name, url, district, categories } = req.body;
+    const data = {
+        name: req.body.name,
+        url: req.body.url,
+        district: req.body.district,
+        categories: req.body.categories
+    }
     try {
-        const store = await Store.create({ name, url, district, categories });
+        const store = await Store.create(data);
         res.status(200).json({ store: store._id });
     } catch (err) {
         res.status(400).send("Error creating store");
@@ -21,10 +26,15 @@ const stores_get = async (req, res) => {
 
 // method to update store by id from the database
 const updateStoreById = async (req, res) =>{
-    const {id} = req.params.id;
-    const { name, url, district, categories } = req.body;
+    const id = {id: req.params.id} 
+    const data = {
+        name: req.body.name,
+        url: req.body.url,
+        district: req.body.district,
+        categories: req.body.categories
+    }
     try { 
-        const store = await Store.findByIdAndUpdate(id, {name, url, district, categories})
+        const store = await Store.findByIdAndUpdate(id, data)
         res.status(200).json(store);
         console.log(store) 
         } catch (err) {
@@ -34,7 +44,7 @@ const updateStoreById = async (req, res) =>{
 
 // method to delete a store by id from the database
 const deleteStoreById = async (req, res) =>{
-    const {id} = req.params.id;
+    const id = {id: req.params.id} 
     try { 
         const store = await Store.findByIdAndDelete(id)
         res.status(200).json("store deleted seccessfully");
@@ -46,10 +56,11 @@ const deleteStoreById = async (req, res) =>{
 
 // method to get stores by categori from the database
 const getStoresByCategory = async (req, res) =>{
-    const {category} = req.body
-    
+    const categories = {
+        categories: req.body.categories
+    }
     try { 
-        const stores = await Store.find(category)
+        const stores = await Store.find(categories)
         res.status(200).json(stores);
         console.log(stores) 
         } catch (err) {
