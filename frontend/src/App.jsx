@@ -14,13 +14,13 @@ import Footer from './components/Footer';
  */
 function App() {
 	const location = useLocation();
-	const hideOnRoutes = ['/login', '/*']; // Add more routes as needed to hide the navbar in
+	const hideOnRoutes = ['/login', '/*', '/error']; // Add more routes as needed to hide the navbar in
 
 	return (
 		<ThemeProvider theme={theme}>
 			{!hideOnRoutes.includes(location.pathname) && <NavBar />}
 			{!hideOnRoutes.includes(location.pathname) && (
-				<div style={{ height: '70px' }} />
+				<div style={{ height: '100px' }} />
 			)}
 			{''}
 			{/* Adjust height as needed */}

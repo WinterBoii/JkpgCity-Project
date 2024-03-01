@@ -8,17 +8,19 @@ const mongoose = require('mongoose')
 const cors = require('cors');
 const port = 3001;
 
-// models
-// const storesModel = require('./models/Store')
-// const wellnessModel = require('./models/Wellness')
-
 // routes
 const authenticationRoutes = require('./routes/authentication')
 const storesRoutes = require('./routes/stores')
 const wellnessRoutes = require('./routes/wellness')
 
+// Allow requests from frontend domain
+const corsOptions = {
+  origin: 'http://localhost:3000', // Change this to your frontend URL
+  credentials: true,
+};
+
 // Parse JSON bodies
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
