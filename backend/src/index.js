@@ -1,37 +1,55 @@
 // index.js
-require('dotenv').config()
+const db = require('./dbConnection')
 const express = require('express');
-const adminJson = require('./public/admins.json');
-const storeJson = require('./public/stores.json');
-const wellnessJson = require('./public/wellness.json');
+require('dotenv').config()
 const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
-const authenticationRoutes = require('./routes/authentication')
 const cors = require('cors');
 const port = 3001;
+
+// models
+// const storesModel = require('./models/Store')
+// const wellnessModel = require('./models/Wellness')
+
+// routes
+const authenticationRoutes = require('./routes/authentication')
+const storesRoutes = require('./routes/stores')
+const wellnessRoutes = require('./routes/wellness')
 
 // Parse JSON bodies
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.use(authenticationRoutes)
 
+app.use(authenticationRoutes)
+app.use(wellnessRoutes)
+app.use(storesRoutes);
+//const dbURI = process.env.DB_URI;
+// const dbSecretKey = process.env.DB_SECRET_KEY;
+// const dbUsername = process.env.DB_USERNAME;
+// const dbPassword = process.env.DB_PASSWORD;
 
 // database connection
-const dbURI = 'mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/db';
-mongoose.connect(dbURI)
-//listen on request only after successfull db connection
-.then((result) => {
-  console.log('Connected to MongoDB');
+// const dbURI = `mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/db`;
+// console.log(`process.env.DB_PASSWORD ${dbPassword}`)
+// mongoose.connect(dbURI)
+// //listen on request only after successfull db connection
+// .then(async () => {
+//   console.log('Connected to MongoDB');
+//   // Call insertion functions after successful database connection once
+//   // await storesModel.insertStoresFromStoresData(); INSERTED
+//   // await wellnessModel.insertWellnessFromWellnessData(); INTENDED
+  
+//   app.listen(port, () => {
+//     console.log(`Server is listening on port ${port}`);
+//   });
+// })  
+// .catch((error) => console.log(`Error connecting to the database "${error})`))
+
   app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
-})  
-.catch((error) => console.error(error));
-
-// Define your route after establishing the database connection
 app.get('/', (req, res) => {
-  // Your route logic here
-  res.send('Hello, world!');
+  res.send('Hello, welcome to the backend!');
 });
