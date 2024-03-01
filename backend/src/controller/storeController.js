@@ -46,12 +46,10 @@ const deleteStoreById = async (req, res) =>{
 
 // method to get stores by categori from the database
 const getStoresByCategory = async (req, res) =>{
-    //const {category} = req.body
-    const data = {
-        categories: req.body.categories,
-    }
+    const {category} = req.body
+    
     try { 
-        const stores = await Store.find(data)
+        const stores = await Store.find(category)
         res.status(200).json(stores);
         console.log(stores) 
         } catch (err) {
