@@ -1,41 +1,67 @@
-const wellness = require('../models/Wellness')
+const Wellness = require('../models/Wellness')
 
-const wellness_post = async (req, res) => {
+const createWellness = async (req, res) => {
     const { name, url, rating, categories } = req.body;
     try {
-        const wellness = await wellness.create({ name, url, rating, categories });
+        const wellness = await Wellness.create({ name, url, rating, categories });
         res.status(200).json({ wellness: wellness._id });
     } catch (err) {
         res.status(400).send("Error creating wellness");
     }
 }
 
-
+// method to retrieve all stores in the database
 const wellnesss_get = async (req, res) => {
     try {
-        const wellnesss = await wellness.find();
+        const wellnesss = await Wellness.find();
         res.status(200).json({wellnesss: wellnesss});
     } catch (err) {
         res.status(400).send("error getting wellness");
     }
 }
 
-// method to update wellness from the database
-const updateWellnessById = async (req, res) =>{
-    const id = req.params.id;
-    const wellness = await this.findOne({id})  // 'this' refers to the wellness model instance
-    if (wellness) {
-        this.name = name;
-        this.url = url;
-        this.rating = rating;
-        this.categories = categories;
-        await this.save();
-    } throw  Error('wellness not found')
+// method to update wellness by id 
+const updatewellnessById = async (req, res) =>{
+    const {id} = req.params.id;
+    const { name, url, rating, categories } = req.body;
+    try { 
+        const wellness = await Wellness.findByIdAndUpdate(id, {name, url, rating, categories})
+        res.status(200).json(wellness);
+        console.log(wellness) 
+        } catch (err) {
+            res.status(400).send(`error updating wellness${err.message}`);
+        }
+}
+
+// method to delete a wellness by id 
+const deletewellnessById = async (req, res) =>{
+    const {id} = req.params.id;
+    try { 
+        const wellness = await Wellness.findByIdAndDelete(id)
+        res.status(200).json("wellness deleted seccessfully");
+        console.log("wellness deleted successfully") 
+        } catch (err) {
+            res.status(400).send(`error deleting wellness${err.message}`);
+        }
+}
+
+// method to get wellnesss by categori from the database
+const getwellnesssByCategory = async (req, res) =>{
+    const {category} = req.body
+    try { 
+        const wellnesss = await Wellness.find({categories: category})
+        res.status(200).json(wellnesss);
+        console.log(wellnesss) 
+        } catch (err) {
+            res.status(400).send(`error getting wellnesss by category${err.message}`);
+        }
 }
 
 
 module.exports = {
-    wellness_post,
+    createWellness,
     wellnesss_get,
-    updateWellnessById
+    updatewellnessById,
+    deletewellnessById,
+    getwellnesssByCategory
 }

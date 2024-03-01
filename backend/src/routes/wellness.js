@@ -3,10 +3,14 @@ const wellnessController = require('../controller/wellnessController')
 const router = Router();
 const { requireAuth } = require('../middlewares/authMiddleware');
 
-router.get('/wellness', wellnessController.wellnesss_get)
+router.get('/', wellnessController.wellnesss_get)
+router.get('/byCategory', wellnessController.getwellnesssByCategory)
 
-router.post('/create',requireAuth, wellnessController.wellness_post)
+// the comming three routes you have to be authenticated to use them (logged in)
+router.post('/create',requireAuth, wellnessController.createWellness)
 
-router.post('/:id/edit',requireAuth, wellnessController.updateWellnessById)
+router.post('/:id/edit',requireAuth, wellnessController.updatewellnessById)
+
+router.post('/:id/delete',requireAuth, wellnessController.deletewellnessById)
 
 module.exports = router;
