@@ -47,13 +47,15 @@ const deletewellnessById = async (req, res) =>{
 
 // method to get wellnesss by categori from the database
 const getwellnesssByCategory = async (req, res) =>{
-    const {category} = req.body
+    const data = {
+        categories: req.body.categories,
+    }
     try { 
-        const wellnesss = await Wellness.find({categories: category})
+        const wellnesss = await Wellness.find(data)
         res.status(200).json(wellnesss);
         console.log(wellnesss) 
         } catch (err) {
-            res.status(400).send(`error getting wellnesss by category${err.message}`);
+            res.status(400).send(`error getting wellnesss by category${err}`);
         }
 }
 

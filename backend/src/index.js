@@ -22,9 +22,9 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(authenticationRoutes)
-app.use(wellnessRoutes)
-app.use(storesRoutes);
+app.use('/authenticatio',authenticationRoutes)
+app.use('/wellness',wellnessRoutes)
+app.use('/stores',storesRoutes);
 //const dbURI = process.env.DB_URI;
 // const dbSecretKey = process.env.DB_SECRET_KEY;
 // const dbUsername = process.env.DB_USERNAME;
