@@ -40,6 +40,12 @@ function NavBar() {
 			// User is not logged in, handle accordingly
 		}
 	}, [auth.loggedIn, auth.tokenExpiration, logout, navigate]);
+
+	const handleLogout = () => {
+		logout();
+		navigate('/');
+	};
+
 	const menuItems = [
 		{ link: '/', text: 'Hem' },
 		{ link: '/stores', text: 'Shoppa' },
@@ -102,8 +108,7 @@ function NavBar() {
 									variant='text'
 									color='inherit'
 									component={NavLink}
-									to={auth.loggedIn && '/login'}
-									exact
+									onClick={handleLogout}
 								>
 									{auth.loggedIn ? 'Logga ut' : 'Logga in'}
 								</Button>
@@ -146,7 +151,9 @@ function NavBar() {
 							))}
 							<Button
 								variant='contained'
-								onClick={auth.loggedIn ? logout : () => navigate('/login')}
+								onClick={
+									auth.loggedIn ? handleLogout : () => navigate('/login')
+								}
 								size='large'
 								sx={{
 									marginLeft: '1rem',

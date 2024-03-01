@@ -46,7 +46,7 @@ export default function SignInSide() {
 	/* 	const errRef = useRef();
 	const userRef = useRef(); */
 	axios.defaults.withCredentials = true;
-	const { login } = useContext(AuthContext);
+	const { login, logout } = useContext(AuthContext);
 	const [checked, setChecked] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -63,7 +63,7 @@ export default function SignInSide() {
 		event.preventDefault();
 
 		try {
-			const response = await axios.post(baseUrl + '/login', {
+			const response = await axios.post(baseUrl + '/authentication/login', {
 				email,
 				password,
 			});
@@ -71,7 +71,7 @@ export default function SignInSide() {
 			if (response.status === 200) {
 				const { user, tokenExpiration } = response.data;
 				login(user, tokenExpiration);
-
+				console.log(response.data);
 				// Redirect to homepage using useNavigate hook
 				navigate('/');
 			} else {
@@ -181,18 +181,6 @@ export default function SignInSide() {
 							id='password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							endAdornment={
-								<InputAdornment position='end'>
-									<IconButton
-										aria-label='toggle password visibility'
-										onClick={() => setShowPassword(!showPassword)}
-										edge='end'
-										color='secondary.main'
-									>
-										{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-									</IconButton>
-								</InputAdornment>
-							}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.secondary.main,
@@ -200,6 +188,16 @@ export default function SignInSide() {
 								},
 							}}
 						/>
+						<InputAdornment>
+							<IconButton
+								aria-label='toggle password visibility'
+								onClick={() => setShowPassword(!showPassword)}
+								edge='end'
+								color='secondary.main'
+							>
+								{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+							</IconButton>
+						</InputAdornment>
 
 						<Grid
 							container

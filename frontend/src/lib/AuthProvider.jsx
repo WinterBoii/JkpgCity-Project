@@ -1,7 +1,9 @@
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const AuthContext = createContext({});
+const baseUrl = 'http://localhost:3001';
 
 export const AuthProvider = ({ children }) => {
 	const initialAuthState = {
@@ -23,7 +25,15 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	const logout = () => {
-		setAuth(initialAuthState);
+		axios
+			.post(baseUrl + `/authentication/logout`)
+			.then((response) => {
+				console.log(response);
+				setAuth(initialAuthState);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
 	};
 
 	return (
