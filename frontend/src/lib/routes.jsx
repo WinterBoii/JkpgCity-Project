@@ -1,10 +1,10 @@
-import LoginPage from "../pages/LoginPage";
-import HomePage from "../pages/HomePage";
-import StoresPage from "../pages/StoresPage";
-import WellnessPage from "../pages/WellnessPage";
-import ErrorPage from "../pages/ErrorPage";
-import CreateStorePage from "../pages/CreateStorePage";
-import CreateWellnessPage from "../pages/CreateWellnessPage";
+import LoginPage from '../pages/LoginPage';
+import HomePage from '../pages/HomePage';
+import StoresPage from '../pages/StoresPage';
+import WellnessPage from '../pages/WellnessPage';
+import ErrorPage from '../pages/ErrorPage';
+import CreateStorePage from '../pages/CreateStorePage';
+import CreateWellnessPage from '../pages/CreateWellnessPage';
 
 /**
  * Defines the routes for the application.
@@ -15,6 +15,16 @@ import CreateWellnessPage from "../pages/CreateWellnessPage";
  * The routes are ordered from most specific to least specific.
  */
 const routes = [
+	{
+		path: '/stores/edit',
+		element: <CreateStorePage storeData />,
+		exact: false,
+	},
+	{
+		path: '/wellness/edit',
+		element: <CreateWellnessPage />,
+		exact: false,
+	},
 	{
 		path: '/stores/create',
 		element: <CreateStorePage />,
