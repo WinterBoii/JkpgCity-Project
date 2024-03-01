@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 services:
   backend:
     container_name: backend-container
@@ -6,7 +6,7 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: true
     ports:
-      - "3001:3001"
+      - '3001:3001'
     volumes:
       - ./backend/src:/backend/src/
     networks:
@@ -16,35 +16,18 @@ services:
     container_name: frontend-container
     build: ./frontend/
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - ./frontend/src:/frontend/src/
     networks:
       - jkpgcity_network
 
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    restart: always
+  mongodb:
+    image: mongo
     environment:
-      PGADMIN_DEFAULT_EMAIL: akidaa@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      - MONGO_URI=mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/
     ports:
-      - 8080:80
-    networks:
-      - jkpgcity_network
-    depends_on:
-    - postgres
-
-  mongo-express:
-    container_name: db-container
-    image: mongo-express
-    restart: always
-    ports:
-      - 8080:8080
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: wajd
-      ME_CONFIG_MONGODB_ADMINPASSWORD: admin2024
+      - '8081:8081'
     networks:
       - jkpgcity_network
 
