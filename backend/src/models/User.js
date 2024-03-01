@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
+const adminJson = require('../public/admins.json');
+
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -22,6 +24,8 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
+
+
 // static method to login user
 userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({email})  // 'this' refers to the usermodel instance
@@ -35,5 +39,22 @@ userSchema.statics.login = async function (email, password) {
 
 const User = mongoose.model('User', userSchema);
 
+// for (adminData of adminJson) {
+//     try {
+//         // Create a new user document using the User model
+//         const newUser = new User({
+//             email: adminData.email,
+//             password: adminData.password
+//         });
+//         // Save the user document to the database
+//         await newUser.save();
+//         console.log(`User ${adminData.name} created successfully`);
+//     } catch (error) {
+//         console.error(`Error creating user ${adminData.name}:`, error);
+//     }
+// };
 
 module.exports = User;
+
+
+
