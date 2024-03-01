@@ -9,7 +9,7 @@
 		"name": "Akademibokhandeln",
 		"url": "akademibokhandeln.se/butik/jonkoping-c",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Akademi"]
 	},
 	{
 		"name": "Apoteket AB",
@@ -50,66 +50,68 @@
 	{
 		"name": "Atlantis Dive College",
 		"url": "atlantis.se",
-		"district": "Väster"
+		"district": "Väster",
+    "categories": ["Övrigt"]
 	},
 	{
 		"name": "Bagelle väskboutique",
 		"url": null,
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Heminredning"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Balance Ljud och Bild",
 		"url": "balance.se",
 		"district": null,
-		"categories": ["Elektronik", "Hälsa och Skönhet", "Heminredning"]
+		"categories": ["Elektronik", "Heminredning"]
 	},
 	{
 		"name": "BGA Fotocenter",
 		"url": "bgafotocenter.se/jonkoping/",
-		"district": "Öster"
+		"district": "Öster",
+    "categories": ["Elektronik"]
 	},
 	{
 		"name": "Bikupan",
 		"url": "bikupan.org",
 		"district": "Tändsticksområdet",
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Blankdays",
 		"url": "https://blankdays.com/collections/all-products?gclid=CjwKCAjwov6hBhBsEiwAvrvN6EZZ1PsnlSJhnE7bmxINtl0Y0noU3rvCybdt217CGd3-bqMdx3mYRxoCK5EQAvD_BwE",
 		"district": "Tändsticksområdet",
-		"categories": ["Sport och Fritid", "Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Boardlife",
 		"url": "boardlife.se",
 		"district": "Väster",
-		"categories": ["Kläder och Accessoarer", "Elektronik", "Sport och Fritid"]
+		"categories": ["Sport och Fritid"]
 	},
 	{
 		"name": "Borgs skor",
 		"url": "borgsskor.se/kontakt",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Boutique Lykka",
 		"url": "boutiquelykka.se",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Broder Bläck",
 		"url": "facebook.com/broderblacktatuering/",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Konst och Hantverk"]
 	},
 	{
 		"name": "Buketten",
 		"url": "instagram.com/bukettenjonkoping/?hl=sv",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Busfrö Nytt & Bytt",
@@ -120,7 +122,8 @@
 	{
 		"name": "Butiken Noga Utvalt",
 		"url": "butikenjkpg.se",
-		"district": "Atollen"
+		"district": "Atollen",
+    "categories": ["Heminredning"]
 	},
 	{
 		"name": "Carlings",
@@ -138,7 +141,7 @@
 		"name": "Cervera",
 		"url": "cervera.se/hitta-butik/",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Heminredning"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Clas Ohlson",
@@ -168,12 +171,13 @@
 		"name": "Day fotografi",
 		"url": "dayfotografi.se/",
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Elektronik"]
+		"categories": ["Elektronik"]
 	},
 	{
 		"name": "Dinos kemtvätt",
 		"url": "dinos.nu",
-		"district": "Väster"
+		"district": "Väster",
+    "categories": ["Övrigt"]
 	},
 	{
 		"name": "Din Sko",
@@ -197,13 +201,13 @@
 		"name": "Elias Urmästare",
 		"url": "facebook.com/profile.php?id=100064073112753",
 		"district": null,
-		"categories": ["Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Engströms Urmakeri",
 		"url": "engstromsurmakeri.se",
 		"district": null,
-		"categories": ["Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Euroex",
@@ -220,18 +224,20 @@
 	{
 		"name": "Fabriken",
 		"url": "butikfabriken.se",
-		"district": "Atollen"
+		"district": "Atollen",
+    	"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Fiction Prescription",
 		"url": "https://www.instagram.com/fiction.prescription.jonkoping/",
 		"district": null,
-		"categories": ["Övrigt"]
+		"categories": ["Akademi"]
 	},
 	{
 		"name": "Forex Bank Väster",
 		"url": null,
-		"district": "Väster"
+		"district": "Väster",
+    "categories": ["Övrigt"]
 	},
 	{
 		"name": "Foten",
@@ -242,13 +248,14 @@
 	{
 		"name": "Friendly Corner",
 		"url": "https://friendlycorner.se/butiken",
-		"district": "Tändsticksområdet"
+		"district": "Tändsticksområdet",
+		"categories": ["Övrigt"]
 	},
 	{
 		"name": "Galleri 701 ramcenter",
 		"url": "galleri701-ram.se",
 		"district": null,
-		"categories": ["Konst och Hantverk", "Övrigt"]
+		"categories": ["Konst och Hantverk"]
 	},
 	{
 		"name": "Gant",
@@ -260,7 +267,7 @@
 		"name": "Gåvan",
 		"url": "gavanjonkoping.se",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Konst och Hantverk"]
 	},
 	{
 		"name": "Gina Tricot",
@@ -272,13 +279,13 @@
 		"name": "Go Banana",
 		"url": "gobanana.se",
 		"district": "Väster",
-		"categories": ["Sport och Fritid"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Godis och Tobakshörnan",
 		"url": null,
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Golden athlete",
@@ -308,13 +315,13 @@
 		"name": "Hemköp",
 		"url": "hemkop.se/butik/4674",
 		"district": "Väster",
-		"categories": ["Mat och Livsmedel", "Hälsa och Skönhet"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Hemmakväll",
 		"url": "hemmakvall.se/hitta-butik/",
 		"district": "Öster",
-		"categories": ["Hälsa och Skönhet"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Hemtex",
@@ -322,8 +329,7 @@
 		"district": "Öster",
 		"categories": [
 			"Kläder och Accessoarer",
-			"Heminredning",
-			"Hälsa och Skönhet"
+			"Heminredning"
 		]
 	},
 	{
@@ -348,7 +354,7 @@
 		"name": "Indiska",
 		"url": "indiska.com/se/butiker",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Jeansshoppen",
@@ -360,13 +366,13 @@
 		"name": "JL Sycenter",
 		"url": "jlsycenter.se/kontakta-oss/",
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Övrigt"]
 	},
 	{
 		"name": "Jönköpings antik och konsthandel",
 		"url": null,
 		"district": "Väster",
-		"categories": ["Konst och Hantverk", "Övrigt"]
+		"categories": ["Konst och Hantverk"]
 	},
 	{
 		"name": "Jönköpings Cigrarrimport",
@@ -390,13 +396,13 @@
 		"name": "Katrin Bååths Ateljé",
 		"url": "https://katrinbaath.se/ateljen/",
 		"district": "Tändsticksområdet",
-		"categories": ["Konst och Hantverk"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Kicks",
 		"url": "kicks.se/butiker/jonkoping-smedjegatan",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Hälsa och Skönhet"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Kjell & Company",
@@ -414,7 +420,7 @@
 		"name": "KOiJ Konsthantverk",
 		"url": "koij.se",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Konst och Hantverk"]
 	},
 	{
 		"name": "Kristina Brud & Fest",
@@ -426,7 +432,7 @@
 		"name": "Kronans Apotek Atollen",
 		"url": "apoteksinfo.nu/apotek/kronans_apotek_atollen_j%C3%B6nk%C3%B6ping-1415",
 		"district": "Atollen",
-		"categories": ["Hälsa och Skönhet", "Sport och Fritid"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Kvänum Kök",
@@ -444,13 +450,13 @@
 		"name": "Lavér Studio",
 		"url": "laverstudio.com/",
 		"district": null,
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Life Naturlig Hälsa",
 		"url": "https://www.lifebutiken.se/stores",
 		"district": "Väster",
-		"categories": ["Hälsa och Skönhet", "Övrigt"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Lilla Violen",
@@ -474,13 +480,13 @@
 		"name": "Lloyd Tabing Art Gallery",
 		"url": "lloydtabingart.com/",
 		"district": "Tändsticksområdet",
-		"categories": ["Konst och Hantverk", "Övrigt"]
+		"categories": ["Konst och Hantverk"]
 	},
 	{
 		"name": "Macforum",
 		"url": "macforum.se/butiker/forum-jonkoping",
 		"district": "Öster",
-		"categories": ["Elektronik", "Övrigt"]
+		"categories": ["Elektronik"]
 	},
 	{
 		"name": "MarQet",
@@ -492,7 +498,7 @@
 		"name": "Mimosa City",
 		"url": "mimosacity.se",
 		"district": null,
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Moderna Smycken",
@@ -510,7 +516,7 @@
 		"name": "Newhouse",
 		"url": "newhouse.se/newhouse/vara-butiker",
 		"district": "Atollen",
-		"categories": ["Heminredning", "Sport och Fritid"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "New Yorker",
@@ -522,7 +528,7 @@
 		"name": "Nilson Shoes",
 		"url": "dinsko.se/stores",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Heminredning"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Noa Noa",
@@ -540,25 +546,25 @@
 		"name": "Normal",
 		"url": "normal.se/hitta-butik/",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Övrigt"]
 	},
 	{
 		"name": "Nya Musik",
 		"url": "nyamusik.se/",
 		"district": "Väster",
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Övrigt"]
 	},
 	{
 		"name": "Once for girls",
 		"url": "oncestore.se/",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Önska",
 		"url": "onska.se/vara-butiker/",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer"]
+		"categories": ["Heminredning"]
 	},
 	{
 		"name": "Optiker Jahnke",
@@ -569,7 +575,9 @@
 	{
 		"name": "Optiker Ullström",
 		"url": "optikerullstrom.se/",
-		"district": ["Hälsa och Skönhet"]
+		"district": "Väster",
+		"categories": ["Hälsa och Skönhet"]
+
 	},
 	{
 		"name": "Optik & Form",
@@ -589,35 +597,41 @@
 		"district": "Väster",
 		"categories": ["Heminredning"]
 	},
+  {
+    "name": "Pleasure erotic shop",
+    "url": "pleasureeroticshop.se/",
+    "district": "Väster",
+    "categories": ["Hälsa och Skönhet"]
+  },
 	{
 		"name": "PMU Second Hand Jönköping City",
 		"url": "pmu.se/stores/jonkopingcity/",
 		"district": "Öster",
-		"categories": ["Elektronik", "Övrigt"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Pressbyrån Östra storgatan",
 		"url": "pressbyran.se/kontakt/hitta-butik/",
 		"district": "Öster",
-		"categories": ["Övrigt"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Pressbyrån Resecentrum",
 		"url": "pressbyran.se/kontakt/hitta-butik/",
 		"district": "Resecentrum",
-		"categories": ["Övrigt"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Pressbyrån Väster",
 		"url": "pressbyran.se/kontakt/hitta-butik/",
 		"district": "Väster",
-		"categories": ["Övrigt"]
+		"categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Rabalder",
 		"url": "publik.rabalder.se/butiker/joenkoeping.aspx",
 		"district": "Öster",
-		"categories": ["Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Resehuset",
@@ -629,25 +643,25 @@
 		"name": "Rituals",
 		"url": "rituals.com/sv-se/store-detail?store=J%C3%B6nk%C3%B6ping-%C3%96stra-Storgatan",
 		"district": "Öster",
-		"categories": ["Hälsa och Skönhet", "Övrigt"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Rizzo",
 		"url": "rizzo.se/stores/",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Heminredning"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Röda Korset Second Hand ",
 		"url": "rodakorset.se/vad-vi-gor/second-hand/butiker/roda-korset-secondhand-jonkoping/?gclid=CjwKCAjwzY2bBhB6EiwAPpUpZvHzKjPuEJP8mzdhkuZYuEUoinVduEX8lEL6C0cnHq-JkG5o4XalYBoCwX8QAvD_BwE",
 		"district": "Väster",
-		"categories": ["Övrigt"]
+		"categories": ["Kläder och Accessoarer","Heminredning"]
 	},
 	{
 		"name": "Rundquist & Zälle",
 		"url": "rundquist-zalle.com",
 		"district": "Väster",
-		"categories": ["Heminredning"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Säfvers Tobak",
@@ -683,37 +697,37 @@
 		"name": "Sjöqvists skomakeri",
 		"url": "sjoqvistskomakeri.se/",
 		"district": "Väster",
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Smålands Skinnmanufaktur",
 		"url": "smalandsskinnmanufaktur.se/",
 		"district": "Tändsticksområdet",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Heminredning", "Konst och Hantverk"]
 	},
 	{
 		"name": "Smarteyes",
 		"url": "smarteyes.se/butiker/jonkoping",
 		"district": null,
-		"categories": ["Elektronik", "Hälsa och Skönhet"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Smycka Guld",
 		"url": "smycka.se/store/19",
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Smycket",
 		"url": "smycketjonkoping.se/",
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Specsavers",
 		"url": "httpspecsavers.se/hitta-till-din-butik/jonkoping-city?utm_source=google&utm_medium=organic&utm_campaign=gmb-website&utm_content=jonkoping&y_source=1_NDA4Nzk2NjQtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Elektronik", "Hälsa och Skönhet"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Stagelight",
@@ -731,41 +745,37 @@
 		"name": "Story",
 		"url": "storyjkpg.se",
 		"district": "Atollen",
-		"categories": [
-			"Kläder och Accessoarer",
-			"Konst och Hantverk",
-			"Heminredning"
-		]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "SunOff",
 		"url": "sunoff.se/butiker/jonkoping?gclid=CjwKCAjw8JKbBhBYEiwAs3sxNy3EnUFGceeFxyJN35fymdpsg5qEWUTPj6Sx0TbNoLdwp8E6AI-I5xoC45gQAvD_BwE",
 		"district": "Väster",
-		"categories": ["Sport och Fritid"]
+		"categories": ["Övrigt"]
 	},
 	{
 		"name": "Synoptik",
 		"url": "httpsynoptik.se/butiker/jonkoping/jonkoping-ostra-storgatan5?utm_campaign=gmb-website&utm_source=google&utm_medium=organic&utm_content=667-Jonkoping-Ostra-Storgatan-5",
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Hälsa och Skönhet", "Elektronik"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Synsam Jönköping Öster",
 		"url": "synsam.se/optiker/synsam-j%C3%B6nk%C3%B6ping-%C3%B6ster/128",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Hälsa och Skönhet", "Elektronik"]
+		"categories": ["Hälsa och Skönhet", "Elektronik"]
 	},
 	{
 		"name": "Synsam Jönköping Väster",
 		"url": "synsam.se/optiker/synsam-j%C3%B6nk%C3%B6ping-v%C3%A4ster/125",
 		"district": "Väster",
-		"categories": ["Kläder och Accessoarer", "Hälsa och Skönhet", "Elektronik"]
+		"categories": ["Hälsa och Skönhet"]
 	},
 	{
 		"name": "Systembolaget",
 		"url": "systembolaget.se/butiker-ombud/",
 		"district": "Öster",
-		"categories": ["Mat och Livsmedel"]
+		"categories": ["Övrigt"]
 	},
 	{
 		"name": "The Body Shop",
@@ -783,7 +793,7 @@
 		"name": "Twilfit",
 		"url": "shop.change.com/sv-SE",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Hälsa och Skönhet"]
+		"categories": ["Kläder och Accessoarer"]
 	},
 	{
 		"name": "Ur & Penn",
@@ -794,13 +804,14 @@
 	{
 		"name": "Västanhem Butik",
 		"url": "vastanhem.se",
-		"district": "Väster"
+		"district": "Väster",
+    "categories": ["Heminredning"]
 	},
 	{
 		"name": "Västra klackbaren",
 		"url": null,
 		"district": null,
-		"categories": ["Kläder och Accessoarer", "Övrigt"]
+		"categories": [ "Övrigt"]
 	},
 	{
 		"name": "Vätterbygden Ankarbergs Begravningsbyrå",
@@ -811,7 +822,8 @@
 	{
 		"name": "Vätterfisk",
 		"url": "xn--vtterfisk-v2a.se/",
-		"district": "Väster"
+		"district": "Väster",
+    "categories": ["Mat och Livsmedel"]
 	},
 	{
 		"name": "Yxhage Lås och Larm",
@@ -823,6 +835,6 @@
 		"name": "Zephyr Tattoo Parlour",
 		"url": "zephyrtattoo.se",
 		"district": "Öster",
-		"categories": ["Kläder och Accessoarer", "Konst och Hantverk"]
+		"categories": ["Konst och Hantverk"]
 	}
 ]
