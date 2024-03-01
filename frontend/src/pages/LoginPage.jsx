@@ -46,7 +46,7 @@ export default function SignInSide() {
 	/* 	const errRef = useRef();
 	const userRef = useRef(); */
 	axios.defaults.withCredentials = true;
-	const { login, logout } = useContext(AuthContext);
+	const { login } = useContext(AuthContext);
 	const [checked, setChecked] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
