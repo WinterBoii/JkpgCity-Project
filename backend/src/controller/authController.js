@@ -34,7 +34,13 @@ const login_post = async (req, res) => {
     }
 } 
 
+const logout_post = (req, res) => {
+    res.clearCookie('jwt');
+    res.status(200).json({message: 'Logged out'});
+}
+
 module.exports ={
     signup_post,
-    login_post
+    login_post,
+    logout_post
 }
