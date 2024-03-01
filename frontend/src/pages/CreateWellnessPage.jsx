@@ -30,7 +30,7 @@ const validationSchema = Yup.object({
 
 const baseUrl = 'http://localhost:3001';
 
-export default function CreateStorePage({ wellnessData }) {
+export default function CreateWellnessPage({ wellnessData }) {
 	const { auth } = useContext(AuthContext);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState(null);

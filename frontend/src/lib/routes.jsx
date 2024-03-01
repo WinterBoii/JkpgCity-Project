@@ -22,7 +22,7 @@ const routes = [
 	},
 	{
 		path: '/wellness/edit',
-		element: <CreateWellnessPage />,
+		element: <CreateWellnessPage wellnessData />,
 		exact: false,
 	},
 	{
