@@ -1,66 +1,88 @@
 import { useState, useContext, useEffect } from 'react';
-import { Grid, TextField, Box, Container, Select, MenuItem, InputLabel, FormControl, Button, Typography } from '@mui/material';
-import { theme } from '../lib/utils/Theme';
-import AuthContext from '../lib/AuthProvider';
-import axios from 'axios';
+import {
+	InputLabel,
+	Grid,
+	TextField,
+	Container,
+	Select,
+	MenuItem,
+	FormControl,
+	Button,
+	Typography,
+	CircularProgress,
+	Box,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import AuthContext from '../lib/AuthProvider';
+import { theme } from '../lib/utils/Theme';
+import ErrorPage from './ErrorPage';
 
-const baseUrl = 'http://localhost:3001';
+const validationSchema = Yup.object({
+	name: Yup.string().required('Name is required'),
+	url: Yup.string().url('Must be a valid URL').required('URL is required'),
+	district: Yup.string().required('District is required'),
+	category: Yup.string().required('Category is required'),
+});
 
-export default function CreateStorePage() {
-  const [errMsg, setErrMsg] = useState('');
+export default function CreateSstorePage() {
 	const { auth } = useContext(AuthContext);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitError, setSubmitError] = useState(null);
+
 	const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
 
-  const initialFValues = {
-    name: '',
-    url: '',
-    district: '',
-    category: '',
-  };
+	useEffect(() => {
+		if (!auth.user) {
+			navigate('/login');
+		}
+	}, [auth, navigate]);
 
-  const [values, setValues] = useState(initialFValues);
-
-    useEffect(() => {
+	const formik = useFormik({
+		initialValues: {
+			name: '',
+			url: '',
+			district: '',
+			category: '',
+		},
+		validationSchema: validationSchema,
+		onSubmit: async (values) => {
 			if (!auth.user) {
-				navigate('/login');
+				setSubmitError('You must be logged in to create a store');
+				return;
 			}
-		}, [auth.user, navigate]);
 
-  const handleInputChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+			try {
+				setIsSubmitting(true);
+				setSubmitError(null);
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
+				const response = await axios.post('/api/create', values);
 
-    if (!auth.user) {
-			setErrMsg('You must be logged in to create a store');
-			return;
-		}
-		// Check if district is "övrigt" and null it before submission
-		const formValues = { ...values };
-		if (formValues.district === 'övrigt') {
-			formValues.district = null;
-		}
+				setIsSubmitting(false);
 
-		try {
-			const response = await axios.post(baseUrl + '/create', formValues);
-
-			if (response.status === 200) {
-				// Redirect to success page
-				navigate('/stores');
-			} else {
-				throw new Error('Failed to create store');
+				if (response.status === 200) {
+					navigate('/stores');
+				} else {
+					throw new Error('Failed to create');
+				}
+			} catch (error) {
+				setIsSubmitting(false);
+				setSubmitError(error.message);
 			}
-		} catch (error) {
-			console.error('Creation error:', error);
-			setErrMsg('Unknown error occurred. Please try again later.');
-		}
-	};
+		},
+	});
 
-  return (
+	if (isSubmitting) {
+		return <CircularProgress />;
+	}
+
+	if (submitError) {
+		return <ErrorPage error={submitError} />;
+	}
+
+	return (
 		<Container
 			maxWidth='lg'
 			sx={{
@@ -72,37 +94,37 @@ export default function CreateStorePage() {
 			<Box
 				component='form'
 				noValidate
-				onSubmit={handleSubmit}
+				onSubmit={formik.handleSubmit}
 				sx={{
 					m: '5rem',
 					color: theme.palette.third.text,
 				}}
 			>
-				<Typography
-					variant='h3'
-					sx={{
-						textAlign: 'center',
-						mb: 3,
-						pt: 5,
-					}}
-				>
-					Add a Store
-				</Typography>
 				<Grid
 					justifyContent={{ xs: 'center', md: 'space-around' }}
 					alignItems={{ xs: 'center', md: 'flex-start' }}
 				>
-					{errMsg ? (
-						<Typography sx={{ textAlign: 'center', color: 'red', mb: 2 }}>
-							{errMsg}
-						</Typography>
-					) : null}
+					<Typography
+						variant='h3'
+						sx={{
+							textAlign: 'center',
+							mb: 3,
+							pt: 5,
+						}}
+					>
+						Add a Store
+					</Typography>
+
 					<TextField
 						variant='filled'
+						fullWidth
+						id='name'
+						name='name'
 						label='Name'
-						value={values.name}
-						fullWidth
-						onChange={handleInputChange('name')}
+						value={formik.values.name}
+						onChange={formik.handleChange}
+						error={formik.touched.name && Boolean(formik.errors.name)}
+						helperText={formik.touched.name && formik.errors.name}
 						sx={{
 							'& .MuiInputBase-input': {
 								color: theme.palette.third.text,
@@ -111,12 +133,17 @@ export default function CreateStorePage() {
 							mb: 5,
 						}}
 					/>
+
 					<TextField
 						variant='filled'
-						label='Url'
-						value={values.url}
 						fullWidth
-						onChange={handleInputChange('url')}
+						id='url'
+						name='url'
+						label='Website URL'
+						value={formik.values.url}
+						onChange={formik.handleChange}
+						error={formik.touched.url && Boolean(formik.errors.url)}
+						helperText={formik.touched.url && formik.errors.url}
 						sx={{
 							'& .MuiInputBase-input': {
 								color: theme.palette.third.text,
@@ -125,23 +152,26 @@ export default function CreateStorePage() {
 							mb: 5,
 						}}
 					/>
+
 					<FormControl
 						fullWidth
 						variant='filled'
 						sx={{ mb: 5 }}
+						error={formik.touched.district && Boolean(formik.errors.district)}
 					>
 						<InputLabel id='district-label'>District</InputLabel>
 						<Select
 							labelId='district-label'
-							value={values.district}
-							onChange={handleInputChange('district')}
-							label='District'
+							label='district'
+							id='district'
+							name='district'
+							value={formik.values.district}
+							onChange={formik.handleChange}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.third.text,
 									backgroundColor: theme.palette.third.main,
 								},
-								width: '100%',
 							}}
 						>
 							<MenuItem value='district1'>Atollen</MenuItem>
@@ -152,35 +182,44 @@ export default function CreateStorePage() {
 							<MenuItem value='district3'>Övrigt</MenuItem>
 						</Select>
 					</FormControl>
+
 					<FormControl
 						fullWidth
 						variant='filled'
 						sx={{ mb: 5 }}
+						error={formik.touched.category && Boolean(formik.errors.category)}
 					>
 						<InputLabel id='category-label'>Category</InputLabel>
 						<Select
 							labelId='category-label'
-							value={values.category}
-							onChange={handleInputChange('category')}
-							label='Category'
+							id='category'
+							name='category'
+							value={formik.values.category}
+							onChange={formik.handleChange}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.third.text,
 									backgroundColor: theme.palette.third.main,
 								},
-								mb: 5,
 							}}
 						>
-							<MenuItem value='category1'>Kläder och Accessoarer</MenuItem>
-							<MenuItem value='category2'>Elektronik</MenuItem>
-							<MenuItem value='category3'>Mat och Livsmedel</MenuItem>
-							<MenuItem value='category4'>Heminredning</MenuItem>
-							<MenuItem value='category5'>Konst och Hantverk</MenuItem>
-							<MenuItem value='category6'>Sport och Fritid</MenuItem>
-							<MenuItem value='category7'>Hälsa och Skönhet</MenuItem>
-							<MenuItem value='category8'>Övrigt</MenuItem>
+							<MenuItem value='category1'>
+								Fittnesscenter och Träningsstudior
+							</MenuItem>
+							<MenuItem value='category2'>
+								Frisörsalonger och Barberare
+							</MenuItem>
+							<MenuItem value='category3'>Hälsokliner</MenuItem>
+							<MenuItem value='category4'>Massage och Spa</MenuItem>
+							<MenuItem value='category5'>Nagelsalonger</MenuItem>
+							<MenuItem value='category6'>
+								Skönhetssalonger och Hudvårdskliniker
+							</MenuItem>
+							<MenuItem value='category7'>Tatueringssalonger</MenuItem>
+							<MenuItem value='category8'>Yoga och Meditation</MenuItem>
 						</Select>
 					</FormControl>
+
 					<Box textAlign='center'>
 						<Button
 							variant='contained'

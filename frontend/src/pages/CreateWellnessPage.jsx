@@ -1,6 +1,18 @@
-import { useState, useContext } from 'react';
-import { InputLabel, Grid, TextField, Container, Select, MenuItem, FormControl, Button, Typography, CircularProgress, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';  
+import { useState, useContext, useEffect } from 'react';
+import {
+	InputLabel,
+	Grid,
+	TextField,
+	Container,
+	Select,
+	MenuItem,
+	FormControl,
+	Button,
+	Typography,
+	CircularProgress,
+	Box,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -9,64 +21,68 @@ import { theme } from '../lib/utils/Theme';
 import ErrorPage from './ErrorPage';
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('Name is required'),
-  url: Yup.string().url('Must be a valid URL').required('URL is required'),
-  rating: Yup.number().required('Rating is required').min(1).max(5),
-  category: Yup.string().required('Category is required'),
+	name: Yup.string().required('Name is required'),
+	url: Yup.string().url('Must be a valid URL').required('URL is required'),
+	rating: Yup.number().required('Rating is required').min(1).max(5),
+	category: Yup.string().required('Category is required'),
 });
 
 export default function CreateWellnessPage() {
-  const { auth } = useContext(AuthContext);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState(null);
+	const { auth } = useContext(AuthContext);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [submitError, setSubmitError] = useState(null);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      url: '',
-      rating: '',
-      category: ''
-    },
-    validationSchema: validationSchema,
-    onSubmit: async (values) => {
+	useEffect(() => {
+		if (!auth.user) {
+			navigate('/login');
+		}
+	}, [auth, navigate]);
 
-      if (!auth.user) {
+	const formik = useFormik({
+		initialValues: {
+			name: '',
+			url: '',
+			rating: '',
+			category: '',
+		},
+		validationSchema: validationSchema,
+		onSubmit: async (values) => {
+			if (!auth.user) {
 				setSubmitError('You must be logged in to create a store');
 				return;
 			}
 
-      try {
-        setIsSubmitting(true);
-        setSubmitError(null);
+			try {
+				setIsSubmitting(true);
+				setSubmitError(null);
 
-        const response = await axios.post('/api/create', values);
-        
-        setIsSubmitting(false);
+				const response = await axios.post('/api/create', values);
 
-        if (response.status === 200) {
-          navigate('/wellness');
-        } else {
-          throw new Error('Failed to create');
-        }
+				setIsSubmitting(false);
 
-      } catch (error) {
-        setIsSubmitting(false);
-        setSubmitError(error.message);
-      }
-    },
-  });
+				if (response.status === 200) {
+					navigate('/wellness');
+				} else {
+					throw new Error('Failed to create');
+				}
+			} catch (error) {
+				setIsSubmitting(false);
+				setSubmitError(error.message);
+			}
+		},
+	});
 
-  if (isSubmitting) {
-    return <CircularProgress />
-  }
+	if (isSubmitting) {
+		return <CircularProgress />;
+	}
 
-  if (submitError) {
-    return <ErrorPage error={submitError} />;
-  }
+	if (submitError) {
+		return <ErrorPage error={submitError} />;
+	}
 
-  return (
+	return (
 		<Container
 			maxWidth='lg'
 			sx={{
@@ -141,6 +157,7 @@ export default function CreateWellnessPage() {
 						fullWidth
 						variant='filled'
 						sx={{ mb: 5 }}
+						error={formik.touched.rating && Boolean(formik.errors.rating)}
 					>
 						<InputLabel id='rating-label'>Rating</InputLabel>
 						<Select
@@ -150,7 +167,6 @@ export default function CreateWellnessPage() {
 							name='rating'
 							value={formik.values.rating}
 							onChange={formik.handleChange}
-							error={formik.touched.rating && Boolean(formik.errors.rating)}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.third.text,
@@ -170,6 +186,7 @@ export default function CreateWellnessPage() {
 						fullWidth
 						variant='filled'
 						sx={{ mb: 5 }}
+						error={formik.touched.category && Boolean(formik.errors.category)}
 					>
 						<InputLabel id='category-label'>Category</InputLabel>
 						<Select
@@ -178,7 +195,6 @@ export default function CreateWellnessPage() {
 							name='category'
 							value={formik.values.category}
 							onChange={formik.handleChange}
-							error={formik.touched.category && Boolean(formik.errors.category)}
 							sx={{
 								'& .MuiInputBase-input': {
 									color: theme.palette.third.text,
@@ -221,5 +237,4 @@ export default function CreateWellnessPage() {
 			</Box>
 		</Container>
 	);
-
 }
