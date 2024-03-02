@@ -19,6 +19,7 @@ import CategoryBox from '../components/CategoryBox';
 import TitleDescription from '../components/TitleDescription';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { theme } from '../lib/utils/Theme';
 
 const baseUrl = 'http://localhost:3001';
 
@@ -37,10 +38,21 @@ export default function StoresPage() {
 	const [stores, setStores] = useState([]);
 
 	useEffect(() => {
-		// Call API to fetch stores
-		axios.get(baseUrl + '/stores').then((res) => {
-			setStores(res.data);
-		});
+		const fetchStores = async () => {
+			try {
+				const res = await axios.get(baseUrl + '/stores');
+				console.log(res.data);
+				if (Array.isArray(res.data.stores)) {
+					setStores(res.data.stores);
+				} else {
+					console.error('Data received is not an array:', res.data.stores);
+				}
+			} catch (error) {
+				console.error('Error fetching stores:', error);
+			}
+		};
+
+		fetchStores();
 	}, [setStores]);
 
 	return (
@@ -87,7 +99,6 @@ export default function StoresPage() {
 								xs={12}
 								sm={6}
 								md={4}
-								lg={2}
 								key={store.id}
 							>
 								<StoreCard store={store} />
@@ -102,7 +113,14 @@ export default function StoresPage() {
 
 function StoreCard({ store }) {
 	return (
-		<Card>
+		<Card
+			sx={{
+				color: theme.palette.third.text,
+				borderRadius: '12px',
+				textTransform: 'none',
+				minHeight: '100%',
+			}}
+		>
 			<CardContent>
 				<Typography
 					variant='h5'
@@ -110,7 +128,29 @@ function StoreCard({ store }) {
 				>
 					{store.name}
 				</Typography>
-				<Typography variant='body2'>{}</Typography>
+				<Typography variant='body2'>{store.district}</Typography>
+				<Typography variant='body2'>
+					{store.url && (
+						<a
+							href={store.url}
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							Visit Store
+						</a>
+					)}
+				</Typography>
+				{store.categories.length > 1 ? (
+					store.categories.map((category) => (
+						<Box key={category}>
+							<Typography variant='body2'>{category}</Typography>
+						</Box>
+					))
+				) : (
+					<Box sx={{ flexShrink: 0 }}>
+						<Typography variant='body2'>{store.categories}</Typography>
+					</Box>
+				)}
 			</CardContent>
 		</Card>
 	);
