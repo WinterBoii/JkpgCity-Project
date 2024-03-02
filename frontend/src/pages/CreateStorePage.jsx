@@ -28,6 +28,8 @@ const validationSchema = Yup.object({
 	category: Yup.string().required('Category is required'),
 });
 
+const baseUrl = 'http://localhost:3001';
+
 export default function CreateStorePage({ storeData }) {
 	const { auth } = useContext(AuthContext);
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,7 +69,7 @@ export default function CreateStorePage({ storeData }) {
 				if (storeData) {
 					// Update
 					const response = await axios.put(
-						`/api/stores/${storeData.id}/edit`,
+						baseUrl + `/stores/${storeData.id}/edit`,
 						values
 					);
 
@@ -80,7 +82,7 @@ export default function CreateStorePage({ storeData }) {
 					}
 				} else {
 					// Create
-					const response = await axios.post('/api/stores/create', values);
+					const response = await axios.post(baseUrl + '/stores/create', values);
 
 					setIsSubmitting(false);
 
