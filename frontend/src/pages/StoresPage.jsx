@@ -91,7 +91,7 @@ export default function StoresPage() {
           /> */}
 					<Grid
 						container
-						spacing={2}
+						spacing={3}
 					>
 						{stores.map((store) => (
 							<Grid
