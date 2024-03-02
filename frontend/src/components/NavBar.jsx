@@ -10,6 +10,10 @@ import {
 	useMediaQuery,
 	useTheme,
 	Container,
+	MenuItem,
+	Menu,
+	Avatar,
+	Divider,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { theme } from '../lib/utils/Theme';
@@ -22,6 +26,17 @@ function NavBar() {
 	const location = useLocation();
 	const itheme = useTheme();
 	const isMobile = useMediaQuery(itheme.breakpoints.down('sm'));
+
+	// Add state for the avatar menu
+	const [anchorEl, setAnchorEl] = useState(null);
+
+	const handleAvatarClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleAvatarClose = () => {
+		setAnchorEl(null);
+	};
 
 	useEffect(() => {
 		// Check if the user is logged in
@@ -104,14 +119,49 @@ function NavBar() {
 										<Typography>{item.text}</Typography>
 									</Button>
 								))}
-								<Button
-									variant='text'
-									color='inherit'
-									component={NavLink}
-									onClick={handleLogout}
-								>
-									{auth.loggedIn ? 'Logga ut' : 'Logga in'}
-								</Button>
+								{auth.loggedIn ? (
+									<>
+										<IconButton>
+											<Avatar
+												onClick={handleAvatarClick}
+												sx={{ width: 48, height: 48 }}
+											/>
+											<Menu
+												anchorEl={anchorEl}
+												open={Boolean(anchorEl)}
+												onClose={handleAvatarClose}
+											>
+												<MenuItem onClick={() => navigate('/stores/create')}>
+													Create Store
+												</MenuItem>
+												<MenuItem onClick={() => navigate('/wellness/create')}>
+													Create Wellness
+												</MenuItem>
+												<Divider sx={{ my: 0.5 }} />
+												<MenuItem onClick={handleLogout}>Logout</MenuItem>
+											</Menu>
+										</IconButton>
+									</>
+								) : (
+									<Button
+										variant='contained'
+										onClick={() => navigate('/login')}
+										size='large'
+										sx={{
+											marginLeft: '1rem',
+											bgcolor: theme.palette.third.main,
+											color: theme.palette.primary.main,
+											borderRadius: '24px',
+											paddingX: '2rem',
+											textTransform: 'none',
+											'&:hover': {
+												color: theme.palette.third.main,
+											},
+										}}
+									>
+										<Typography variant='h6'>Logga in</Typography>
+									</Button>
+								)}
 							</Drawer>
 						</>
 					) : (
@@ -149,28 +199,49 @@ function NavBar() {
 									<Typography variant='h5'>{item.text}</Typography>
 								</Button>
 							))}
-							<Button
-								variant='contained'
-								onClick={
-									auth.loggedIn ? handleLogout : () => navigate('/login')
-								}
-								size='large'
-								sx={{
-									marginLeft: '1rem',
-									bgcolor: theme.palette.third.main,
-									color: theme.palette.primary.main,
-									borderRadius: '24px',
-									paddingX: '2rem',
-									textTransform: 'none',
-									'&:hover': {
-										color: theme.palette.third.main,
-									},
-								}}
-							>
-								<Typography variant='h6'>
-									{auth.loggedIn ? 'Logga ut' : 'Logga in'}
-								</Typography>
-							</Button>
+							{auth.loggedIn ? (
+								<>
+									<IconButton>
+										<Avatar
+											onClick={handleAvatarClick}
+											sx={{ width: 48, height: 48 }}
+										/>
+										<Menu
+											anchorEl={anchorEl}
+											open={Boolean(anchorEl)}
+											onClose={handleAvatarClose}
+										>
+											<MenuItem onClick={() => navigate('/stores/create')}>
+												Create Store
+											</MenuItem>
+											<MenuItem onClick={() => navigate('/wellness/create')}>
+												Create Wellness
+											</MenuItem>
+											<Divider sx={{ my: 0.5 }} />
+											<MenuItem onClick={handleLogout}>Logout</MenuItem>
+										</Menu>
+									</IconButton>
+								</>
+							) : (
+								<Button
+									variant='contained'
+									onClick={() => navigate('/login')}
+									size='large'
+									sx={{
+										marginLeft: '1rem',
+										bgcolor: theme.palette.third.main,
+										color: theme.palette.primary.main,
+										borderRadius: '24px',
+										paddingX: '2rem',
+										textTransform: 'none',
+										'&:hover': {
+											color: theme.palette.third.main,
+										},
+									}}
+								>
+									<Typography variant='h6'>Logga in</Typography>
+								</Button>
+							)}
 						</>
 					)}
 				</Toolbar>
