@@ -167,9 +167,9 @@ function NavBar() {
 					) : (
 						<>
 							<Typography
-								variant='h3'
+								variant='h2'
 								component='div'
-								sx={{ flexGrow: 1 }}
+								sx={{ flexGrow: 1, fontWeight: 500 }}
 							>
 								Jönköping City
 							</Typography>
