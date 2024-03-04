@@ -85,6 +85,7 @@ export default function StoresPage() {
 					<Grid
 						container
 						spacing={3}
+						justifyContent={'center'}
 					>
 						{stores.map((store) => (
 							<Grid
