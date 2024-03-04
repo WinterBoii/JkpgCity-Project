@@ -54,7 +54,7 @@ export default function WellnessPage() {
 			mt='5rem'
 		>
 			<TitleDescription
-				title='Shoppa'
+				title='Wellness'
 				description='I JkpCity hittar du både butiker och affärer som erbjuder allt från loppis
           och second hand, till blommor, skor, kläder och inredning.'
 			/>

@@ -9,7 +9,7 @@ function HomePage() {
 		<Box
 			color={'third.text'}
 			mt='5rem'
-			textTransform='none' 
+			textTransform='none'
 		>
 			<TitleDescription
 				title='Välkommen Till Ditt Jönköping'
