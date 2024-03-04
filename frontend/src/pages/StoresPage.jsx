@@ -1,13 +1,6 @@
 /* eslint-disable react/prop-types */
-import {
-	Container,
-	Box,
-	Typography,
-	Grid,
-	CardContent,
-	Card,
-} from '@mui/material';
-import CheckroomIcon from '@mui/icons-material/Checkroom';
+import { Container, Box, Grid } from '@mui/material';
+/* import CheckroomIcon from '@mui/icons-material/Checkroom';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
@@ -15,15 +8,15 @@ import ImagesearchRollerOutlinedIcon from '@mui/icons-material/ImagesearchRoller
 import SportsTennisOutlinedIcon from '@mui/icons-material/SportsTennisOutlined';
 import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
-import CategoryBox from '../components/CategoryBox';
+import CategoryBox from '../components/CategoryBox'; */
 import TitleDescription from '../components/TitleDescription';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { theme } from '../lib/utils/Theme';
+import { ItemCard } from '../components/ItemCard';
 
 const baseUrl = 'http://localhost:3001';
 
-const shopCategory = [
+/* const shopCategory = [
 	{ icon: <CheckroomIcon />, text: 'Kläder och Accessoarer' },
 	{ icon: <LightbulbOutlinedIcon />, text: 'Elektronik' },
 	{ icon: <RestaurantOutlinedIcon />, text: 'Mat och Livsmedel' },
@@ -33,7 +26,7 @@ const shopCategory = [
 	{ icon: <SpaOutlinedIcon />, text: 'Hälsa och Skönhet' },
 	{ icon: <ShuffleOutlinedIcon />, text: 'Övrigt' },
 ];
-
+ */
 export default function StoresPage() {
 	const [stores, setStores] = useState([]);
 
@@ -101,57 +94,12 @@ export default function StoresPage() {
 								md={4}
 								key={store.id}
 							>
-								<StoreCard store={store} />
+								<ItemCard data={store} />
 							</Grid>
 						))}
 					</Grid>
 				</Container>
 			</Box>
 		</Box>
-	);
-}
-
-function StoreCard({ store }) {
-	return (
-		<Card
-			sx={{
-				color: theme.palette.third.text,
-				borderRadius: '12px',
-				textTransform: 'none',
-				minHeight: '100%',
-			}}
-		>
-			<CardContent>
-				<Typography
-					variant='h5'
-					component='div'
-				>
-					{store.name}
-				</Typography>
-				<Typography variant='body2'>{store.district}</Typography>
-				<Typography variant='body2'>
-					{store.url && (
-						<a
-							href={store.url}
-							target='_blank'
-							rel='noopener noreferrer'
-						>
-							Visit Store
-						</a>
-					)}
-				</Typography>
-				{store.categories.length > 1 ? (
-					store.categories.map((category) => (
-						<Box key={category}>
-							<Typography variant='body2'>{category}</Typography>
-						</Box>
-					))
-				) : (
-					<Box sx={{ flexShrink: 0 }}>
-						<Typography variant='body2'>{store.categories}</Typography>
-					</Box>
-				)}
-			</CardContent>
-		</Card>
 	);
 }

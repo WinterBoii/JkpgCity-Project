@@ -44,7 +44,4 @@ const insertWellnessFromWellnessData = async () => {
 	console.log('All Wellness data inserted successfully');
 };
 
-module.exports = {
-	Wellness,
-	insertWellnessFromWellnessData,
-};
+module.exports = Wellness;
