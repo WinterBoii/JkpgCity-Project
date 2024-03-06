@@ -19,16 +19,17 @@ export function ItemCard({ data }) {
 				>
 					{data.name}
 				</Typography>
-				{data.rating ? (
+				{data.rating && (
 					<Typography variant='body2'>Rating: {data.rating}</Typography>
-				) : (
+				)}
+				{data.district && (
 					<Typography variant='body2'>District: {data.district}</Typography>
 				)}
 
 				<Typography variant='body2'>
 					{data.url && (
 						<a
-							href={data.url}
+							href={'https//' + data.url}
 							target='_blank'
 							rel='noopener noreferrer'
 						>

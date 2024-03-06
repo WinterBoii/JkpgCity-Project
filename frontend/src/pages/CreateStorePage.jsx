@@ -45,9 +45,9 @@ export default function CreateStorePage({ storeData }) {
 	});
 
 	useEffect(() => {
-		/* if (!auth.user) {
+		if (!auth.user) {
 			navigate('/login');
-		} */
+		}
 		if (storeData) {
 			setInitialValues(storeData);
 		}
@@ -83,7 +83,7 @@ export default function CreateStorePage({ storeData }) {
 				} else {
 					// Create
 					const response = await axios.post(baseUrl + '/stores/create', values);
-
+					console.log(response);
 					setIsSubmitting(false);
 
 					if (response.status === 200) {
@@ -239,18 +239,14 @@ const CreateStoreForm = ({ formik }) => {
 							},
 						}}
 					>
-						<MenuItem value='category1'>
-							Fittnesscenter och Träningsstudior
-						</MenuItem>
-						<MenuItem value='category2'>Frisörsalonger och Barberare</MenuItem>
-						<MenuItem value='category3'>Hälsokliner</MenuItem>
-						<MenuItem value='category4'>Massage och Spa</MenuItem>
-						<MenuItem value='category5'>Nagelsalonger</MenuItem>
-						<MenuItem value='category6'>
-							Skönhetssalonger och Hudvårdskliniker
-						</MenuItem>
-						<MenuItem value='category7'>Tatueringssalonger</MenuItem>
-						<MenuItem value='category8'>Yoga och Meditation</MenuItem>
+						<MenuItem value='category1'>Kläder och Accessoarer</MenuItem>
+						<MenuItem value='category2'>Elektronik</MenuItem>
+						<MenuItem value='category3'>Mat och Livsmedel</MenuItem>
+						<MenuItem value='category4'>Heminredning</MenuItem>
+						<MenuItem value='category5'>Konst och Hantverk</MenuItem>
+						<MenuItem value='category6'>Sport och Fritid</MenuItem>
+						<MenuItem value='category7'>Hälsa och Skönhet</MenuItem>
+						<MenuItem value='category8'>Övrigt</MenuItem>
 					</Select>
 				</FormControl>
 
