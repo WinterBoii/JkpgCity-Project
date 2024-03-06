@@ -10,9 +10,13 @@ const createToken = (id) => {
 }
 
 const signup_post = async (req, res) => {
-	const { email, password } = req.body;
+	// const { email, password } = req.body;
+    const data = {
+		email: req.body.email,
+		password: req.body.password
+	};
 	try {
-		const user = await User.create({ email, password });
+		const user = await User.create(data);
 		const token = createToken(user._id);
 		res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
 		res.status(200).json({ user: user._id });
@@ -24,8 +28,12 @@ const signup_post = async (req, res) => {
 
 const login_post = async (req, res) => {
     const { email, password } = req.body;
+    // const data = {
+	// 	email: req.body.email,
+	// 	password: req.body.password
+	// };
     try {
-        const user = await User.login(email, password)
+        const user = await User.login(email, password);
         const token = createToken(user._id)
         res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
         res.status(200).json({user: user.email});
