@@ -1,104 +1,245 @@
-import React, { useState } from 'react';
-import {
-  Grid,
-  TextField,
-  Box,
-  Container,
-  Button,
-  Typography,
-} from '@mui/material';
+// eslint-disable-next-line no-unused-vars
+import { useRef, useState, useEffect, useContext } from 'react';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { IconButton, InputAdornment } from '@mui/material';
+import bgImg from '../assets/background.jpg';
 import { theme } from '../lib/utils/Theme';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import AuthContext from '../lib/AuthProvider';
 
-export default function SignUpPage() {
-  const initialFValues = {
-    Email: '',
-    Password: '',
-  };
+const baseUrl = 'http://localhost:3001';
 
-  const [values, setValues] = useState(initialFValues);
+function Copyright(props) {
+	return (
+		<Typography
+			variant='body2'
+			color='white'
+			align='center'
+			{...props}
+		>
+			{'Copyright © '}
+			<Link
+				color='inherit'
+				href='#'
+			>
+				JkpgCity
+			</Link>{' '}
+			{new Date().getFullYear()}
+			{'.'}
+		</Typography>
+	);
+}
 
-  const handleInputChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+export default function SignInSide() {
+	/* 	const errRef = useRef();
+	const userRef = useRef(); */
+	axios.defaults.withCredentials = true;
+	const { login } = useContext(AuthContext);
+	const [checked, setChecked] = useState(false);
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [errMsg, setErrMsg] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted with values:', values);
-    // Add additional logic for handling form data, such as making an API request
-  };
+	const navigate = useNavigate();
 
-  return (
-    <Container
-      sx={{
-        bgcolor: theme.palette.third.bg,
-        color: theme.palette.secondary.contrastText,
-      }}
-    >
-      <Box
-        component='form'
-        noValidate
-        onSubmit={handleSubmit}
-      >
-        <Typography
-          variant="h3"
-          color={'primary.main'}
-          sx={{
-            textAlign: 'center',
-            mb: 3,
-          }}
-        >
-          Sign Up
-        </Typography>
-        <Grid
-          container
-          justifyContent={{ xs: 'center', md: 'space-around' }}
-          alignItems={{ xs: 'center', md: 'flex-start' }}
-        >
-          <Grid item margin={5} spacing={3}>
-            <TextField
-              variant="filled"
-              label="Email"
-              value={values.Email}
-              fullWidth
-              onChange={handleInputChange('Email')}
-              sx={{
-                '& .MuiInputBase-input': {
-                  color: theme.palette.secondary.main,
-                  backgroundColor: theme.palette.third.main,
-                },
-                mb: 5,
-              }}
-            />
-            <TextField
-              variant="filled"
-              label="Password"
-              value={values.Password}
-              fullWidth
-              onChange={handleInputChange('Password')}
-              sx={{
-                '& .MuiInputBase-input': {
-                  color: theme.palette.secondary.main,
-                  backgroundColor: theme.palette.third.main,
-                },
-                mb: 5,
-              }}
-            />
+	const handleCheck = (event) => {
+		setChecked(event.target.checked);
+	};
 
-            <Box textAlign="center">
-              <Button
-                variant="contained"
-                
-                color="primary"
-                type="submit"
-                sx={{ width: '200px', height: '50px', borderRadius: '50px' }}
-              >
-                Sign Up
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
-  );
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			const response = await axios.post(baseUrl + '/signup', {
+				email,
+				password,
+			});
+
+			if (response.status === 200) {
+				const { user, tokenExpiration } = response.data;
+				login(user, tokenExpiration);
+
+				// Redirect to homepage using useNavigate hook
+				navigate('/');
+			} else {
+				// Handle other response statuses if needed
+				setErrMsg('Invalid email or password');
+			}
+		} catch (error) {
+			// Handle errors during signup request
+			console.error('signup error:', error);
+			setErrMsg('Invalid email or password');
+		}
+	};
+
+	return (
+		<Grid
+			container
+			component='main'
+			sx={{ height: '100vh', width: '100vw' }}
+		>
+			<CssBaseline />
+			<Grid
+				item
+				xs={false}
+				sm={4}
+				md={7}
+				sx={{
+					backgroundImage: `url(${bgImg})`,
+					backgroundRepeat: 'no-repeat',
+					backgroundColor: (t) =>
+						t.palette.mode === 'light'
+							? t.palette.grey[50]
+							: t.palette.grey[900],
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+				}}
+			></Grid>
+			<Grid
+				item
+				xs={12}
+				sm={8}
+				md={5}
+				component={Paper}
+				elevation={6}
+				square
+				container
+				justifyContent={'center'}
+				alignItems={'center'}
+				sx={{
+					backgroundColor: 'secondary.main',
+				}}
+			>
+				<Box
+					sx={{
+						my: 8,
+						mx: 4,
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+					}}
+				>
+					<Typography
+						component='h1'
+						variant='h3'
+						color={'third.main'}
+						sx={{
+							pb: '1rem',
+							borderBottom: '1px solid white',
+						}}
+					>
+						Sign Up
+					</Typography>
+
+					<Box
+						component='form'
+						noValidate
+						onSubmit={handleSubmit}
+						sx={{ mt: 1 }}
+					>
+						{errMsg && <Typography>{errMsg + '*'}</Typography>}
+
+						<TextField
+							variant='filled'
+							margin='normal'
+							required
+							fullWidth
+							id='email'
+							label='Email'
+							name='email'
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							sx={{
+								'& .MuiInputBase-input': {
+									color: theme.palette.secondary.main,
+									backgroundColor: theme.palette.third.main,
+								},
+							}}
+						/>
+
+						<TextField
+							variant='filled'
+							margin='normal'
+							required
+							fullWidth
+							name='password'
+							label='Password'
+							type={showPassword ? 'text' : 'password'}
+							id='password'
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							endAdornment={
+								<InputAdornment position='end'>
+									<IconButton
+										aria-label='toggle password visibility'
+										onClick={() => setShowPassword(!showPassword)}
+										edge='end'
+										color='secondary.main'
+									>
+										{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+									</IconButton>
+								</InputAdornment>
+							}
+							sx={{
+								'& .MuiInputBase-input': {
+									color: theme.palette.secondary.main,
+									backgroundColor: theme.palette.third.main,
+								},
+							}}
+						/>
+
+						<Grid
+							container
+							justifyContent={'space-between'}
+						>
+							<FormControlLabel
+								control={
+									<Checkbox
+										value='remember'
+										checked={checked}
+										onChange={handleCheck}
+										color='third'
+									/>
+								}
+								label='Remember me'
+								style={{ color: theme.palette.secondary.contrastText }}
+							/>
+
+							<Button
+								type='submit'
+								variant='contained'
+								color='secondary'
+								sx={{
+									mt: 2,
+									mb: 2,
+									px: 3,
+									borderRadius: 24,
+									'&: hover': {
+										backgroundColor: theme.palette.primary.main,
+										color: theme.palette.third.main,
+									},
+								}}
+							>
+								SignUp
+							</Button>
+						</Grid>
+						<Copyright sx={{ mt: 5 }} />
+					</Box>
+				</Box>
+			</Grid>
+		</Grid>
+	);
 }
