@@ -1,9 +1,10 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
-import NavBar from "./components/NavBar";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./lib/utils/Theme";
-import routes from "./lib/routes";
+import NavBar from './components/NavBar';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { theme } from './lib/utils/Theme';
+import routes from './lib/routes';
+import Footer from './components/Footer';
 
 /**
  * App component renders different routes based on react router.
@@ -12,25 +13,30 @@ import routes from "./lib/routes";
  * Provides ThemeProvider with custom theme.
  */
 function App() {
-  const location = useLocation();
-  const hideOnRoutes = ['/login', '/*'] // Add more routes as needed to hide the navbar in
+	const location = useLocation();
+	const hideOnRoutes = ['/login', '/*', '/error']; // Add more routes as needed to hide the navbar in
 
-  return (
-    <ThemeProvider theme={theme}>
-        {!hideOnRoutes.includes(location.pathname) && <NavBar />}
-        {!hideOnRoutes.includes(location.pathname) && (
-          <div style={{ height: "70px" }} />
-        )}
-        {""}
-        {/* Adjust height as needed */}
-
-          <Routes>
-            {routes.map((route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-          </Routes>
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			{!hideOnRoutes.includes(location.pathname) && <NavBar />}
+			{!hideOnRoutes.includes(location.pathname) && (
+				<div style={{ height: '100px' }} />
+			)}
+			{''}
+			{/* Adjust height as needed */}
+			<CssBaseline />
+			<Routes>
+				{routes.map((route, index) => (
+					<Route
+						key={index}
+						path={route.path}
+						element={route.element}
+					/>
+				))}
+			</Routes>
+			{!hideOnRoutes.includes(location.pathname) && <Footer />}
+		</ThemeProvider>
+	);
 }
 
 export default App;

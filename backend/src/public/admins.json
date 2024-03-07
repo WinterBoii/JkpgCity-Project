@@ -1,0 +1,31 @@
+[
+  {
+    "email": "winter@gmail.com",
+    "password": "wadmin"
+  },
+
+  {
+    "email": "dema@gmail.com",
+    "password": "dadmin"
+  },
+
+  {
+    "email": "jinikho@gmail.com",
+    "password": "jadmin"
+  },
+
+  {
+    "email": "akida@gmail.com",
+    "password": "aadmin"
+  },
+
+  {
+    "email": "robino@gmail.com",
+    "password": "radmin"
+  },
+
+  {
+    "email": "patrick@gmail.com",
+    "password": "padmin"
+  }
+]

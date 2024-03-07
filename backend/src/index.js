@@ -1,53 +1,36 @@
 // index.js
-require('dotenv').config()
+const db = require('./dbConnection');
 const express = require('express');
-const storeJson = require('./public/stores.json');
-const wellnessJson = require('./public/wellness.json');
+require('dotenv').config();
 const app = express();
-const db = require('./db');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
 const port = 3001;
 
+// routes
+const authenticationRoutes = require('./routes/authentication');
+const storesRoutes = require('./routes/stores');
+const wellnessRoutes = require('./routes/wellness');
+
+// Allow requests from frontend domain
+const corsOptions = {
+	origin: 'http://localhost:3000', // Change this to your frontend URL
+	credentials: true,
+};
+
 // Parse JSON bodies
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 
-app.get('/setup', async (req, res) => {
-  try {
-    await db.storeSetup(storeJson);
-    await db.wellnessSetup(wellnessJson);
-    res.status(200).send('Setup complete');
-  } catch (err) {
-    res.status(500).send(err);
-    console.log("err",err);
-  }
-})
+app.use('/authentication',authenticationRoutes)
+app.use('/wellness',wellnessRoutes)
+app.use('/stores',storesRoutes);
 
-app.get('/stores', async (req, res) => {
-  try {
-    const stores = await db.getAllStores();
-    res.status(200).send(stores);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-})
-
-app.get('/wellness', async (req, res) => {
-  try {
-    //const wellness = await db.getAllWellness();
-    res.status(200).send(wellness);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-})
-
-const server = async () => {
-db.init()
-  app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
-}
-
-setInterval(() => {
-  //console.log("Hello: k8");
-}, 1000)
-
-server()
+app.listen(port, () => {
+	console.log(`Server is listening on port ${port}`);
+});
+app.get('/', (req, res) => {
+	res.send('Hello, welcome to the backend!');
+});

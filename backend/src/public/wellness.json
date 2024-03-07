@@ -2,37 +2,44 @@
   {
     "name": "es salong",
     "url": "affessalong.se/",
-    "rating": 3
-  },
+    "rating": 3,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
+},
   {
     "name": "All:tid Salong",
     "url": "salongalltid.se",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Antoinette's house of beauty",
     "url": "facebook.com/profile.php?id=100063622382804&eav=Afa96FCxwtkxvo_kvrFAx1N0Vif3vRr5MHB3hYutWT80SolIkHBiV7JIs4Ixg1T7Qjo&paipv=0&_rdr",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Barberaria 96",
     "url": "barberaria96.se/",
-    "rating": 2
+    "rating": 2,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Barber for Gentlemen Jönköping",
     "url": "facebook.com/barber75149/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Bonita's Clinic",
     "url": "facebook.com/bonitasclinic/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Carl M Lundh Salong",
     "url": "carlmlundh.se/salonger/jonkoping/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Davma Brands",
@@ -42,466 +49,559 @@
   {
     "name": "Diione Hudvård och make up",
     "url": "dione.nu/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Estetic Walk-in Jönköping",
     "url": "estetic.se/jonkoping/",
-    "rating": 4
+    "rating": 4,    
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Esthetica Hudvårdssalong AB",
     "url": "null",
-    "rating": 2
+    "rating": 2,    
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Evolution Laser Clinic",
     "url": "evolutionlaser.se/locations/evolution-laser-clinic-jonkoping/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Fitness24Seven Jönköping centrum",
     "url": "fitness24seven.com/vara-gym/se-vara-gym/jonkoping-centrum",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Fitness24Seven Väster",
     "url": "fitness24seven.com/vara-gym/se-vara-gym/jonkoping-vaster/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Fitness and friends",
     "url": "fitnessandfriends.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Flow Yoga",
     "url": "flowyoga.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Yoga och Meditation"]
   },
   {
     "name": "Foten",
     "url": "foten.se/om-foten/vara-butiker/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "Fot & Kropp",
     "url": "null",
-    "rating": 1
+    "rating": 1,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "Fot och Hälsohuset",
     "url": "fotochhalsohuset.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "Freja & Frasse",
     "url": "frejaochfrasse.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Friskis&Svettis",
     "url": "friskissvettis.se/jonkoping",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Frisör fåfäng",
     "url": "null",
-    "rating": 2
+    "rating": 2,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Genuin Massage",
     "url": "null",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Massage och spa"]
   },
   {
     "name": "Hairfree Jönköping",
     "url": "hairfree.se/hitta-klinik/hairfree-jonkoping/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hairmony",
     "url": "salonghairmony.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hairtime",
     "url": "hairtime.nu/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hair World",
     "url": "hair-world.se",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hälsobyrån",
     "url": "halsobyran.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "Hår 2000",
     "url": "har2000.se",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hår & Co",
     "url": "harochco.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hårdesign by Anna",
     "url": "hardesignbyanna.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hårfin",
     "url": "harfin.com",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hårfixarna",
     "url": "harfixarna.com",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hårgränd",
     "url": "hargrand.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hårsalong Påpée",
     "url": "harsalongenpapee.se",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Herrhår",
     "url": "herrhar.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Hud och Hälsa AB",
     "url": "hudohalsa.com/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Hälsokliniker"]
   },
   {
     "name": "Hudoteket",
     "url": "hudoteket.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Hudsalongen",
     "url": "hudsalongen.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Intermezzo",
     "url": "intermezzofrisor.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Jönköpings Afroshop",
     "url": "afroshopjonkoping.com/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Kalufsmakarn",
     "url": "kalufsmakarn.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Karisma Hair Academy",
     "url": "klinikforma.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Klinik Forma",
     "url": "klinikforma.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Klippcenter",
     "url": "klippcenter-jkpg.se",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Klippit",
     "url": "klipp-it.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Kristinas fotvård",
     "url": "facebook.com/kristinafotvard/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "Kroppsligt i Jönköping",
     "url": "facebook.com/Kroppsligt/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "La Barbiere",
     "url": "facebook.com/labarbiere1/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Lashliftby Dimen",
     "url": "facebook.com/people/Lashliftbydimen/100063630263066/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Lewis salong",
     "url": "null",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Liliana salongen",
     "url": "facebook.com/people/Liliana-salongen/100068813411254/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Louise Nails",
     "url": "instagram.com/louise.nails/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Nagelsalonger"]
   },
   {
     "name": "Made by Jessica",
     "url": "instagram.com/madebyjessica_/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Massage Corner",
     "url": "null",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Memira",
     "url": "memira.se/klinik/jonkoping/?gclid=Cj0KCQjwteOaBhDuARIsADBqRegQQ2B9PnOj1E_Zeo5yKxGJYmAh4Hllw4S3phZ_XOX7QFvDflATXtMaAjWxEALw_wcB",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Hälso och Barberare"]
   },
   {
     "name": "Modern Nails Öster",
     "url": "modernnails.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Nagelsalonger"]
   },
   {
     "name": "Modern Nails Väster",
     "url": "modernnails.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Nagelsalonger"]
   },
   {
     "name": "Mr Barbershop",
     "url": "mrbarbershop.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Myras Skönhet hos city frisör",
     "url": "null",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "NAXIA Salong",
     "url": "null",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Neoskin",
     "url": "https://neoskin.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Niviana Aromaterapi",
     "url": "facebook.com/people/Niviana-Aromaterapi/100063509873183/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Nordic Wellness Atlantis Spa",
     "url": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-atlantis/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Nordic Wellness City",
     "url": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-city/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Nordic Wellness Jönköping Campus",
     "url": "nordicwellness.se/vara-klubbar/jonkoping/jonkoping-campus/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Norma Hairfashion i Jönköping AB",
     "url": "hairfashionsalong.se",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Nyans Hårstudio",
     "url": "nyansharstudio.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Paloma Pinto Massage",
     "url": "null",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Pärla Salong",
     "url": "facebook.com/profile.php?id=10063528493887",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "PiBrows by Gabriella",
     "url": "instagram.com/ibrowsbygabriella/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Pi thai art tattoo",
     "url": "pithaiarttattoo.business.site/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Tatueringssalonger"]
   },
   {
     "name": "Porcelain by Zara",
     "url": "null",
-    "rating": 1
+    "rating": 1,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Pretty Nails",
     "url": "facebook.com/people/Pretty-Nails-J%C3%B6nk%C3%B6ping/100047390246361/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Nagelsalonger"]
   },
   {
     "name": "Proffshänder massage",
     "url": "facebook.com/profile.php?id=100063579673745",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "PT Studion",
     "url": "https://www.ptstudionjkpg.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Rebecca Ekström",
     "url": "rebeccaekstrom.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Rickards salong",
     "url": "null",
-    "rating": 2
+    "rating": 2,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Salong 5 sinnen",
     "url": "5sinnen.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Salong Cheveux",
     "url": "salongcheveux.com/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Salong Claes",
     "url": "facebook.com/profile.php?id=100057485295087",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Salong DU & JAG",
     "url": "null",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Salongen",
     "url": "facebook.com/salongenjkpg/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Salong Klipp Dej",
     "url": "null",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Salong På Håret",
     "url": "facebook.com/SalongPaHaret.2/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Sax in the city",
     "url": "saxinthecityjkpg.se/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Skinfix Clinic",
     "url": "https://skinfixclinic.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Sköna Fötter",
     "url": "skona-fotter.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Hälsokliner"]
   },
   {
     "name": "Sköna Jag",
     "url": "skonajag.nu/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Nagelsalonger"]
   },
   {
     "name": "Skönheten och Lejonet",
     "url": "linnealeijon.se",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Nagelsalonger"]
   },
   {
     "name": "Smile Thai Massage & Spa",
     "url": "null",
-    "rating": 2
+    "rating": 2,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Sofia Salongen",
     "url": "null",
-    "rating": 2
+    "rating": 2,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "STC gym",
     "url": "stc.se/klubbar/jonkoping-city/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Studio Balans",
     "url": "https://studiobalansjkpg.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Fittnesscenter och Träningsstudior"]
   },
   {
     "name": "Studio kreativ",
     "url": "studio-kreativ.se",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Studio L",
     "url": "null",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Skönhetssalonger och Hudvårdskliniker"]
   },
   {
     "name": "Svensson & Heijel",
     "url": "facebook.com/people/Svensson-Heijel/100057603903316/",
-    "rating": 3
+    "rating": 3,
+    "categories": ["Frisörsalonger och Barberare"]
   },
   {
     "name": "Tatuering Wester",
     "url": "facebook.com/tatueringwester/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Tatueringssalonger"]
   },
   {
     "name": "TCM mottagning (massage)",
     "url": "kinamedicin.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Thawan Svimongkhon Fredriksson Massage",
     "url": "thawanthaimassage.se/",
-    "rating": 4
+    "rating": 4,
+    "categories": ["Massage och Spa"]
   },
   {
     "name": "Yogiteket",
     "url": "yogiteket.se/",
-    "rating": 5
+    "rating": 5,
+    "categories": ["Yoga och Meditation"]
   }
 ]
