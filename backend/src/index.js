@@ -1,43 +1,36 @@
 // index.js
-require('dotenv').config()
+const db = require('./dbConnection');
 const express = require('express');
-const adminJson = require('./public/admins.json');
-const storeJson = require('./public/stores.json');
-const wellnessJson = require('./public/wellness.json');
+require('dotenv').config();
 const app = express();
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose')
-const authenticationRoutes = require('./routes/authentication')
+const mongoose = require('mongoose');
 const cors = require('cors');
 const port = 3001;
 
+// routes
+const authenticationRoutes = require('./routes/authentication');
+const storesRoutes = require('./routes/stores');
+const wellnessRoutes = require('./routes/wellness');
+
 // Allow requests from frontend domain
 const corsOptions = {
-  origin: 'http://localhost:3000', // Change this to your frontend URL
-  credentials: true,
+	origin: 'http://localhost:3000', // Change this to your frontend URL
+	credentials: true,
 };
 
 // Parse JSON bodies
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-app.use(authenticationRoutes)
 
+app.use('/authentication',authenticationRoutes)
+app.use('/wellness',wellnessRoutes)
+app.use('/stores',storesRoutes);
 
-// database connection
-const dbURI = 'mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/db';
-mongoose.connect(dbURI)
-//listen on request only after successfull db connection
-.then((result) => {
-  console.log('Connected to MongoDB');
-  app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-  });
-})  
-.catch((error) => console.error(error));
-
-// Define your route after establishing the database connection
+app.listen(port, () => {
+	console.log(`Server is listening on port ${port}`);
+});
 app.get('/', (req, res) => {
-  // Your route logic here
-  res.send('Hello, world!');
+	res.send('Hello, welcome to the backend!');
 });
