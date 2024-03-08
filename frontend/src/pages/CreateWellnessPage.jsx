@@ -20,12 +20,13 @@ import axios from 'axios';
 import AuthContext from '../lib/AuthProvider';
 import { theme } from '../lib/utils/Theme';
 import ErrorPage from './ErrorPage';
+import { WellnessCategory } from '../lib/constants';
 
 const validationSchema = Yup.object({
 	name: Yup.string().required('Name is required'),
 	url: Yup.string().url('Must be a valid URL').required('URL is required'),
-	district: Yup.string().required('Rating is required'),
-	category: Yup.string().required('Category is required'),
+	rating: Yup.string().required('Rating is required'),
+	categories: Yup.array().of(Yup.string()).required('Category is required'),
 });
 
 const baseUrl = 'http://localhost:3001';
@@ -41,13 +42,13 @@ export default function CreateWellnessPage({ wellnessData }) {
 		name: '',
 		url: '',
 		rating: '',
-		category: '',
+		categories: [],
 	});
 
 	useEffect(() => {
-		/* if (!auth.user) {
+		if (!auth.user) {
 			navigate('/login');
-		} */
+		}
 		if (wellnessData) {
 			setInitialValues(wellnessData);
 		}
@@ -57,6 +58,7 @@ export default function CreateWellnessPage({ wellnessData }) {
 		initialValues: initialValues,
 		validationSchema: validationSchema,
 		onSubmit: async (values) => {
+			console.log(values);
 			if (!auth.user) {
 				setSubmitError('You must be logged in to create a store');
 				return;
@@ -82,7 +84,10 @@ export default function CreateWellnessPage({ wellnessData }) {
 					}
 				} else {
 					// Create
-					const response = await axios.post(baseUrl + '/stores/create', values);
+					const response = await axios.post(
+						baseUrl + '/wellness/create',
+						values
+					);
 
 					setIsSubmitting(false);
 
@@ -106,6 +111,7 @@ export default function CreateWellnessPage({ wellnessData }) {
 	if (submitError) {
 		return <ErrorPage error={submitError} />;
 	}
+	console.log('Formik State:', formik);
 
 	return (
 		<Container
@@ -210,15 +216,14 @@ const CreateWellness = ({ formik }) => {
 							},
 						}}
 					>
-						<MenuItem value={1}>1</MenuItem>
-
-						<MenuItem value={2}>2</MenuItem>
-
-						<MenuItem value={3}>3</MenuItem>
-
-						<MenuItem value={4}>4</MenuItem>
-
-						<MenuItem value={5}>5</MenuItem>
+						{[...Array(5)].map((_, i) => (
+							<MenuItem
+								key={i}
+								value={i + 1}
+							>
+								{i + 1}
+							</MenuItem>
+						))}
 					</Select>
 				</FormControl>
 
@@ -226,15 +231,19 @@ const CreateWellness = ({ formik }) => {
 					fullWidth
 					variant='filled'
 					sx={{ mb: 5 }}
-					error={formik.touched.category && Boolean(formik.errors.category)}
+					error={formik.touched.categories && Boolean(formik.errors.categories)}
 				>
 					<InputLabel id='category-label'>Category</InputLabel>
 					<Select
+						multiple
 						labelId='category-label'
-						id='category'
-						name='category'
-						value={formik.values.category}
-						onChange={formik.handleChange}
+						id='categories'
+						name='categories'
+						value={formik.values.categories}
+						onChange={(e) => {
+							const values = e.target.value;
+							formik.setFieldValue('categories', [...values]);
+						}}
 						sx={{
 							'& .MuiInputBase-input': {
 								color: theme.palette.third.text,
@@ -242,18 +251,14 @@ const CreateWellness = ({ formik }) => {
 							},
 						}}
 					>
-						<MenuItem value='category1'>
-							Fittnesscenter och Träningsstudior
-						</MenuItem>
-						<MenuItem value='category2'>Frisörsalonger och Barberare</MenuItem>
-						<MenuItem value='category3'>Hälsokliner</MenuItem>
-						<MenuItem value='category4'>Massage och Spa</MenuItem>
-						<MenuItem value='category5'>Nagelsalonger</MenuItem>
-						<MenuItem value='category6'>
-							Skönhetssalonger och Hudvårdskliniker
-						</MenuItem>
-						<MenuItem value='category7'>Tatueringssalonger</MenuItem>
-						<MenuItem value='category8'>Yoga och Meditation</MenuItem>
+						{Object.values(WellnessCategory).map((category) => (
+							<MenuItem
+								key={category}
+								value={category}
+							>
+								{category}
+							</MenuItem>
+						))}
 					</Select>
 				</FormControl>
 
@@ -361,15 +366,14 @@ const UpdateWellness = ({ formik }) => {
 							},
 						}}
 					>
-						<MenuItem value={1}>1</MenuItem>
-
-						<MenuItem value={2}>2</MenuItem>
-
-						<MenuItem value={3}>3</MenuItem>
-
-						<MenuItem value={4}>4</MenuItem>
-
-						<MenuItem value={5}>5</MenuItem>
+						{[...Array(5)].map((_, i) => (
+							<MenuItem
+								key={i}
+								value={i + 1}
+							>
+								{i + 1}
+							</MenuItem>
+						))}
 					</Select>
 				</FormControl>
 
@@ -377,15 +381,19 @@ const UpdateWellness = ({ formik }) => {
 					fullWidth
 					variant='filled'
 					sx={{ mb: 5 }}
-					error={formik.touched.category && Boolean(formik.errors.category)}
+					error={formik.touched.categories && Boolean(formik.errors.categories)}
 				>
 					<InputLabel id='category-label'>Category</InputLabel>
 					<Select
+						multiple
 						labelId='category-label'
 						id='category'
 						name='category'
-						value={formik.values.category}
-						onChange={formik.handleChange}
+						value={formik.values.categories}
+						onChange={(e) => {
+							const values = e.target.value;
+							formik.setFieldValue('categories', [...values]);
+						}}
 						sx={{
 							'& .MuiInputBase-input': {
 								color: theme.palette.third.text,
@@ -393,18 +401,14 @@ const UpdateWellness = ({ formik }) => {
 							},
 						}}
 					>
-						<MenuItem value='category1'>
-							Fittnesscenter och Träningsstudior
-						</MenuItem>
-						<MenuItem value='category2'>Frisörsalonger och Barberare</MenuItem>
-						<MenuItem value='category3'>Hälsokliner</MenuItem>
-						<MenuItem value='category4'>Massage och Spa</MenuItem>
-						<MenuItem value='category5'>Nagelsalonger</MenuItem>
-						<MenuItem value='category6'>
-							Skönhetssalonger och Hudvårdskliniker
-						</MenuItem>
-						<MenuItem value='category7'>Tatueringssalonger</MenuItem>
-						<MenuItem value='category8'>Yoga och Meditation</MenuItem>
+						{Object.values(WellnessCategory).map((category) => (
+							<MenuItem
+								key={category}
+								value={category}
+							>
+								{category}
+							</MenuItem>
+						))}
 					</Select>
 				</FormControl>
 
