@@ -17,7 +17,6 @@ function HomePage() {
 					och restauranger som ramas in av fantastiska grönområden och vackra sjöar.'
 			/>
 			<Box
-				bgcolor={'third.bg'}
 				my={10}
 				py={2}
 			>

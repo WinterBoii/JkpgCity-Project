@@ -10,13 +10,10 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { IconButton, InputAdornment } from '@mui/material';
 import bgImg from '../assets/background.jpg';
 import { theme } from '../lib/utils/Theme';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import AuthContext from '../lib/AuthProvider';
 
 const baseUrl = 'http://localhost:3001';
@@ -47,16 +44,17 @@ export default function SignInSide() {
 	const userRef = useRef(); */
 	axios.defaults.withCredentials = true;
 	const { login } = useContext(AuthContext);
-	const [checked, setChecked] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errMsg, setErrMsg] = useState('');
+	const [checked, setChecked] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 
 	const navigate = useNavigate();
 
 	const handleCheck = (event) => {
 		setChecked(event.target.checked);
+		setShowPassword(!showPassword);
 	};
 
 	const handleSubmit = async (event) => {
@@ -188,16 +186,6 @@ export default function SignInSide() {
 								},
 							}}
 						/>
-						<InputAdornment>
-							<IconButton
-								aria-label='toggle password visibility'
-								onClick={() => setShowPassword(!showPassword)}
-								edge='end'
-								color='secondary.main'
-							>
-								{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-							</IconButton>
-						</InputAdornment>
 
 						<Grid
 							container
@@ -212,7 +200,7 @@ export default function SignInSide() {
 										color='third'
 									/>
 								}
-								label='Remember me'
+								label='Show password'
 								style={{ color: theme.palette.secondary.contrastText }}
 							/>
 

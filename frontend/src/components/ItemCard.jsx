@@ -27,16 +27,13 @@ export function ItemCard({ data }) {
 					aria-controls={data.name}
 					id={data.id}
 				>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'space-between',
-						}}
-					>
+					<Box>
 						<Typography
 							variant='h5'
 							component='div'
+							sx={{
+								mb: 1,
+							}}
 						>
 							{data.name}
 						</Typography>
