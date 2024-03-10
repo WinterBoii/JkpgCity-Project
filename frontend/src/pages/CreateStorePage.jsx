@@ -24,7 +24,7 @@ import { Districts, StoreCategories } from '../lib/constants';
 
 const validationSchema = Yup.object({
 	name: Yup.string().required('Name is required'),
-	url: Yup.string().url('Must be a valid URL').required('URL is required'),
+	url: Yup.string().required('URL is required'),
 	district: Yup.string().required('District is required'),
 	categories: Yup.array().of(Yup.string()).required('Category is required'),
 });
@@ -53,13 +53,7 @@ export default function CreateStorePage() {
 			navigate('/login');
 		}
 		if (storeData) {
-			setInitialValues({
-				_id: storeData._id,
-				name: storeData.name,
-				url: storeData.url,
-				district: storeData.district,
-				categories: storeData.categories,
-			});
+			setInitialValues(storeData);
 		}
 	}, [auth.user, navigate, storeData]);
 
@@ -161,7 +155,7 @@ const CreateStoreForm = ({ formik }) => {
 						pt: 5,
 					}}
 				>
-					Add a Store
+					Lägg Till
 				</Typography>
 
 				<TextField
@@ -280,7 +274,7 @@ const CreateStoreForm = ({ formik }) => {
 							textTransform: 'none',
 						}}
 					>
-						<Typography variant='h5'>Add</Typography>
+						<Typography variant='h5'>Skapa</Typography>
 					</Button>
 				</Box>
 			</Grid>
@@ -311,7 +305,7 @@ const UpdateStoreForm = ({ formik }) => {
 						pt: 5,
 					}}
 				>
-					Redigera Shop
+					Redigera
 				</Typography>
 
 				<TextField
