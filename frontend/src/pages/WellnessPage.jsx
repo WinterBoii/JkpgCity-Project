@@ -60,7 +60,6 @@ export default function WellnessPage() {
 			/>
 
 			<Box
-				bgcolor={'third.bg'}
 				my={10}
 				py={2}
 			>
