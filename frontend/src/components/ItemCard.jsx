@@ -11,27 +11,18 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { theme } from '../lib/utils/Theme';
 import LanguageIcon from '@mui/icons-material/Language';
 import PlaceIcon from '@mui/icons-material/Place';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export function ItemCard({ data, url, auth }) {
+export function ItemCard({ data, auth, onDelete }) {
 	console.log(auth);
 	const navigate = useNavigate();
 
+	const handleDelete = (id) => {
+		onDelete(id);
+	};
 	const updateItem = (data) => {
 		console.log(data);
 		navigate(`edit`, { state: { data } });
-	};
-
-	const deleteItem = async (item) => {
-		await axios
-			.delete(`${url}${item._id}`, {})
-			.then((response) => {
-				console.log(response);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
 	};
 
 	return (
@@ -88,16 +79,16 @@ export function ItemCard({ data, url, auth }) {
 						</Box>
 					)}
 					<Typography variant='body2'>
-						{data.url && (
-							<Box
-								sx={{
-									display: 'flex',
-									justifyContent: 'space-between',
-									alignItems: 'center',
-									width: '100%',
-									height: '100%',
-								}}
-							>
+						<Box
+							sx={{
+								display: 'flex',
+								justifyContent: 'space-between',
+								alignItems: 'center',
+								width: '100%',
+								height: '100%',
+							}}
+						>
+							{data.url && (
 								<Box>
 									<a
 										href={'https//' + data.url}
@@ -129,33 +120,39 @@ export function ItemCard({ data, url, auth }) {
 										</Typography>
 									</a>
 								</Box>
-								{auth.loggedIn && (
-									<Box>
-										<Button
-											onClick={() => updateItem(data)}
-											sx={{
-												'&:hover': {
-													color: theme.palette.alternative.main,
-												},
-											}}
-										>
-											Update
-										</Button>
+							)}
+							{auth.loggedIn && (
+								<Box
+									sx={{
+										display: 'flex',
+										justifyContent: 'flex-end',
+										alignItems: 'end',
+									}}
+								>
+									<Button
+										onClick={() => updateItem(data)}
+										sx={{
+											'&:hover': {
+												color: theme.palette.alternative.main,
+											},
+										}}
+									>
+										Redigera
+									</Button>
 
-										<Button
-											onClick={() => deleteItem(data)}
-											sx={{
-												'&:hover': {
-													color: theme.palette.alternative.main,
-												},
-											}}
-										>
-											Delete
-										</Button>
-									</Box>
-								)}
-							</Box>
-						)}
+									<Button
+										onClick={() => handleDelete(data._id)}
+										sx={{
+											'&:hover': {
+												color: theme.palette.alternative.main,
+											},
+										}}
+									>
+										Ta bort
+									</Button>
+								</Box>
+							)}
+						</Box>
 					</Typography>
 				</AccordionDetails>
 			</Accordion>

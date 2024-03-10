@@ -32,23 +32,44 @@ export default function StoresPage() {
 	const { auth } = useContext(AuthContext);
 	const [stores, setStores] = useState([]);
 
-	useEffect(() => {
-		const fetchStores = async () => {
-			try {
-				const res = await axios.get(baseUrl + '/stores');
-				console.log(res.data);
-				if (Array.isArray(res.data.stores)) {
-					setStores(res.data.stores);
-				} else {
-					console.error('Data received is not an array:', res.data.stores);
-				}
-			} catch (error) {
-				console.error('Error fetching stores:', error);
+	const fetchStores = async () => {
+		try {
+			const res = await axios.get(baseUrl + '/stores');
+			console.log(res.data);
+			if (Array.isArray(res.data.stores)) {
+				setStores(res.data.stores);
+			} else {
+				console.error('Data received is not an array:', res.data.stores);
 			}
-		};
+		} catch (error) {
+			console.error('Error fetching stores:', error);
+		}
+	};
 
+	useEffect(() => {
 		fetchStores();
 	}, [setStores]);
+
+	const handleDelete = async (id) => {
+		// delete item
+		try {
+			const response = await axios.post(`${baseUrl}/stores/${id}/delete`);
+			console.log(response);
+			if (response.status === 200) {
+				const updatedStores = await fetchStores();
+				if (Array.isArray(updatedStores)) {
+					setStores(updatedStores);
+				} else {
+					console.error('Data received is not an array:', updatedStores);
+				}
+			} else {
+				throw new Error('Failed to Delete');
+			}
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	};
 
 	return (
 		<Box
@@ -98,8 +119,8 @@ export default function StoresPage() {
 							>
 								<ItemCard
 									data={store}
-									url={`${baseUrl}/stores/`}
 									auth={auth}
+									onDelete={handleDelete}
 								/>
 							</Grid>
 						))}
