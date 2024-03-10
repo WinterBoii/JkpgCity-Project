@@ -5,13 +5,35 @@ import {
 	Accordion,
 	AccordionSummary,
 	AccordionDetails,
+	Button,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { theme } from '../lib/utils/Theme';
 import LanguageIcon from '@mui/icons-material/Language';
 import PlaceIcon from '@mui/icons-material/Place';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-export function ItemCard({ data }) {
+export function ItemCard({ data, url, auth }) {
+	console.log(auth);
+	const navigate = useNavigate();
+
+	const updateItem = (data) => {
+		console.log(data);
+		navigate(`edit`, { state: { data } });
+	};
+
+	const deleteItem = async (item) => {
+		await axios
+			.delete(`${url}${item._id}`, {})
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
 	return (
 		<Box sx={{ height: '100%' }}>
 			<Accordion
@@ -67,30 +89,72 @@ export function ItemCard({ data }) {
 					)}
 					<Typography variant='body2'>
 						{data.url && (
-							<a
-								href={'https//' + data.url}
-								target='_blank'
-								rel='noopener noreferrer'
-								style={{
-									textDecoration: 'none',
-									color: theme.palette.third.text,
-									visited: {
-										color: theme.palette.third.text,
-									},
-									textAlign: 'center',
-									alignSelf: 'center',
+							<Box
+								sx={{
 									display: 'flex',
+									justifyContent: 'space-between',
 									alignItems: 'center',
+									width: '100%',
+									height: '100%',
 								}}
 							>
-								<LanguageIcon sx={{ mr: 1, mb: 0.5 }} />
-								<Typography
-									variant='body'
-									sx={{ textDecoration: 'underline' }}
-								>
-									Visit Website
-								</Typography>
-							</a>
+								<Box>
+									<a
+										href={'https//' + data.url}
+										target='_blank'
+										rel='noopener noreferrer'
+										style={{
+											textDecoration: 'none',
+											color: theme.palette.third.text,
+											visited: {
+												color: theme.palette.third.text,
+											},
+											textAlign: 'center',
+											alignSelf: 'center',
+											display: 'flex',
+											alignItems: 'center',
+										}}
+									>
+										<LanguageIcon sx={{ mr: 1, mb: 0.5 }} />
+										<Typography
+											variant='body'
+											sx={{
+												textDecoration: 'underline',
+												'&:hover': {
+													color: theme.palette.alternative.main,
+												},
+											}}
+										>
+											Visit Website
+										</Typography>
+									</a>
+								</Box>
+								{auth.loggedIn && (
+									<Box>
+										<Button
+											onClick={() => updateItem(data)}
+											sx={{
+												'&:hover': {
+													color: theme.palette.alternative.main,
+												},
+											}}
+										>
+											Update
+										</Button>
+
+										<Button
+											onClick={() => deleteItem(data)}
+											sx={{
+												'&:hover': {
+													color: theme.palette.alternative.main,
+												},
+											}}
+										>
+											Delete
+										</Button>
+									</Box>
+								)}
+							</Box>
 						)}
 					</Typography>
 				</AccordionDetails>

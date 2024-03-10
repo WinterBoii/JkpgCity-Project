@@ -17,7 +17,7 @@ import CreateWellnessPage from '../pages/CreateWellnessPage';
 const routes = [
 	{
 		path: '/stores/edit',
-		element: <CreateStorePage storeData />,
+		element: <CreateStorePage />,
 		exact: false,
 	},
 	{

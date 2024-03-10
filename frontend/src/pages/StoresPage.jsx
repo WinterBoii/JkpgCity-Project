@@ -10,9 +10,10 @@ import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
 import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
 import CategoryBox from '../components/CategoryBox'; */
 import TitleDescription from '../components/TitleDescription';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { ItemCard } from '../components/ItemCard';
+import AuthContext from '../lib/AuthProvider';
 
 const baseUrl = 'http://localhost:3001';
 
@@ -28,6 +29,7 @@ const baseUrl = 'http://localhost:3001';
 ];
  */
 export default function StoresPage() {
+	const { auth } = useContext(AuthContext);
 	const [stores, setStores] = useState([]);
 
 	useEffect(() => {
@@ -94,7 +96,11 @@ export default function StoresPage() {
 								md={4}
 								key={store.id}
 							>
-								<ItemCard data={store} />
+								<ItemCard
+									data={store}
+									url={`${baseUrl}/stores/`}
+									auth={auth}
+								/>
 							</Grid>
 						))}
 					</Grid>

@@ -13,7 +13,7 @@ import {
 	CircularProgress,
 	Box,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -31,7 +31,9 @@ const validationSchema = Yup.object({
 
 const baseUrl = 'http://localhost:3001';
 
-export default function CreateStorePage({ storeData }) {
+export default function CreateStorePage() {
+	const location = useLocation();
+	const storeData = location.state ? location.state.data : null;
 	const { auth } = useContext(AuthContext);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState(null);
@@ -39,6 +41,7 @@ export default function CreateStorePage({ storeData }) {
 	const navigate = useNavigate();
 
 	const [initialValues, setInitialValues] = useState({
+		_id: '',
 		name: '',
 		url: '',
 		district: '',
@@ -50,12 +53,19 @@ export default function CreateStorePage({ storeData }) {
 			navigate('/login');
 		}
 		if (storeData) {
-			setInitialValues(storeData);
+			setInitialValues({
+				_id: storeData._id,
+				name: storeData.name,
+				url: storeData.url,
+				district: storeData.district,
+				categories: storeData.categories,
+			});
 		}
 	}, [auth.user, navigate, storeData]);
 
 	const formik = useFormik({
 		initialValues: initialValues,
+		enableReinitialize: true, // This will reset the form when initialValues change
 		validationSchema: validationSchema,
 		onSubmit: async (values) => {
 			if (!auth.user) {
@@ -71,8 +81,8 @@ export default function CreateStorePage({ storeData }) {
 
 				if (storeData) {
 					// Update
-					const response = await axios.put(
-						baseUrl + `/stores/${storeData.id}/edit`,
+					const response = await axios.post(
+						baseUrl + `/stores/${storeData._id}/edit`,
 						values
 					);
 
@@ -301,7 +311,7 @@ const UpdateStoreForm = ({ formik }) => {
 						pt: 5,
 					}}
 				>
-					Edit Store
+					Redigera Shop
 				</Typography>
 
 				<TextField
@@ -420,7 +430,7 @@ const UpdateStoreForm = ({ formik }) => {
 							textTransform: 'none',
 						}}
 					>
-						<Typography variant='h5'>Add</Typography>
+						<Typography variant='h5'>Uppdatera</Typography>
 					</Button>
 				</Box>
 			</Grid>
