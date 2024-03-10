@@ -46,12 +46,13 @@ const updateStoreById = async (req, res) => {
 // method to delete a store by id from the database
 const deleteStoreById = async (req, res) => {
 	const id = req.params.id;
+
 	try {
 		await Store.findByIdAndDelete(id);
-		res.status(200).json('store deleted seccessfully');
-		console.log('store deleted successfully');
+
+		res.status(200).json('Store deleted successfully');
 	} catch (err) {
-		res.status(400).json(`error deleting store: ${err.message}`);
+		res.status(400).json(`Error deleting store: ${err.message}`);
 	}
 };
 

@@ -13,7 +13,7 @@ import {
 	CircularProgress,
 	Box,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -24,14 +24,16 @@ import { WellnessCategory } from '../lib/constants';
 
 const validationSchema = Yup.object({
 	name: Yup.string().required('Name is required'),
-	url: Yup.string().url('Must be a valid URL').required('URL is required'),
+	url: Yup.string().required('URL is required'),
 	rating: Yup.string().required('Rating is required'),
 	categories: Yup.array().of(Yup.string()).required('Category is required'),
 });
 
 const baseUrl = 'http://localhost:3001';
 
-export default function CreateWellnessPage({ wellnessData }) {
+export default function CreateWellnessPage() {
+	const location = useLocation();
+	const wellnessData = location.state ? location.state.data : null;
 	const { auth } = useContext(AuthContext);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState(null);
@@ -39,6 +41,7 @@ export default function CreateWellnessPage({ wellnessData }) {
 	const navigate = useNavigate();
 
 	const [initialValues, setInitialValues] = useState({
+		_id: '',
 		name: '',
 		url: '',
 		rating: '',
@@ -56,6 +59,7 @@ export default function CreateWellnessPage({ wellnessData }) {
 
 	const formik = useFormik({
 		initialValues: initialValues,
+		enableReinitialize: true,
 		validationSchema: validationSchema,
 		onSubmit: async (values) => {
 			console.log(values);
@@ -70,8 +74,8 @@ export default function CreateWellnessPage({ wellnessData }) {
 
 				if (wellnessData) {
 					// Update
-					const response = await axios.put(
-						baseUrl + `/wellness/${wellnessData.id}/edit`,
+					const response = await axios.post(
+						baseUrl + `/wellness/${wellnessData._id}/edit`,
 						values
 					);
 
@@ -154,7 +158,7 @@ const CreateWellness = ({ formik }) => {
 						pt: 5,
 					}}
 				>
-					Add Wellness
+					Lägg Till
 				</Typography>
 
 				<TextField
@@ -273,7 +277,7 @@ const CreateWellness = ({ formik }) => {
 							textTransform: 'none',
 						}}
 					>
-						<Typography variant='h5'>Add</Typography>
+						<Typography variant='h5'>Skapa</Typography>
 					</Button>
 				</Box>
 			</Grid>
@@ -304,7 +308,7 @@ const UpdateWellness = ({ formik }) => {
 						pt: 5,
 					}}
 				>
-					Edit Wellness
+					Redigera
 				</Typography>
 
 				<TextField
@@ -423,7 +427,7 @@ const UpdateWellness = ({ formik }) => {
 							textTransform: 'none',
 						}}
 					>
-						<Typography variant='h5'>Add</Typography>
+						<Typography variant='h5'>Uppdatera</Typography>
 					</Button>
 				</Box>
 			</Grid>
