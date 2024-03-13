@@ -1,36 +1,23 @@
-/* eslint-disable react/prop-types */
-import { Container, Box, Grid } from '@mui/material';
-import TitleDescription from '../components/TitleDescription';
+import {
+	Container,
+	Box,
+	Grid,
+	FormControlLabel,
+	Checkbox,
+} from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
 import { ItemCard } from '../components/ItemCard';
+import TitleDescription from '../components/TitleDescription';
 import AuthContext from '../lib/AuthProvider';
-/* import CheckroomIcon from '@mui/icons-material/Checkroom';
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
-import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
-import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
-import ImagesearchRollerOutlinedIcon from '@mui/icons-material/ImagesearchRollerOutlined';
-import SportsTennisOutlinedIcon from '@mui/icons-material/SportsTennisOutlined';
-import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
-import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
-import CategoryBox from '../components/CategoryBox'; */
+import axios from 'axios';
+import { WellnessCategory } from '../lib/constants';
 
 const baseUrl = 'http://localhost:3001';
-
-/* const shopCategory = [
-	{ icon: <CheckroomIcon />, text: 'Kläder och Accessoarer' },
-	{ icon: <LightbulbOutlinedIcon />, text: 'Elektronik' },
-	{ icon: <RestaurantOutlinedIcon />, text: 'Mat och Livsmedel' },
-	{ icon: <ChairOutlinedIcon />, text: 'Heminredning' },
-	{ icon: <ImagesearchRollerOutlinedIcon />, text: 'Konst och Hantverk' },
-	{ icon: <SportsTennisOutlinedIcon />, text: 'Sport och Fritid' },
-	{ icon: <SpaOutlinedIcon />, text: 'Hälsa och Skönhet' },
-	{ icon: <ShuffleOutlinedIcon />, text: 'Övrigt' },
-]; */
 
 export default function WellnessPage() {
 	const { auth } = useContext(AuthContext);
 	const [wellness, setWellness] = useState([]);
+	const [checked, setChecked] = useState([]);
 
 	const fetchWellness = async () => {
 		try {
@@ -49,6 +36,27 @@ export default function WellnessPage() {
 	useEffect(() => {
 		fetchWellness();
 	}, [setWellness]);
+
+	const handleToggle = (category) => {
+		const currentIndex = checked.indexOf(category);
+		const newChecked = [...checked];
+
+		if (currentIndex === -1) {
+			newChecked.push(category);
+		} else {
+			newChecked.splice(currentIndex, 1);
+		}
+
+		setChecked(newChecked);
+	};
+
+	const filteredWellness =
+		checked.length > 0
+			? wellness.filter(
+					(well) => checked.some((c) => well.categories.includes(c))
+					// eslint-disable-next-line no-mixed-spaces-and-tabs
+			  )
+			: wellness;
 
 	const handleDelete = async (id) => {
 		// delete item
@@ -94,22 +102,30 @@ export default function WellnessPage() {
 						my: 3,
 					}}
 				>
-					{/* <CategoryBox
-            icon={
-              <CheckroomIcon
-                sx={{
-                  fontSize: '3rem',
-                }}
-              />
-            }
-            text='Kläder och Accessoarer'
-          /> */}
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'row',
+							flexWrap: 'wrap',
+							justifyContent: 'space-around',
+							alignItems: 'center',
+							mb: 5,
+						}}
+					>
+						{Object.values(WellnessCategory).map((category) => (
+							<FormControlLabel
+								control={<Checkbox onChange={() => handleToggle(category)} />}
+								label={category}
+								key={category}
+							/>
+						))}
+					</Box>
 					<Grid
 						container
 						spacing={3}
 						justifyContent={'center'}
 					>
-						{wellness.map((data) => (
+						{filteredWellness.map((data) => (
 							<Grid
 								item
 								xs={12}
