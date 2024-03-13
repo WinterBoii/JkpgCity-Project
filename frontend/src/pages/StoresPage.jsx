@@ -4,6 +4,7 @@ import {
 	Grid,
 	Checkbox,
 	FormControlLabel,
+	Skeleton,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { ItemCard } from '../components/ItemCard';
@@ -18,18 +19,23 @@ export default function StoresPage() {
 	const { auth } = useContext(AuthContext);
 	const [stores, setStores] = useState([]);
 	const [checked, setChecked] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const fetchStores = async () => {
+		setLoading(true);
 		try {
 			const res = await axios.get(baseUrl + '/stores');
 			console.log(res.data);
+			setLoading(false);
 			if (Array.isArray(res.data.stores)) {
 				setStores(res.data.stores);
+				localStorage.setItem('stores', JSON.stringify(stores));
 			} else {
 				console.error('Data received is not an array:', res.data.stores);
 			}
 		} catch (error) {
 			console.error('Error fetching stores:', error);
+			setLoading(false);
 		}
 	};
 
@@ -120,37 +126,53 @@ export default function StoresPage() {
 							/>
 						))}
 					</Box>
-					{/* <CategoryBox
-            icon={
-              <CheckroomIcon
-                sx={{
-                  fontSize: '3rem',
-                }}
-              />
-            }
-            text='Kläder och Accessoarer'
-          /> */}
-					<Grid
-						container
-						spacing={3}
-						justifyContent={'center'}
-					>
-						{filteredStores.map((store) => (
+					<Box>
+						{loading ? (
 							<Grid
-								item
-								xs={12}
-								sm={6}
-								md={4}
-								key={store.id}
+								justifyContent={'center'}
+								container
+								spacing={3}
 							>
-								<ItemCard
-									data={store}
-									auth={auth}
-									onDelete={handleDelete}
-								/>
+								{filteredStores.map((_, i) => (
+									<Grid
+										item
+										xs={12}
+										sm={6}
+										md={4}
+										key={i}
+									>
+										<Skeleton
+											variant='rectangular'
+											width='100%'
+											height={118}
+										/>
+									</Grid>
+								))}
 							</Grid>
-						))}
-					</Grid>
+						) : (
+							<Grid
+								justifyContent={'center'}
+								container
+								spacing={3}
+							>
+								{filteredStores.map((store) => (
+									<Grid
+										item
+										xs={12}
+										sm={6}
+										md={4}
+										key={store.id}
+									>
+										<ItemCard
+											data={store}
+											auth={auth}
+											onDelete={handleDelete}
+										/>
+									</Grid>
+								))}
+							</Grid>
+						)}
+					</Box>
 				</Container>
 			</Box>
 		</Box>

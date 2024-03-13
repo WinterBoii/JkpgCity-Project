@@ -4,6 +4,7 @@ import {
 	Grid,
 	FormControlLabel,
 	Checkbox,
+	Skeleton,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { ItemCard } from '../components/ItemCard';
@@ -18,18 +19,24 @@ export default function WellnessPage() {
 	const { auth } = useContext(AuthContext);
 	const [wellness, setWellness] = useState([]);
 	const [checked, setChecked] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const fetchWellness = async () => {
+		setLoading(true);
 		try {
 			const res = await axios.get(baseUrl + '/wellness');
 			console.log(res.data);
+			setLoading(false);
 			if (Array.isArray(res.data.wellness)) {
 				setWellness(res.data.wellness);
+				localStorage.setItem('stores', JSON.stringify(res.data.stores));
 			} else {
 				console.error('Data received is not an array:', res.data.wellness);
+				setLoading(false);
 			}
 		} catch (error) {
 			console.error('Error fetching wellness:', error);
+			setLoading(false);
 		}
 	};
 
@@ -120,27 +127,53 @@ export default function WellnessPage() {
 							/>
 						))}
 					</Box>
-					<Grid
-						container
-						spacing={3}
-						justifyContent={'center'}
-					>
-						{filteredWellness.map((data) => (
+					<Box>
+						{loading ? (
 							<Grid
-								item
-								xs={12}
-								sm={6}
-								md={4}
-								key={data.id}
+								justifyContent={'center'}
+								container
+								spacing={3}
 							>
-								<ItemCard
-									data={data}
-									auth={auth}
-									onDelete={handleDelete}
-								/>
+								{filteredWellness.map((_, i) => (
+									<Grid
+										item
+										xs={12}
+										sm={6}
+										md={4}
+										key={i}
+									>
+										<Skeleton
+											variant='rectangular'
+											width='100%'
+											height={118}
+										/>
+									</Grid>
+								))}
 							</Grid>
-						))}
-					</Grid>
+						) : (
+							<Grid
+								justifyContent={'center'}
+								container
+								spacing={3}
+							>
+								{filteredWellness.map((store) => (
+									<Grid
+										item
+										xs={12}
+										sm={6}
+										md={4}
+										key={store.id}
+									>
+										<ItemCard
+											data={store}
+											auth={auth}
+											onDelete={handleDelete}
+										/>
+									</Grid>
+								))}
+							</Grid>
+						)}
+					</Box>
 				</Container>
 			</Box>
 		</Box>
