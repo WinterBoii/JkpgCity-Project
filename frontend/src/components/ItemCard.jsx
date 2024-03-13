@@ -6,6 +6,7 @@ import {
 	AccordionSummary,
 	AccordionDetails,
 	Button,
+	Rating,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { theme } from '../lib/utils/Theme';
@@ -51,7 +52,15 @@ export function ItemCard({ data, auth, onDelete }) {
 							{data.name}
 						</Typography>
 						{data.rating && (
-							<Typography variant='body2'>Rating: {data.rating}</Typography>
+							<>
+								<Rating
+									name='read-only'
+									defaultValue={2}
+									size='small'
+									value={data.rating}
+									readOnly
+								/>
+							</>
 						)}
 						{data.district === null ? (
 							<Typography variant='body2'>
