@@ -1,36 +1,23 @@
-/* eslint-disable react/prop-types */
-import { Container, Box, Grid } from '@mui/material';
-/* import CheckroomIcon from '@mui/icons-material/Checkroom';
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
-import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
-import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
-import ImagesearchRollerOutlinedIcon from '@mui/icons-material/ImagesearchRollerOutlined';
-import SportsTennisOutlinedIcon from '@mui/icons-material/SportsTennisOutlined';
-import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
-import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
-import CategoryBox from '../components/CategoryBox'; */
-import TitleDescription from '../components/TitleDescription';
+import {
+	Container,
+	Box,
+	Grid,
+	Checkbox,
+	FormControlLabel,
+} from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
 import { ItemCard } from '../components/ItemCard';
+import { StoreCategories } from '../lib/constants';
+import TitleDescription from '../components/TitleDescription';
 import AuthContext from '../lib/AuthProvider';
+import axios from 'axios';
 
 const baseUrl = 'http://localhost:3001';
 
-/* const shopCategory = [
-	{ icon: <CheckroomIcon />, text: 'Kläder och Accessoarer' },
-	{ icon: <LightbulbOutlinedIcon />, text: 'Elektronik' },
-	{ icon: <RestaurantOutlinedIcon />, text: 'Mat och Livsmedel' },
-	{ icon: <ChairOutlinedIcon />, text: 'Heminredning' },
-	{ icon: <ImagesearchRollerOutlinedIcon />, text: 'Konst och Hantverk' },
-	{ icon: <SportsTennisOutlinedIcon />, text: 'Sport och Fritid' },
-	{ icon: <SpaOutlinedIcon />, text: 'Hälsa och Skönhet' },
-	{ icon: <ShuffleOutlinedIcon />, text: 'Övrigt' },
-];
- */
 export default function StoresPage() {
 	const { auth } = useContext(AuthContext);
 	const [stores, setStores] = useState([]);
+	const [checked, setChecked] = useState([]);
 
 	const fetchStores = async () => {
 		try {
@@ -49,6 +36,27 @@ export default function StoresPage() {
 	useEffect(() => {
 		fetchStores();
 	}, [setStores]);
+
+	const handleToggle = (category) => {
+		const currentIndex = checked.indexOf(category);
+		const newChecked = [...checked];
+
+		if (currentIndex === -1) {
+			newChecked.push(category);
+		} else {
+			newChecked.splice(currentIndex, 1);
+		}
+
+		setChecked(newChecked);
+	};
+
+	const filteredStores =
+		checked.length > 0
+			? stores.filter(
+					(store) => checked.some((c) => store.categories.includes(c))
+					// eslint-disable-next-line no-mixed-spaces-and-tabs
+			  )
+			: stores;
 
 	const handleDelete = async (id) => {
 		// delete item
@@ -94,6 +102,24 @@ export default function StoresPage() {
 						my: 3,
 					}}
 				>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'row',
+							flexWrap: 'wrap',
+							justifyContent: 'space-around',
+							alignItems: 'center',
+							mb: 5,
+						}}
+					>
+						{Object.values(StoreCategories).map((category) => (
+							<FormControlLabel
+								control={<Checkbox onChange={() => handleToggle(category)} />}
+								label={category}
+								key={category}
+							/>
+						))}
+					</Box>
 					{/* <CategoryBox
             icon={
               <CheckroomIcon
@@ -109,7 +135,7 @@ export default function StoresPage() {
 						spacing={3}
 						justifyContent={'center'}
 					>
-						{stores.map((store) => (
+						{filteredStores.map((store) => (
 							<Grid
 								item
 								xs={12}
