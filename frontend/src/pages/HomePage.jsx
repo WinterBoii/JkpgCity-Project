@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import shop1 from '../assets/shop1.jpg';
 import shop2 from '../assets/shop2.jpg';
 import TitleDescription from '../components/TitleDescription';
+import Testimonial from '../components/Testemonial';
 
 function HomePage() {
 	return (
@@ -100,6 +101,7 @@ function HomePage() {
 					/>
 				</Container>
 			</Box>
+			<Testimonial />
 		</Box>
 	);
 }
