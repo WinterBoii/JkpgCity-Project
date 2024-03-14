@@ -1,8 +1,8 @@
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
-import '@fontsource/fira-sans/700.css'
-import '@fontsource/fira-sans/500.css'
-import '@fontsource/fira-sans/400.css'
-import '@fontsource/fira-sans/300.css'
+import '@fontsource/fira-sans/700.css';
+import '@fontsource/fira-sans/500.css';
+import '@fontsource/fira-sans/400.css';
+import '@fontsource/fira-sans/300.css';
 
 const beigeBase = '#d5bca2';
 const beigeMain = alpha(beigeBase, 0.7);
@@ -29,7 +29,7 @@ export const theme = createTheme({
 		third: {
 			main: '#fff',
 			text: '#7B654F',
-			bg: '#FBF9F7',
+			bg: '#FFEED9',
 			alt: '#242424',
 		},
 		alternative: {

@@ -1,52 +1,89 @@
-/* eslint-disable react/prop-types */
-import { Container, Box, Grid } from '@mui/material';
-/* import CheckroomIcon from '@mui/icons-material/Checkroom';
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
-import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
-import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
-import ImagesearchRollerOutlinedIcon from '@mui/icons-material/ImagesearchRollerOutlined';
-import SportsTennisOutlinedIcon from '@mui/icons-material/SportsTennisOutlined';
-import SpaOutlinedIcon from '@mui/icons-material/SpaOutlined';
-import ShuffleOutlinedIcon from '@mui/icons-material/ShuffleOutlined';
-import CategoryBox from '../components/CategoryBox'; */
-import TitleDescription from '../components/TitleDescription';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import {
+	Container,
+	Box,
+	Grid,
+	Checkbox,
+	FormControlLabel,
+	Skeleton,
+} from '@mui/material';
+import { useContext, useEffect, useState } from 'react';
 import { ItemCard } from '../components/ItemCard';
+import { StoreCategories } from '../lib/constants';
+import TitleDescription from '../components/TitleDescription';
+import AuthContext from '../lib/AuthProvider';
+import axios from 'axios';
 
 const baseUrl = 'http://localhost:3001';
 
-/* const shopCategory = [
-	{ icon: <CheckroomIcon />, text: 'Kläder och Accessoarer' },
-	{ icon: <LightbulbOutlinedIcon />, text: 'Elektronik' },
-	{ icon: <RestaurantOutlinedIcon />, text: 'Mat och Livsmedel' },
-	{ icon: <ChairOutlinedIcon />, text: 'Heminredning' },
-	{ icon: <ImagesearchRollerOutlinedIcon />, text: 'Konst och Hantverk' },
-	{ icon: <SportsTennisOutlinedIcon />, text: 'Sport och Fritid' },
-	{ icon: <SpaOutlinedIcon />, text: 'Hälsa och Skönhet' },
-	{ icon: <ShuffleOutlinedIcon />, text: 'Övrigt' },
-];
- */
 export default function StoresPage() {
+	const { auth } = useContext(AuthContext);
 	const [stores, setStores] = useState([]);
+	const [checked, setChecked] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	const fetchStores = async () => {
+		setLoading(true);
+		try {
+			const res = await axios.get(baseUrl + '/stores');
+			console.log(res.data);
+			setLoading(false);
+			if (Array.isArray(res.data.stores)) {
+				setStores(res.data.stores);
+				localStorage.setItem('stores', JSON.stringify(stores));
+			} else {
+				console.error('Data received is not an array:', res.data.stores);
+			}
+		} catch (error) {
+			console.error('Error fetching stores:', error);
+			setLoading(false);
+		}
+	};
 
 	useEffect(() => {
-		const fetchStores = async () => {
-			try {
-				const res = await axios.get(baseUrl + '/stores');
-				console.log(res.data);
-				if (Array.isArray(res.data.stores)) {
-					setStores(res.data.stores);
-				} else {
-					console.error('Data received is not an array:', res.data.stores);
-				}
-			} catch (error) {
-				console.error('Error fetching stores:', error);
-			}
-		};
-
 		fetchStores();
 	}, [setStores]);
+
+	const handleToggle = (category) => {
+		const currentIndex = checked.indexOf(category);
+		const newChecked = [...checked];
+
+		if (currentIndex === -1) {
+			newChecked.push(category);
+		} else {
+			newChecked.splice(currentIndex, 1);
+		}
+
+		setChecked(newChecked);
+	};
+
+	const filteredStores =
+		checked.length > 0
+			? stores.filter(
+					(store) => checked.some((c) => store.categories.includes(c))
+					// eslint-disable-next-line no-mixed-spaces-and-tabs
+			  )
+			: stores;
+
+	const handleDelete = async (id) => {
+		// delete item
+		try {
+			const response = await axios.post(`${baseUrl}/stores/${id}/delete`);
+			console.log(response);
+			if (response.status === 200) {
+				const updatedStores = await fetchStores();
+				if (Array.isArray(updatedStores)) {
+					setStores(updatedStores);
+				} else {
+					console.error('Data received is not an array:', updatedStores);
+				}
+			} else {
+				throw new Error('Failed to Delete');
+			}
+		} catch (error) {
+			console.error(error);
+			throw error;
+		}
+	};
 
 	return (
 		<Box
@@ -60,7 +97,6 @@ export default function StoresPage() {
 			/>
 
 			<Box
-				bgcolor={'third.bg'}
 				my={10}
 				py={2}
 			>
@@ -72,33 +108,71 @@ export default function StoresPage() {
 						my: 3,
 					}}
 				>
-					{/* <CategoryBox
-            icon={
-              <CheckroomIcon
-                sx={{
-                  fontSize: '3rem',
-                }}
-              />
-            }
-            text='Kläder och Accessoarer'
-          /> */}
-					<Grid
-						container
-						spacing={3}
-						justifyContent={'center'}
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'row',
+							flexWrap: 'wrap',
+							justifyContent: 'space-around',
+							alignItems: 'center',
+							mb: 5,
+						}}
 					>
-						{stores.map((store) => (
-							<Grid
-								item
-								xs={12}
-								sm={6}
-								md={4}
-								key={store.id}
-							>
-								<ItemCard data={store} />
-							</Grid>
+						{Object.values(StoreCategories).map((category) => (
+							<FormControlLabel
+								control={<Checkbox onChange={() => handleToggle(category)} />}
+								label={category}
+								key={category}
+							/>
 						))}
-					</Grid>
+					</Box>
+					<Box>
+						{loading ? (
+							<Grid
+								justifyContent={'center'}
+								container
+								spacing={3}
+							>
+								{filteredStores.map((_, i) => (
+									<Grid
+										item
+										xs={12}
+										sm={6}
+										md={4}
+										key={i}
+									>
+										<Skeleton
+											variant='rectangular'
+											width='100%'
+											height={118}
+										/>
+									</Grid>
+								))}
+							</Grid>
+						) : (
+							<Grid
+								justifyContent={'center'}
+								container
+								spacing={3}
+							>
+								{filteredStores.map((store) => (
+									<Grid
+										item
+										xs={12}
+										sm={6}
+										md={4}
+										key={store.id}
+									>
+										<ItemCard
+											data={store}
+											auth={auth}
+											onDelete={handleDelete}
+										/>
+									</Grid>
+								))}
+							</Grid>
+						)}
+					</Box>
 				</Container>
 			</Box>
 		</Box>

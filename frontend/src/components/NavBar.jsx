@@ -124,7 +124,11 @@ function NavBar() {
 										<IconButton>
 											<Avatar
 												onClick={handleAvatarClick}
-												sx={{ width: 48, height: 48 }}
+												sx={{
+													width: 48,
+													height: 48,
+													bgcolor: theme.palette.alternative.main,
+												}}
 											/>
 											<Menu
 												anchorEl={anchorEl}

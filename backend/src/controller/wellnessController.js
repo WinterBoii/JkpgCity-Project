@@ -11,7 +11,7 @@ const createWellness = async (req, res) => {
 		const wellness = await Wellness.create(data);
 		res.status(200).json({ wellness: wellness._id });
 	} catch (err) {
-		res.status(400).send('Error creating wellness');
+		res.status(400).json('Error creating wellness');
 	}
 };
 
@@ -21,13 +21,13 @@ const wellness_get = async (req, res) => {
 		const wellness = await Wellness.find();
 		res.status(200).json({ wellness: wellness });
 	} catch (err) {
-		res.status(400).send('error getting wellness');
+		res.status(400).json('error getting wellness');
 	}
 };
 
 // method to update wellness by id
 const updateWellnessById = async (req, res) => {
-	const id = { id: req.params.id };
+	const id = req.params.id;
 	const data = {
 		name: req.body.name,
 		url: req.body.url,
@@ -35,23 +35,23 @@ const updateWellnessById = async (req, res) => {
 		categories: req.body.categories,
 	};
 	try {
-		const wellness = await Wellness.findByIdAndUpdate(id, data);
+		const wellness = await Wellness.findByIdAndUpdate(id, data, { new: true });
 		res.status(200).json(wellness);
 		console.log(wellness);
 	} catch (err) {
-		res.status(400).send(`error updating wellness${err.message}`);
+		res.status(400).json(`error updating wellness ${err.message}`);
 	}
 };
 
 // method to delete a wellness by id
 const deleteWellnessById = async (req, res) => {
-	const id = { id: req.params.id };
+	const id = req.params.id;
 	try {
-		const wellness = await Wellness.findByIdAndDelete(id);
+		await Wellness.findByIdAndDelete(id);
 		res.status(200).json('wellness deleted successfully');
 		console.log('wellness deleted successfully');
 	} catch (err) {
-		res.status(400).send(`error deleting wellness${err.message}`);
+		res.status(400).json(`error deleting wellness${err.message}`);
 	}
 };
 
@@ -66,7 +66,7 @@ const getWellnessByCategory = async (req, res) => {
 		res.status(200).json(wellness);
 		console.log(wellness);
 	} catch (err) {
-		res.status(400).send(`error getting wellness by category${err}`);
+		res.status(400).json(`error getting wellness by category${err}`);
 	}
 };
 

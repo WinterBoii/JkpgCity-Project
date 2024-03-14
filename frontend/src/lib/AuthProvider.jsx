@@ -8,7 +8,6 @@ const baseUrl = 'http://localhost:3001';
 export const AuthProvider = ({ children }) => {
 	const initialAuthState = {
 		loggedIn: false,
-		isTokenExpired: true,
 		user: null,
 		tokenExpiration: 0, // Default value (expired)
 	};
