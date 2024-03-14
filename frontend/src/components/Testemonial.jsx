@@ -27,7 +27,7 @@ export default function Testimonial() {
 
 	return (
 		<Box
-			sx={{ textAlign: 'center', paddingTop: '90px', paddingBottom: '100px' }}
+			sx={{ textAlign: 'center', paddingTop: '40px', paddingBottom: '50px' }}
 		>
 			<Typography
 				variant='h2'
