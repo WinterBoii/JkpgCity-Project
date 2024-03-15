@@ -100,7 +100,7 @@ export function ItemCard({ data, auth, onDelete }) {
 							{data.url && (
 								<Box>
 									<a
-										href={'https//' + data.url}
+										href={'/https://' + data.url}
 										target='_blank'
 										rel='noopener noreferrer'
 										style={{

@@ -16,8 +16,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../lib/AuthProvider';
 
-const baseUrl =
-	window.process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+const baseUrl = 'http://backend-service:3001';
 
 function Copyright(props) {
 	return (
