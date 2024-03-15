@@ -5,15 +5,18 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon /backend/src/index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"docker": "docker build -t iwinterr/jkpgcity:backend ./backend && docker build -t iwinterr/jkpgcity:frontend ./frontend && docker push iwinterr/jkpgcity:backend && docker push iwinterr/jkpgcity:frontend",
+		"k8s-deploy": "kubectl apply -f backend-deployment.yaml && kubectl apply -f frontend-deployment.yaml && kubectl rollout restart -n jkpgcity deployment",
+		"k8s-run": "kubectl port-forward svc/backend 3001:3001 -n jkpgcity && kubectl port-forward svc/mongodb 8081:8081 -n jkpgcity"
 	},
 	"author": "winter",
 	"license": "ISC",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
-		"dotenv": "^16.4.5",
 		"cookie-parser": "^1.4.6",
 		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
 		"express": "^4.18.2",
 		"jsonwebtoken": "^9.0.2",
 		"mongodb": "^6.3.0",
