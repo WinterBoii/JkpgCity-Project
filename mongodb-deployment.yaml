@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        env:
+        - name: MONGO_URI
+          value: mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/
+        ports:
+        - containerPort: 8081
+        resources:
+              limits:
+                cpu: 500m
+                memory: 512Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: default
+spec:
+  selector:
+    app: mongodb
+  ports:
+  - port: 8081
+    targetPort: 8081

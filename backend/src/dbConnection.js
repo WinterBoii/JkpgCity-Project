@@ -1,8 +1,7 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const insertData = require('./inserData');
-require('dotenv').config;
 // Import your data insertion functions
-
 
 const dbURI = `mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/db`;
 const dbConnection = mongoose

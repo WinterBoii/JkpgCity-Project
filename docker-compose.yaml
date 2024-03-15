@@ -2,6 +2,7 @@ version: '3.9'
 services:
   backend:
     container_name: backend-container
+    image: jkpgcity-project-backend
     build: ./backend/
     environment:
       CHOKIDAR_USEPOLLING: true
@@ -9,28 +10,22 @@ services:
       - '3001:3001'
     volumes:
       - ./backend/src:/backend/src/
-    networks:
-      - jkpgcity_network
+    depends_on:
+      - mongodb
 
   frontend:
     container_name: frontend-container
+    image: jkpgcity-project-frontend
     build: ./frontend/
     ports:
       - '3000:3000'
     volumes:
       - ./frontend/src:/frontend/src/
-    networks:
-      - jkpgcity_network
 
   mongodb:
+    container_name: mongodb-container
     image: mongo
     environment:
       - MONGO_URI=mongodb+srv://wajd:admin2024@jkpcity.sktnmlb.mongodb.net/
     ports:
       - '8081:8081'
-    networks:
-      - jkpgcity_network
-
-networks:
-  jkpgcity_network:
-    driver: bridge

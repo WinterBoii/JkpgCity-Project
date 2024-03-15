@@ -9,6 +9,4 @@ RUN  npm i -g nodemon && npm i --silent
 
 EXPOSE 3001
 
-ENTRYPOINT ["nodemon", "/backend/src/index.js"]
-
-CMD ["npm", "run", "dev"]
+ENTRYPOINT ["npm", "run", "dev"]
